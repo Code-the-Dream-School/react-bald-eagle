@@ -8,12 +8,11 @@ assignees: mamooredesigns
 
 ---
 
-#*Functional Issues*
-##Use this issue template to report a functional issue such as a broken link, a typo, or an image that isn't loading properly
-
-###**Location of issue:** 
+LOCATION OF ISSUE
 What page/file is the issue on? 
 (Example: Wiki, Lesson 2.1 or README.md)
+
+
 
 
 
@@ -22,9 +21,12 @@ Where on that page/file is the issue locate?
 
 
 
-###**Description of issue:**
+
+DESCRIPTION OF ISSUE
 What type of issue is this?
 (Example: typo, broken link, etc.)
+
+
 
 
 
