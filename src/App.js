@@ -1,35 +1,21 @@
 import React from "react";
+// import the AddTodoForm
+import AddTodoForm from "./AddTodoForm";
+// import the TodoList
+import TodoList from "./TodoList";
 
-const todoList = [
-  { id: 1, title: "Creat React First App" },
-  { id: 2, title: "Create a Todo List" },
-  { id: 3, title: "Complete Assignment" },
-];
-function App() {
+
+export default function App() {
   return (
-    <div>
-     
+    <div className="App">
+      
       <h1>Todo List</h1>
-      {/* Create an unordered list (<ul>) */}
-      <ul>
-        {todoList.map((item) => {
-          return <li key={item.id}>{item.title}</li>;
-        })}
-      </ul>
-      {/* It could also be done this way */}
-      {/* <hr />
-      <TodoList /> */}
+      {/* showing todo list */}
+      <TodoList />
+      {/* shoeing the input form */}
+      <AddTodoForm/>
     </div>
   );
 }
 
-// function TodoList() {
-//   return (
-//     <ul>
-//       {todoList.map((item) => {
-//         return <li key={item.id}>{item.title}</li>;
-//       })}
-//     </ul>
-//   );
-// }
-export default App;
+
