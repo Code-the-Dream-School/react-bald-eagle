@@ -3,15 +3,15 @@ import React from 'react';
 function App() {
   const todoList = [
     {
-      description: "Paint the kitchen",
+      title: "Paint the kitchen",
       id: 1
     },
     {
-      description: "Feed the cats",
+      title: "Feed the cats",
       id: 2
     },
     {
-      description: "Take the kids to the park",
+      title: "Take the kids to the park",
       id: 3
     }
   ]
@@ -29,7 +29,7 @@ function App() {
 
       <ul list-style-type="none">
         { todoList.map(function (task) {
-          return <li key={task.id}><b>{task.description}</b></li>
+          return <li key={task.id}><b>{task.title}</b></li>
           })
         }
       </ul>
