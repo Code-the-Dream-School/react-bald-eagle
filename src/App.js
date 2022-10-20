@@ -5,13 +5,13 @@ function App() {
     {
       'id':1,
       'title':'waitting assignment'
-  }, {
-    'id':2,
-    'title':'ongoing assignment'
-  }, {
-    'id':3,
-    'title':'Complete assignment'
-  },
+    }, {
+      'id':2,
+      'title':'ongoing assignment'
+    }, {
+      'id':3,
+      'title':'Complete assignment'
+    },
   ];
 
   return (
