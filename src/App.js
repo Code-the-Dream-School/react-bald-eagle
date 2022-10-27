@@ -9,7 +9,7 @@ var todolist = [
 function App() {
   return (
     <div>
-      <h1>Todo List</h1>
+      <h1>To Do List</h1>
       <ul>
         {todolist.map(function (item) {
           return <li key={item.id.title}>{item.title}</li>;
