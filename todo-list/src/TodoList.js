@@ -3,15 +3,15 @@ import TodoListItem from './TodoListItem';
 
 const todoList = [
 	{
-		title: "Paint the kitchen",
+		title: "Clean the kitchen",
 		id: 1
 	},
 	{
-		title: "Feed the cats",
+		title: "Feed the kids",
 		id: 2
 	},
 	{
-		title: "Take the kids to the park",
+		title: "Take the dogs to the park",
 		id: 3
 	}
 ]
