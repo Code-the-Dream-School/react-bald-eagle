@@ -2,17 +2,22 @@ import React from 'react';
 import TodoList from './TodoList'
 import AddTodoForm from './AddTodoForm'
 
-const App = () => (
-  <div style={{ textAlign: 'center' }}>
-    <h1>
-      Todo List
-    </h1>
+const App = () => {
+  const [ newTodo, setNewTodo ] = React.useState('')
 
-    <AddTodoForm />
-    
-    <TodoList />
+  return (
+    <div style={{ textAlign: 'center' }}>
+      <h1>
+        Todo List
+      </h1>
 
-  </div>
-);
+      <AddTodoForm onAddTodo={setNewTodo}/>
+      <p>{newTodo}</p>
+      
+      <TodoList />
+
+    </div>
+  );
+}
 
 export default App;
