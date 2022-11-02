@@ -4,7 +4,7 @@ import AddTodoForm from "./AddTodoForm";
 
 function App() {
   
-var [newTodo, setNewTodo] = useState();
+var [newTodo, setNewTodo] = useState('');
 
   return (
     <>
