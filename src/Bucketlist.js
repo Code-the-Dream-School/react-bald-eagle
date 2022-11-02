@@ -1,4 +1,5 @@
 import React from "react";
+import BucketListItem from "./BucketlistListItem";
 
 const bucketList = [
   { id: 1, title: "Walk over hot coals" },
@@ -8,14 +9,14 @@ const bucketList = [
   { id: 5, title: "Box a kangaroo" },
 ];
 
-const TodoList = () => {
+const BucketList = () => {
   return (
     <ul>
-      {bucketList.map((item) => {
-        return <li key={item.id}>{item.title}</li>;
+      {bucketList.map((todo) => {
+        return <BucketListItem key={todo.id} todo={todo} />;
       })}
     </ul>
   );
 };
 
-export default TodoList;
+export default BucketList;

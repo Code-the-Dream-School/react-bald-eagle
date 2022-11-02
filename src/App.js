@@ -1,13 +1,18 @@
 import React from "react";
-import AddToBucketList from "./AddToBucketList";
-import TodoList from "./TodoList";
+import AddToBucketListForm from "./AddToBucketlistForm";
+import BucketList from "./Bucketlist";
+import { useState } from "react";
 
 function App() {
+  const [newBucketlist, setNewTodo] = useState("");
+  console.log(newBucketlist);
+
   return (
     <div>
       <h1>Bucket List</h1>
-      <AddToBucketList />
-      <TodoList />
+      <AddToBucketListForm onAddTodo={setNewTodo} />
+      <p>{newBucketlist}</p>
+      <BucketList />
     </div>
   );
 }
