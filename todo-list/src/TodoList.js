@@ -17,7 +17,7 @@ const todoList = [
 ]
 
 const TodoList = () => (
-	<ul list-style-type="none">
+	<ul style={{listStyleType: "none"}}>
 		{ todoList.map(function (todo) {
 				return (
 					< TodoListItem key={todo.id} todo={todo} />
