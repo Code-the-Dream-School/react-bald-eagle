@@ -7,7 +7,7 @@ function AddTodoForm(props) {
         let todoTitle = event.target.title.value;
         console.log(todoTitle);
         event.target.reset();
-        props.onAddTodo({title: todoTitle}); // why title:  ?? otherwise it does not appear below form
+        props.onAddTodo({title: todoTitle}); 
         // todoList.push(props.todo.newTodo);
     };
 
