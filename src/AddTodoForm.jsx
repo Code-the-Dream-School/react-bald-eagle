@@ -14,8 +14,8 @@ function AddTodoForm(props) {
 
         <form onSubmit={handleAddTodo}>
             <label htmlFor="todoTitle">Title</label>
-            <input type="text" id="todoTitle" name="title"></input>
-            <button>Add</button>
+            <input type="text" id="todoTitle" name="title"/>
+            <button type="submit">Add</button>
         </form>
     )
 };
