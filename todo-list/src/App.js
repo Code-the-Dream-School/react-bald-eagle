@@ -3,9 +3,11 @@ import TodoList from './TodoList'
 import AddTodoForm from './AddTodoForm'
 
 const App = () => {
-  const [newTodo, setNewTodo] = React.useState('');
-
   const [todoList, setTodoList] = React.useState([])
+
+  const addTodo = (newTodo) => {
+    setTodoList(newTodo, ...todoList)
+  }
 
   return (
     <div style={{ textAlign: 'center' }}>
@@ -13,9 +15,7 @@ const App = () => {
         Todo List
       </h1>
   
-      <AddTodoForm onAddTodo={setNewTodo} />
-
-      <p> {newTodo} </p>
+      <AddTodoForm onAddTodo={addTodo} />
       
       <TodoList todoList={todoList} />
     </div>
