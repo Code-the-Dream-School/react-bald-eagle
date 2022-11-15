@@ -6,13 +6,17 @@ import './styles/App.css';
 
 
 function App() {
-  var [newTodo, setNewTodo] = useState('');
+  const [todoList, setTodoList] = useState([]);
+  const addTodo = (newTodo) => {
+    setTodoList([todoList, newTodo])
+  };
+  // var [newTodo, setNewTodo] = useState('');
   return (
     <div>
       <Header />
-      <AddTodoForm onAddTodo={setNewTodo} />
-      <TodoList />
-      {newTodo}
+      <AddTodoForm onAddTodo={addTodo} />
+      <TodoList todoList={todoList} />
+      {/* {newTodo} */}
     </div>
   );
 }
