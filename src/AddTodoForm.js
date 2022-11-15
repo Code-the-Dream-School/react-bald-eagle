@@ -9,11 +9,8 @@ export default function AddTodoForm(props) {
     };
     const handleAddTodo = (event) => {
         event.preventDefault();
-        // const todoTitle = <li>{event.target.title.value}</li>;
         props.onAddTodo({ title: todoTitle, id: Date.now() });
-        // props.onAddTodo(todoTitle);
         console.log(event.target.title.value);
-        // event.target.reset();
         setTodoTitle('');
 
     }

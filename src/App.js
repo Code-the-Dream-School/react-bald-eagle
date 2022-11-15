@@ -10,13 +10,11 @@ function App() {
   const addTodo = (newTodo) => {
     setTodoList([todoList, newTodo])
   };
-  // var [newTodo, setNewTodo] = useState('');
   return (
     <div>
       <Header />
       <AddTodoForm onAddTodo={addTodo} />
       <TodoList todoList={todoList} />
-      {/* {newTodo} */}
     </div>
   );
 }
