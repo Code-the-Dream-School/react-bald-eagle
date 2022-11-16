@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-function AddTodoForm(props) {
+function AddTodoForm({onAddTodo}) {
 
     const [todoTitle, setTodoTitle] = useState('')
 
@@ -11,11 +11,9 @@ function AddTodoForm(props) {
 
     function handleAddTodo(event) {
         event.preventDefault();
-        // Update the onAddTodo callback prop to pass an Object instead of a String
-        props.onAddTodo({title: todoTitle, id: Date.now()});
+        onAddTodo({title: todoTitle, id: Date.now()});
             // Disclaimer: we are suggesting Date.now() for now as a placeholder for unique number generation, but in the future you should not use this
         console.log(todoTitle);
-        //remove the reset() method and replace it with logic to reset the todoTitle state to an empty String
         setTodoTitle("");
     };
 
