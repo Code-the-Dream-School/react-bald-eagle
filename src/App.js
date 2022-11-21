@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React from 'react';
 import TodoList from './TodoList';
 import AddTodoForm from './AddTodoForm';
+import useSemiPersistentState from './useSemiPersistentState';
 
 function App() {
 
-  const [todoList, setTodoList] = useState([]);
+  const [todoList, setTodoList] = useSemiPersistentState();
 
   const addTodo = (newTodo) => {
     setTodoList([...todoList, newTodo]);  
