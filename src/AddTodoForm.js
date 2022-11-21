@@ -1,20 +1,30 @@
-import React from "react";
+import React, { useState } from "react";
 
 
 // Function to add form for todo list
 function AddTodoForm(props){
+    const [todoTitle, setTodoTitle] = useState('');
+    const handleTitleChange = (event) => {
+        const newTodoTitle = event.target.value;
+        setTodoTitle(newTodoTitle);
+    }
     const handleAddTodo  = (event) => {
         event.preventDefault();
-        const todoTitle = event.target.title.value;
-        console.log(todoTitle);
+        props.onAddTodo({title: todoTitle, id:Date.now()});
         // event.target.reset();
-        event.target.title.value = "";
-        props.onAddTodo(todoTitle);
+        console.log(event.target.title.value);
+        setTodoTitle('');
     }
     return (
         <form onSubmit={handleAddTodo}>
             <label htmlFor="todoTitle">Title</label>
-            <input id="todoTitle" type="text" name="title" />
+            <input 
+                id="todoTitle" 
+                type="text" 
+                name="title"
+                value={todoTitle}
+                onChange={handleTitleChange}
+                />
             <input type="submit" value="Add" />
         </form>
     );
