@@ -1,26 +1,26 @@
 import React from 'react';
 import TodoListItem from './TodoListItem';
 
-const todoList = [
-  {
-    id: 1,
-    title: "React Assignments"
-  },
-  {
-    id: 2,
-    title: "Algorithm Practice"
-  },
-  {
-    id: 3,
-    title: "Review"
-  },
-  {
-    id: 4,
-    title: "Build"
-  },
-];
+// const todoList = [
+//   {
+//     id: 1,
+//     title: "React Assignments"
+//   },
+//   {
+//     id: 2,
+//     title: "Algorithm Practice"
+//   },
+//   {
+//     id: 3,
+//     title: "Review"
+//   },
+//   {
+//     id: 4,
+//     title: "Build"
+//   },
+// ];
 
-function ToDoList () {
+function ToDoList({ todoList }) {
   return (
     <ul style={{listStyleType:'none'}}>
       {todoList.map(function(item) {
