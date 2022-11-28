@@ -13,7 +13,10 @@ const AddTodoForm = (props) => {
   // In the handleAddTodo function, remove the todoTitle variable and update onAddTodo callback handler to pass our todoTitle state variable instead
   const handleAddTodo = (e) => {
     e.preventDefault();
-    props.onAddTodo(todoTitle);
+    props.onAddTodo({
+      title: todoTitle,
+      id: Date.now(),
+    });
     console.log("success");
     e.target.reset();
   };
@@ -22,7 +25,7 @@ const AddTodoForm = (props) => {
       <label htmlFor="title">Title: </label>
       <input
         type="text"
-        //retrieve the input value from the event object and store in variable named newTodoTitle
+        //
         value={props.todoTitle}
         name="title"
         id="todoTitle"
