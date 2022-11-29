@@ -25,12 +25,11 @@ export default function App() {
     setTodoList([...todoList, newTodo]);
   }
   return (
-    <div className="App">
+    <>
       <h1>Todo List</h1>
-      {/* showing todo list */}
-      <TodoList todoList={todoList} />
-      {/* showing the input form */}
+
       <AddTodoForm onAddTodo={addTodo} />
-    </div>
+      <TodoList todoList={todoList} />
+    </>
   );
 }
