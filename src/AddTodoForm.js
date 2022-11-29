@@ -1,6 +1,6 @@
 import React from "react";
 // const AddTodoForm = (props) =>
-const AddTodoForm = ({onAddTodo}) => {
+const AddTodoForm = ({ onAddTodo }) => {
   //Create new state variable named todoTitle with setter setTodoTitle
   const [todoTitle, setTodoTitle] = React.useState("");
 
