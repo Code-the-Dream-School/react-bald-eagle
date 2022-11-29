@@ -1,8 +1,8 @@
 import React from "react";
-
-const AddTodoForm = (props) => {
+// const AddTodoForm = (props) =>
+const AddTodoForm = ({onAddTodo}) => {
   //Create new state variable named todoTitle with setter setTodoTitle
-  const [todoTitle, setTodoTitle] = React.useState();
+  const [todoTitle, setTodoTitle] = React.useState("");
 
   const handleTitleChange = (e) => {
     const newTodoTitle = e.target.value;
@@ -13,12 +13,18 @@ const AddTodoForm = (props) => {
   // In the handleAddTodo function, remove the todoTitle variable and update onAddTodo callback handler to pass our todoTitle state variable instead
   const handleAddTodo = (e) => {
     e.preventDefault();
-    props.onAddTodo({
+    // props.onAddTodo({
+    //   title: todoTitle,
+    //   id: Date.now(),
+    // });
+    //distructure the onaddTodo callback prop
+    onAddTodo({
       title: todoTitle,
       id: Date.now(),
     });
     console.log("success");
-    e.target.reset();
+    // e.target.reset();
+    setTodoTitle("");
   };
   return (
     <form onSubmit={handleAddTodo}>
@@ -26,7 +32,7 @@ const AddTodoForm = (props) => {
       <input
         type="text"
         //
-        value={props.todoTitle}
+        value={todoTitle}
         name="title"
         id="todoTitle"
         onChange={handleTitleChange}
