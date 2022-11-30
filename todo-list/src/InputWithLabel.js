@@ -1,13 +1,13 @@
 import React from "react";
 
-const InputWithLabel = ({ todoTitle, handleTitleChange }) => {
+const InputWithLabel = ({ todoTitle, handleTitleChange, title, type, id }) => {
   return (
     <>
-      <label htmlFor="TodoTitle"> Title </label>
+      <label htmlFor={id}> {title} </label>
       <input
-        type="text"
-        id="TodoTitle"
-        name="title"
+        type={type}
+        id={id}
+        name={title}
         value={todoTitle}
         onChange={handleTitleChange}
       />
