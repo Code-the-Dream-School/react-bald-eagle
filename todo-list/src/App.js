@@ -24,6 +24,11 @@ const App = () => {
     setTodoList([newTodo, ...todoList]);
   };
 
+  const removeTodo = (item) => {
+    const newTodos = todoList.filter((todo) => todo.id !== item.id);
+    setTodoList(newTodos);
+  };
+
   return (
     <>
       <div style={{ textAlign: "center" }}>
