@@ -24,6 +24,7 @@ const App = () => {
     setTodoList([newTodo, ...todoList]);
   };
 
+  // decided to pass the item as opposed to the item id here
   const removeTodo = (item) => {
     const newTodos = todoList.filter((todo) => todo.id !== item.id);
     setTodoList(newTodos);
@@ -36,7 +37,7 @@ const App = () => {
 
         <AddTodoForm onAddTodo={addTodo} />
 
-        <TodoList todoList={todoList} />
+        <TodoList todoList={todoList} onRemoveTodo={removeTodo}/>
       </div>
     </>
   );
