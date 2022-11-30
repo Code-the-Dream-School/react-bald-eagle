@@ -1,4 +1,5 @@
-import react from "react";
+import React from "react";
+import TodoListItem from "./TodoListItem";
 
 // Empty array named todoList
 const todoList = [{'id': 1, 'title':'homework' },
@@ -6,17 +7,16 @@ const todoList = [{'id': 1, 'title':'homework' },
 {'id': 3, 'title':'Exercise' },
 ];
 
-//
-function TodoList(){
+// 1.4 Add props as a parameter to the TodoList functional component
+function TodoList(props){
 
     return(
         <ul>
-          {todoList.map(function (item){
-            return <li key={item.id.title}>{item.title}</li>
+          {todoList.map(function ( todo ){
+            return 
+            <TodoListItem key={todo.id} todo={todo}/> //passing props 'todo' 
           })}
         </ul>
     )
 }
-
-
 export default TodoList;
