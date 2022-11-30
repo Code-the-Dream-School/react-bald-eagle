@@ -10,6 +10,7 @@ const InputWithLabel = ({ todoTitle, handleTitleChange, title, type, id, childre
         name={title}
         value={todoTitle}
         onChange={handleTitleChange}
+				autoFocus
       />
     </>
   );
