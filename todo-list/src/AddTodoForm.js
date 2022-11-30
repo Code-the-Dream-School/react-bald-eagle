@@ -23,7 +23,9 @@ const AddTodoForm = ({ onAddTodo }) => {
         title="Title"
         type="text"
         id="TodoTitle"
-      />
+      >
+        Title
+      </InputWithLabel>
       <button type="submit"> Add </button>
     </form>
   );
