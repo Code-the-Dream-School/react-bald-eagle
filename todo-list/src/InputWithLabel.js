@@ -8,11 +8,11 @@ const InputWithLabel = ({
   id,
   children,
 }) => {
-	const inputRef = useRef();
+  const inputRef = useRef();
 
-	useEffect(() => {
-		inputRef.current.focus()
-	}, [])
+  useEffect(() => {
+    inputRef.current.focus();
+  }, []);
 
   return (
     <>
@@ -23,7 +23,7 @@ const InputWithLabel = ({
         name={title}
         value={todoTitle}
         onChange={handleTitleChange}
-				ref={inputRef}
+        ref={inputRef}
       />
     </>
   );

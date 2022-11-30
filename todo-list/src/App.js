@@ -37,7 +37,7 @@ const App = () => {
 
         <AddTodoForm onAddTodo={addTodo} />
 
-        <TodoList todoList={todoList} onRemoveTodo={removeTodo}/>
+        <TodoList todoList={todoList} onRemoveTodo={removeTodo} />
       </div>
     </>
   );
