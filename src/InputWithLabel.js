@@ -1,9 +1,9 @@
 import React from "react";
 const InputWithLabel = (props) => {
-  const inputRef = React.useRef()
+  const inputRef = React.useRef();
   React.useEffect(() => {
-    inputRef.current.focus()
-  }, [])
+    inputRef.current.focus();
+  }, []);
   return (
     <>
       <label htmlFor="title">{props.children} </label>

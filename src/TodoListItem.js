@@ -1,10 +1,17 @@
 import React from "react";
 // Declare a function named TodoListItem
 //
-const TodoListItem = ({ todo, onRemoveTodo}) => (
-  <li >
+const TodoListItem = ({ todo, onRemoveTodo }) => (
+  <li>
     {todo.title}
-    <button type="button" onClick={()=>{onRemoveTodo(todo.id)}}>Remove</button>
+    <button
+      type="button"
+      onClick={() => {
+        onRemoveTodo(todo.id);
+      }}
+    >
+      Remove
+    </button>
   </li>
 );
 
