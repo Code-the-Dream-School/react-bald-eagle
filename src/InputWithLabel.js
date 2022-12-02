@@ -1,9 +1,8 @@
 import React from "react";
-
-export default function InputWithLabel(props) {
+const InputWithLabel = (props) => {
   return (
     <>
-      <label htmlFor="title">{props.label} </label>
+      <label htmlFor="title">{props.children} </label>
       <input
         type="text"
         //
@@ -11,7 +10,10 @@ export default function InputWithLabel(props) {
         name="title"
         id="todoTitle"
         onChange={props.handleTitleChange}
+        autoFocus
       />
     </>
   );
-}
+};
+
+export default InputWithLabel;
