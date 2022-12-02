@@ -24,12 +24,17 @@ export default function App() {
   function addTodo(newTodo) {
     setTodoList([...todoList, newTodo]);
   }
+  //remove button
+  const removeTodo = (id) => {
+    const newTodolist = todoList.filter((todo) => id !== todo.id);
+    setTodoList(newTodolist);
+  };
   return (
     <>
       <h1>Todo List</h1>
 
       <AddTodoForm onAddTodo={addTodo} />
-      <TodoList todoList={todoList} />
+      <TodoList todoList={todoList} onRemoveTodo={removeTodo} />
     </>
   );
 }
