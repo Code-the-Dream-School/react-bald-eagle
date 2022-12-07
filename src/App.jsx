@@ -25,13 +25,11 @@ function App() {
   }
 
   return (
-    //Update the JSX to use a Fragment
     <React.Fragment>
       <h1>Todo List</h1>
         <AddTodoForm onAddTodo={addTodo} />
         <TodoList todoList={todoList}/>
     </React.Fragment>
-    //( Shorthand for <React.Fragment></React.Fragment> = <></> )
   );
 
 };
