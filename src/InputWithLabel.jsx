@@ -3,16 +3,15 @@ import React from "react";
 // Declare a new functional React component named InputWithLabel 
 
 // Add props as a parameter in the InputWithLabel function
-
-
-
 function InputWithLabel(props) {
 
     return (
 
         // Paste  the label and input elements that you copied
         <React.Fragment>
-            <label htmlFor="todoTitle">Title</label>
+
+            {/* Replace the text inside the label element with a new props variable named label */}
+            <label htmlFor="todoTitle">{props.label}</label>
 
             <input 
                 type="text" 
@@ -23,7 +22,7 @@ function InputWithLabel(props) {
                 onChange={props.handleTitleChange}
             />
         </React.Fragment>
-        
+
     )
 
 };
