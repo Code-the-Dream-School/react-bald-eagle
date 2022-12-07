@@ -24,8 +24,9 @@ function App() {
   }
 
   //Exercise 1.6 "Add Remove Button to List Items"
-  const removeTodo = (id) => {
-    setTodoList(todoList.filter((todo) => todo.id !== id));
+  const removeTodo = (item) => {
+    console.log(item);
+    setTodoList(todoList.filter((todo) => item.id !== todo.id));
   }
 
   const [todoList, setTodoList] = useSemiPersistentState();

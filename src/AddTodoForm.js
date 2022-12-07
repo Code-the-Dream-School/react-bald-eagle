@@ -21,7 +21,6 @@ const AddTodoForm = ({ onAddTodo }) => {
       <InputWithLabel
         todoTitle={todoTitle}
         handleTitleChange={handleTitleChange}
-        placeholder='Type your title here'
       >
        <strong>Title</strong>
       </InputWithLabel>

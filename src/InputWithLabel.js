@@ -9,7 +9,7 @@ const InputWithLabel = ({
 
   const inputRef = useRef();
 
-  useEffect = (() => {
+  useEffect(() => {
     inputRef.current.focus();
   }, [todoTitle]);
 
@@ -29,4 +29,4 @@ const InputWithLabel = ({
   );
 }
 
-export default InputWithLabel
+export default InputWithLabel;
