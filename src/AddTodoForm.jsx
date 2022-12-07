@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-// Refactor AddTodoForm.js to use new InputWithLabel component
 import InputWithLabel from "./InputWithLabel";
 
 function AddTodoForm({onAddTodo}) {
@@ -22,22 +21,20 @@ function AddTodoForm({onAddTodo}) {
     return (
 
         <form onSubmit={handleAddTodo}>
-            {/* Cut the label and input elements */}
-            
-            {/* <label htmlFor="todoTitle">Title</label>
 
-            <input 
-                type="text" 
-                id="todoTitle" 
-                name="title"
-                value={todoTitle}
-                onChange={handleTitleChange}
-            /> */}
+            {/* Change the component to have an open/close tag */}
+            <InputWithLabel 
+                AddTodoForm={AddTodoForm} 
+                todoTitle={todoTitle} 
+                handleTitleChange={handleTitleChange}
+                // Remove the label prop 
+                    // label={"Title"}
+            >
 
-            {/* Pass the necessary props */}
-            {/* Pass a label prop to the InputWithLabel component with value "Title" */}
-            <InputWithLabel AddTodoForm={AddTodoForm} todoTitle={todoTitle} handleTitleChange={handleTitleChange} label={"Title"}/>
+                {/* Pass the text Title inside the component tags */}
+                Title
 
+            </InputWithLabel>
             <button type="submit">Add</button>
         </form>
     )
