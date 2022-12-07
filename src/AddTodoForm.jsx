@@ -19,22 +19,17 @@ function AddTodoForm({onAddTodo}) {
     };
 
     return (
-
         <form onSubmit={handleAddTodo}>
-
-            {/* Change the component to have an open/close tag */}
             <InputWithLabel 
                 AddTodoForm={AddTodoForm} 
                 todoTitle={todoTitle} 
                 handleTitleChange={handleTitleChange}
-                // Remove the label prop 
-                    // label={"Title"}
-            >
+                >
 
-                {/* Pass the text Title inside the component tags */}
                 Title
 
             </InputWithLabel>
+
             <button type="submit">Add</button>
         </form>
     )

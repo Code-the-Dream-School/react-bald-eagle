@@ -3,7 +3,6 @@ import React from "react";
 function InputWithLabel(props) {
     return (
         <React.Fragment>
-            {/* Replace label prop with children */}
             <label htmlFor="todoTitle">{props.children}</label>
             <input          
                 type="text" 
@@ -11,6 +10,8 @@ function InputWithLabel(props) {
                 name="title"
                 value={props.todoTitle}
                 onChange={props.handleTitleChange}
+                // Add autoFocus prop to input element
+                autoFocus
             />
         </React.Fragment>
     )
