@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import InputWithLabel from "./InputWithLabel";
 
 
 // Function to add form for todo list
@@ -17,17 +18,17 @@ function AddTodoForm(props){
     }
     return (
         <form onSubmit={handleAddTodo}>
-            <label htmlFor="todoTitle">Title</label>
-            <input 
-                id="todoTitle" 
-                type="text" 
-                name="title"
-                value={todoTitle}
-                onChange={handleTitleChange}
-                />
+            
+            <InputWithLabel 
+                todoTitle = {todoTitle} 
+                handleTitleChange={handleTitleChange}
+                >
+                <strong>Title</strong>
+            </InputWithLabel>
             <input type="submit" value="Add" />
         </form>
     );
 }
 
 export default AddTodoForm;
+

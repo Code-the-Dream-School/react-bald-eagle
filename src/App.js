@@ -22,6 +22,16 @@ const addTodo = (newTodo) =>{
   setTodoList([...todoList, newTodo]);
   }
 
+
+// function to remove toDo
+
+const removeTodo = (id) => {
+  const afterRemove = todoList.filter(item => {
+    return item.id !== id;
+  });
+  setTodoList(afterRemove);
+}
+
 //  useEffect(()=>{
 //   localStorage.setItem('savedTodoList',JSON.stringify(todoList))
 //  },[todoList]);
@@ -30,7 +40,7 @@ const addTodo = (newTodo) =>{
     <>
       <h1>Todo List</h1>
       <AddTodoForm onAddTodo={addTodo} />
-      <TodoList todoList={todoList} />
+      <TodoList todoList={todoList} onRemoveTodo = {removeTodo} />
     </>
   );
 }
