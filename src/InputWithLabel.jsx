@@ -1,6 +1,15 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 
 function InputWithLabel(props) {
+    // Use the useRef React hook to create an imperative ref named inputRef
+    const inputRef = useRef();
+
+    // Define a useEffect React hook with an empty dependency list 
+    useEffect(() => {
+        // Call the focus() method on the current inputRef
+        inputRef.current.focus()
+    });
+
     return (
         <React.Fragment>
             <label htmlFor="todoTitle">{props.children}</label>
@@ -10,8 +19,10 @@ function InputWithLabel(props) {
                 name="title"
                 value={props.todoTitle}
                 onChange={props.handleTitleChange}
-                // Add autoFocus prop to input element
-                autoFocus
+                // Remove the autoFocus prop on the input element
+                    //autoFocus
+                // Add a ref prop with value inputRef
+                ref={inputRef}
             />
         </React.Fragment>
     )
