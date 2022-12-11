@@ -3,9 +3,18 @@ import TodoList from "./TodoList";
 import AddTodoForm from "./AddTodoForm";
 
 const App = () => {
-  const [todoList, setTodoList] = useState(
-    JSON.parse(localStorage.getItem("savedTodoList")) || []
-  );
+  const [todoList, setTodoList] = useState([]);
+
+  useEffect(() => {
+    new Promise((resolve) => {
+      setTimeout(() => resolve({ data: { todoList: todoList } }),
+        2000
+      );
+    }).then((result) => {
+      console.log(result)
+      setTodoList(result.data.todoList)
+    })
+  }, []);
 
   useEffect(() => {
     localStorage.setItem("savedTodoList", JSON.stringify(todoList));
