@@ -9,23 +9,42 @@ const App = () => {
 
   const [isError, setIsError] = useState(false)
 
-  useEffect(() => {
+  // this simulates asynchronous load when app is initialized
+  // useEffect(() => {
+  //   new Promise((resolve) => {
+  //     setTimeout(() => resolve({ data: { todoList: todoList } }),
+  //       2000
+  //     );
+  //   }).then((result) => {
+  //     setTodoList(result.data.todoList)
+  //     setIsLoading(false)
+  //   }).catch(() => {
+  //     setIsError(true)
+  //   })
+  // }, []);
+
+  const asyncData = (items) => {
     new Promise((resolve) => {
-      setTimeout(() => resolve({ data: { todoList: todoList } }),
+      setTimeout(() => resolve({ data: { todoList: items } }),
         2000
       );
     }).then((result) => {
-      console.log(result)
       setTodoList(result.data.todoList)
       setIsLoading(false)
     }).catch(() => {
       setIsError(true)
     })
-  }, []);
+  }
 
+  // Warning: Maximum update depth exceeded. 
+  // This can happen when a component calls setState inside useEffect, 
+  // but useEffect either doesn't have a dependency array, 
+  // or one of the dependencies changes on every render.
+
+  // this usEffect handles the addition to and retreival of items from localStorage 
   useEffect(() => {
     if (isLoading) {
-      setTodoList(JSON.parse(localStorage.getItem("savedTodoList")))
+      asyncData(JSON.parse(localStorage.getItem("savedTodoList")))
     } else {
       localStorage.setItem("savedTodoList", JSON.stringify(todoList));
     }
