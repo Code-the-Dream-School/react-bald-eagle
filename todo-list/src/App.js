@@ -5,21 +5,34 @@ import AddTodoForm from "./AddTodoForm";
 const App = () => {
   const [todoList, setTodoList] = useState([]);
 
+  const [isLoading, setIsLoading] = useState(true)
+
+  const [isError, setIsError] = useState(false)
+
   useEffect(() => {
     new Promise((resolve) => {
       setTimeout(() => resolve({ data: { todoList: todoList } }),
         2000
       );
     }).then((result) => {
-      console.log(result)
+      console.log("result", result)
       setTodoList(result.data.todoList)
+      setIsLoading(false)
+    }).catch(() => {
+      setIsError(true)
     })
   }, []);
 
   useEffect(() => {
-    localStorage.setItem("savedTodoList", JSON.stringify(todoList));
-    setTodoList(todoList)
-  }, [todoList]); // passing value and key variables as dependencies to sideEffect
+    switch (isLoading) {
+      case false:
+        localStorage.setItem("savedTodoList", JSON.stringify(todoList));
+        // console.log("storage", localStorage.getItem("savedTodoList"), "todoList", todoList)
+        setTodoList(todoList)
+      default:
+        return
+    }
+  }, [todoList, isLoading]); // passing value and key variables as dependencies to sideEffect
 
   const addTodo = (newTodo) => {
     setTodoList([newTodo, ...todoList]);
@@ -38,7 +51,12 @@ const App = () => {
 
         <AddTodoForm onAddTodo={addTodo} />
 
+        { isError && <p>Something went wrong...</p>}
+
+        { isLoading ? <p>Loading...</p>
+        :
         <TodoList todoList={todoList} onRemoveTodo={removeTodo} />
+        }
       </div>
     </>
   );
