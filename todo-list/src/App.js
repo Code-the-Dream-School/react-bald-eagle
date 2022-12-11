@@ -49,7 +49,7 @@ const App = () => {
   // this usEffect handles the addition to and retreival of items from localStorage 
   useEffect(() => {
     if (isLoading) {
-      asyncData(JSON.parse(localStorage.getItem("savedTodoList")))
+      asyncData(JSON.parse(localStorage.getItem("savedTodoList")) || [])
     } else {
       localStorage.setItem("savedTodoList", JSON.stringify(todoList));
     }
