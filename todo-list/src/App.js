@@ -2,23 +2,15 @@ import React, { useState, useEffect } from "react";
 import TodoList from "./TodoList";
 import AddTodoForm from "./AddTodoForm";
 
-// used key and initial state as args to make function reusable across components
-const useSemiPersistentState = (key, initialState) => {
-  // used value and setValue here for reusability with other components
-  const [value, setValue] = useState(
-    // checking for item in local storage, if return falsey then use initialState
-    JSON.parse(localStorage.getItem("savedTodoList")) || initialState
+const App = () => {
+  const [todoList, setTodoList] = useState(
+    JSON.parse(localStorage.getItem("savedTodoList")) || []
   );
 
   useEffect(() => {
-    localStorage.setItem(key, JSON.stringify(value));
-  }, [value, key]); // passing value and key variables as dependencies to sideEffect
-
-  return [value, setValue]; // return value and setValue for reusability by different components
-};
-
-const App = () => {
-  const [todoList, setTodoList] = useSemiPersistentState("savedTodoList", []);
+    localStorage.setItem("savedTodoList", JSON.stringify(todoList));
+    setTodoList(todoList)
+  }, [todoList]); // passing value and key variables as dependencies to sideEffect
 
   const addTodo = (newTodo) => {
     setTodoList([newTodo, ...todoList]);
