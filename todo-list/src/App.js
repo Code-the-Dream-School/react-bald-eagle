@@ -15,7 +15,7 @@ const App = () => {
         2000
       );
     }).then((result) => {
-      console.log("result", result)
+      console.log(result)
       setTodoList(result.data.todoList)
       setIsLoading(false)
     }).catch(() => {
@@ -24,13 +24,10 @@ const App = () => {
   }, []);
 
   useEffect(() => {
-    switch (isLoading) {
-      case false:
-        localStorage.setItem("savedTodoList", JSON.stringify(todoList));
-        // console.log("storage", localStorage.getItem("savedTodoList"), "todoList", todoList)
-        setTodoList(todoList)
-      default:
-        return
+    if (isLoading) {
+      setTodoList(JSON.parse(localStorage.getItem("savedTodoList")))
+    } else {
+      localStorage.setItem("savedTodoList", JSON.stringify(todoList));
     }
   }, [todoList, isLoading]); // passing value and key variables as dependencies to sideEffect
 
