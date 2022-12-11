@@ -4,37 +4,54 @@ import AddTodoForm from "./AddTodoForm";
 // import the TodoList
 import TodoList from "./TodoList";
 
-const useSemiPersistentState = () => {
-  const [todoList, setTodoList] = React.useState(() => {
-    const savedTodoList = localStorage.getItem("savedTodoList");
-    const parsedSavedTodoList = JSON.parse(savedTodoList);
-    return parsedSavedTodoList || [];
-  });
+export default function App() {
+  const [todoList, setTodoList] = React.useState([]);
+  const [isLoading, setIsLoading] = React.useState(true);
 
   React.useEffect(() => {
-    localStorage.setItem("savedTodoList", JSON.stringify(todoList));
-  }, [todoList]);
+    new Promise((resolve, reject) => {
+      setTimeout(() => {
+        resolve({
+          data: {
+            todoList: JSON.parse(localStorage.getItem("todoList")) || [],
+          },
+        });
+      }, 2000);
+    }).then((result) => {
+      setTodoList([...result.data.todoList]);
+      setIsLoading(false);
+    });
+  }, []);
 
-  return [todoList, setTodoList];
-};
-
-export default function App() {
-  const [todoList, setTodoList] = useSemiPersistentState();
-  //addTodo function
+  React.useEffect(() => {
+    // check that isLoading is false before setting localStorage
+    if (isLoading === false) {
+      localStorage.setItem("todoList", JSON.stringify(todoList));
+      return;
+    }
+  }, [todoList, isLoading]);
+  // addTodo function
   function addTodo(newTodo) {
     setTodoList([...todoList, newTodo]);
   }
-  //remove button
+
+  // remove button
   const removeTodo = (id) => {
-    const newTodolist = todoList.filter((todo) => id !== todo.id);
-    setTodoList(newTodolist);
+    const newTodoList = todoList.filter((todo) => id !== todo.id);
+    setTodoList(newTodoList);
   };
+
   return (
     <>
       <h1>Todo List</h1>
 
       <AddTodoForm onAddTodo={addTodo} />
-      <TodoList todoList={todoList} onRemoveTodo={removeTodo} />
+
+      {isLoading ? (
+        <p>Loading...</p>
+      ) : (
+        <TodoList todoList={todoList} onRemoveTodo={removeTodo} />
+      )}
     </>
   );
 }
