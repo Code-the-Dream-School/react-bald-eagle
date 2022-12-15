@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 
 const useSemiPersistentState = () => {
     const [todoList, setTodoList] = useState(() => {
-      const savedTodoList = JSON.parse(localStorage.getItem('savedTodoList'))
+    const savedTodoList = JSON.parse(localStorage.getItem('savedTodoList'))
       return savedTodoList || [];
     });
   
