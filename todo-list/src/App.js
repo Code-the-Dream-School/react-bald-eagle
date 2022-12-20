@@ -2,23 +2,58 @@ import React, { useState, useEffect } from "react";
 import TodoList from "./TodoList";
 import AddTodoForm from "./AddTodoForm";
 
-// used key and initial state as args to make function reusable across components
-const useSemiPersistentState = (key, initialState) => {
-  // used value and setValue here for reusability with other components
-  const [value, setValue] = useState(
-    // checking for item in local storage, if return falsey then use initialState
-    JSON.parse(localStorage.getItem("savedTodoList")) || initialState
-  );
-
-  useEffect(() => {
-    localStorage.setItem(key, JSON.stringify(value));
-  }, [value, key]); // passing value and key variables as dependencies to sideEffect
-
-  return [value, setValue]; // return value and setValue for reusability by different components
-};
-
 const App = () => {
-  const [todoList, setTodoList] = useSemiPersistentState("savedTodoList", []);
+  const [todoList, setTodoList] = useState([]);
+
+  const [isLoading, setIsLoading] = useState(true)
+
+  const [isError, setIsError] = useState(false)
+
+  // this simulates asynchronous load when app is initialized
+  // useEffect(() => {
+  //   new Promise((resolve) => {
+  //     setTimeout(() => resolve({ data: { todoList: todoList } }),
+  //       2000
+  //     );
+  //   }).then((result) => {
+  //     setTodoList(result.data.todoList)
+  //     setIsLoading(false)
+  //   }).catch(() => {
+  //     setIsError(true)
+  //   })
+  // }, []);
+
+  // the above code was used beceause the following warning was being received
+  // in the console when using the useEffect hook
+
+  // Warning: Maximum update depth exceeded. 
+  // This can happen when a component calls setState inside useEffect, 
+  // but useEffect either doesn't have a dependency array, 
+  // or one of the dependencies changes on every render.
+
+  // the following block has been used instead:
+
+  const asyncData = (items) => {
+    new Promise((resolve) => {
+      setTimeout(() => resolve({ data: { todoList: items } }),
+        2000
+      );
+    }).then((result) => {
+      setTodoList(result.data.todoList)
+      setIsLoading(false)
+    }).catch(() => {
+      setIsError(true)
+    })
+  }
+
+  // this usEffect handles the addition to and retreival of items from localStorage 
+  useEffect(() => {
+    if (isLoading) {
+      asyncData(JSON.parse(localStorage.getItem("savedTodoList")) || [])
+    } else {
+      localStorage.setItem("savedTodoList", JSON.stringify(todoList));
+    }
+  }, [todoList, isLoading]); // passing value and key variables as dependencies to sideEffect
 
   const addTodo = (newTodo) => {
     setTodoList([newTodo, ...todoList]);
@@ -37,7 +72,12 @@ const App = () => {
 
         <AddTodoForm onAddTodo={addTodo} />
 
+        { isError && <p>Something went wrong...</p>}
+
+        { isLoading ? <p>Loading...</p>
+        :
         <TodoList todoList={todoList} onRemoveTodo={removeTodo} />
+        }
       </div>
     </>
   );
