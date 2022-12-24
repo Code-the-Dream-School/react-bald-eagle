@@ -3,7 +3,7 @@ import React from "react";
 //
 const TodoListItem = ({ todo, onRemoveTodo }) => (
   <li>
-    {todo.title}
+    {todo.fields.Title}
     <button
       type="button"
       onClick={() => {
