@@ -12,6 +12,7 @@ export default function App() {
   const [isLoading, setIsLoading] = React.useState(true);
 
   React.useEffect(() => {
+    // existing code for fetching data
     fetch(
       `https://api.airtable.com/v0/${process.env.REACT_APP_AIRTABLE_BASE_ID}/Default`,
       {
@@ -40,19 +41,6 @@ export default function App() {
   function addTodo(newTodo) {
     setTodoList([...todoList, newTodo]);
   }
-  const MyContent = () => {
-    return (
-      <>
-        <h1>Todo List</h1>
-            <AddTodoForm onAddTodo={addTodo} />
-            {isLoading ? (
-              <p>Loading...</p>
-            ) : (
-              <TodoList todoList={todoList} onRemoveTodo={removeTodo} />
-            )}
-      </>
-    )
-  }
 
   // remove button
   const removeTodo = (id) => {
@@ -63,8 +51,17 @@ export default function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" exact>
-         <MyContent />
+        <Route path="/">
+          <h1>Todo List</h1>
+          <AddTodoForm onAddTodo={addTodo} />
+          {isLoading ? (
+            <p>Loading...</p>
+          ) : (
+            <TodoList todoList={todoList} onRemoveTodo={removeTodo} />
+          )}
+        </Route>
+        <Route path="/new">
+          <h1>New Todo List</h1>
         </Route>
       </Routes>
     </BrowserRouter>
