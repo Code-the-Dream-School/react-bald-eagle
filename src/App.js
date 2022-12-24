@@ -1,6 +1,8 @@
 import * as React from "react";
 // import the AddTodoForm
 import AddTodoForm from "./AddTodoForm";
+//import the dotenv from "dotenv"
+
 // import the TodoList
 import TodoList from "./TodoList";
 
@@ -9,18 +11,21 @@ export default function App() {
   const [isLoading, setIsLoading] = React.useState(true);
 
   React.useEffect(() => {
-    new Promise((resolve, reject) => {
-      setTimeout(() => {
-        resolve({
-          data: {
-            todoList: JSON.parse(localStorage.getItem("todoList")) || [],
-          },
-        });
-      }, 2000);
-    }).then((result) => {
-      setTodoList([...result.data.todoList]);
-      setIsLoading(false);
-    });
+    fetch(
+      `https://api.airtable.com/v0/${process.env.REACT_APP_AIRTABLE_BASE_ID}/Default`,
+      {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${process.env.REACT_APP_AIRTABLE_API_KEY}`,
+        },
+      }
+    )
+      .then((response) => response.json())
+      .then((result) => {
+        console.log(result);
+        setTodoList([...result.records]);
+        setIsLoading(false);
+      });
   }, []);
 
   React.useEffect(() => {
