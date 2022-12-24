@@ -1,7 +1,8 @@
 import * as React from "react";
 // import the AddTodoForm
 import AddTodoForm from "./AddTodoForm";
-//import the dotenv from "dotenv"
+//import Router
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 // import the TodoList
 import TodoList from "./TodoList";
@@ -39,6 +40,19 @@ export default function App() {
   function addTodo(newTodo) {
     setTodoList([...todoList, newTodo]);
   }
+  const MyContent = () => {
+    return (
+      <>
+        <h1>Todo List</h1>
+            <AddTodoForm onAddTodo={addTodo} />
+            {isLoading ? (
+              <p>Loading...</p>
+            ) : (
+              <TodoList todoList={todoList} onRemoveTodo={removeTodo} />
+            )}
+      </>
+    )
+  }
 
   // remove button
   const removeTodo = (id) => {
@@ -47,16 +61,12 @@ export default function App() {
   };
 
   return (
-    <>
-      <h1>Todo List</h1>
-
-      <AddTodoForm onAddTodo={addTodo} />
-
-      {isLoading ? (
-        <p>Loading...</p>
-      ) : (
-        <TodoList todoList={todoList} onRemoveTodo={removeTodo} />
-      )}
-    </>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" exact>
+         <MyContent />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
