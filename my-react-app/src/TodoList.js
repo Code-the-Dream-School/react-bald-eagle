@@ -6,7 +6,13 @@ function TodoList({ todoList, onRemoveTodo }) {
     <ul>
       {todoList.map((item) => {
         return (
-          <TodoListItem key={item.id} {...item} onRemoveTodo={onRemoveTodo} />
+          <TodoListItem
+            key={item.id}
+            id={item.id}
+            title={item.title}
+            //{...item} spread operator good for multiple props
+            onRemoveTodo={onRemoveTodo}
+          />
         );
       })}
     </ul>
