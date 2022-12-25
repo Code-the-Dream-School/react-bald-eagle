@@ -1,7 +1,8 @@
 import * as React from "react";
 // import the AddTodoForm
 import AddTodoForm from "./AddTodoForm";
-//import the dotenv from "dotenv"
+//import Router
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 // import the TodoList
 import TodoList from "./TodoList";
@@ -11,6 +12,7 @@ export default function App() {
   const [isLoading, setIsLoading] = React.useState(true);
 
   React.useEffect(() => {
+    // existing code for fetching data
     fetch(
       `https://api.airtable.com/v0/${process.env.REACT_APP_AIRTABLE_BASE_ID}/Default`,
       {
@@ -47,16 +49,25 @@ export default function App() {
   };
 
   return (
-    <>
-      <h1>Todo List</h1>
-
-      <AddTodoForm onAddTodo={addTodo} />
-
-      {isLoading ? (
-        <p>Loading...</p>
-      ) : (
-        <TodoList todoList={todoList} onRemoveTodo={removeTodo} />
-      )}
-    </>
+    <BrowserRouter>
+      <Routes>
+        <Route
+          exact
+          path="/"
+          element={
+            <>
+              <h1>Todo List</h1>
+              <AddTodoForm onAddTodo={addTodo} />
+              {isLoading ? (
+                <p>Loading...</p>
+              ) : (
+                <TodoList todoList={todoList} onRemoveTodo={removeTodo} />
+              )}
+            </>
+          }
+        ></Route>
+        <Route path="/new" element={<h1>New Todo List</h1>}></Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
