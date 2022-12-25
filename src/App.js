@@ -51,18 +51,22 @@ export default function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/">
-          <h1>Todo List</h1>
-          <AddTodoForm onAddTodo={addTodo} />
-          {isLoading ? (
-            <p>Loading...</p>
-          ) : (
-            <TodoList todoList={todoList} onRemoveTodo={removeTodo} />
-          )}
-        </Route>
-        <Route path="/new">
-          <h1>New Todo List</h1>
-        </Route>
+        <Route
+          exact
+          path="/"
+          element={
+            <>
+              <h1>Todo List</h1>
+              <AddTodoForm onAddTodo={addTodo} />
+              {isLoading ? (
+                <p>Loading...</p>
+              ) : (
+                <TodoList todoList={todoList} onRemoveTodo={removeTodo} />
+              )}
+            </>
+          }
+        ></Route>
+        <Route path="/new" element={<h1>New Todo List</h1>}></Route>
       </Routes>
     </BrowserRouter>
   );
