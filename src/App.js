@@ -1,25 +1,24 @@
-import React, {useEffect} from 'react';
+import React from 'react';
+// import React, {useEffect} from 'react';
 import ToDoList from './ToDoList';
 import AddToDoForm from './AddTodoForm';
 
-const useSemiPersistentState = () => {
-  const [todoList, setTodoList] = React.useState(JSON.parse(localStorage.getItem('savedTodoList')));
 
-  useEffect(() => {
+// can be written without initialValue in L7,8 and  after have || [] in L8 & omit the [] in L18
+const useSemiPersistentState = (initialValue) => {
+  const [todoList, setTodoList] = React.useState(JSON.parse(localStorage.getItem('savedTodoList')) || initialValue );
+
+  React.useEffect(() => {
     localStorage.setItem('savedTodoList', JSON.stringify(todoList))
   }, [todoList])
   
-  return [todoList, setTodoList]
-  
+  return [todoList, setTodoList]  
 }
 
 function App() {  
-  
-  const [todoList, setTodoList] = useSemiPersistentState()
-    
+  const [todoList, setTodoList] = useSemiPersistentState([]);    
   const addTodo = (newTodo) => {
-    setTodoList([...todoList, newTodo]); 
-  
+    setTodoList([...todoList, newTodo]);  
   }
  
   return (
