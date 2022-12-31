@@ -1,0 +1,38 @@
+import React from 'react';
+
+function InputWithLabel({ todoTitle, handleTitleChange, handleAddTodo, children, label, isFocused }) {
+  
+  const inputRef = React.useRef();
+
+  React.useEffect(() => {
+    if (isFocused && inputRef.current) {
+      inputRef.current.focus();
+    }
+  }, [isFocused]);
+
+  return (
+    <>
+      <form onSubmit={handleAddTodo}>
+      
+      {/* below will use label value first, but if empty, then will use children = TodoTitle   */}
+      <label htmlFor="todoTitle">{label || children}</label>
+      <input 
+        id={todoTitle} 
+        type="text" 
+        name="title" 
+        value={todoTitle}
+        onChange={handleTitleChange}
+        ref={inputRef}        
+      />
+      <button type="submit">Add</button>
+      </form>      
+    </>
+  )
+
+}
+
+
+export default InputWithLabel;
+
+
+
