@@ -24,14 +24,19 @@ function App() {
     setTodoList([...todoList, newTodo]);
   }
 
+  function removeTodo(id) {
+    const modifiedTodo = todoList.filter(
+      (todo) => id !== todo.id
+    )
+  setTodoList([...modifiedTodo])
+  };
+
   return (
-    //Update the JSX to use a Fragment
     <React.Fragment>
       <h1>Todo List</h1>
         <AddTodoForm onAddTodo={addTodo} />
-        <TodoList todoList={todoList}/>
+        <TodoList todoList={todoList} onRemoveTodo={removeTodo}/>
     </React.Fragment>
-    //( Shorthand for <React.Fragment></React.Fragment> = <></> )
   );
 
 };
