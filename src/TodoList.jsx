@@ -1,7 +1,6 @@
 import React from "react";
 import TodoListItem from "./TodoListItem";
 
-// Pass onRemoveTodo prop as a callback handler prop named onRemoveTodo to the TodoListItem component
 function TodoList({ todoList, onRemoveTodo }) {
   return (
     <ul>
