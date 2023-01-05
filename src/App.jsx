@@ -2,7 +2,24 @@ import React, { useEffect, useState } from 'react';
 import TodoList from './TodoList';
 import AddTodoForm from "./AddTodoForm";
 
-const useSemiPersistentState = () => {
+// Delete the useSemiPersistentState function
+  // const useSemiPersistentState = () => {
+
+    // const [todoList, setTodoList] = useState(
+    //   JSON.parse(localStorage.getItem("savedTodoList")) ?? []);
+
+    // useEffect(() => {
+    //   const todoString = JSON.stringify(todoList)
+    //   localStorage.setItem("savedTodoList", todoString)
+    // }, [todoList]);
+
+  //   return [todoList, setTodoList];
+
+  // }
+
+function App() {
+
+  // Copy the useState and useEffect hooks from useSemiPersistentState function back into App
 
   const [todoList, setTodoList] = useState(
     JSON.parse(localStorage.getItem("savedTodoList")) ?? []);
@@ -12,13 +29,8 @@ const useSemiPersistentState = () => {
     localStorage.setItem("savedTodoList", todoString)
   }, [todoList]);
 
-  return [todoList, setTodoList];
-
-}
-
-function App() {
-
-  const [todoList, setTodoList] = useSemiPersistentState();
+  // Delete the useSemiPersistentState function call from App
+    //const [todoList, setTodoList] = useSemiPersistentState();
 
   function addTodo(newTodo) {
     setTodoList([...todoList, newTodo]);
