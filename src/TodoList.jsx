@@ -15,7 +15,7 @@ function TodoList({ todoList, onRemoveTodo }) {
         )
       })};
     </ul>
-  );
+  )
 };
 
 export default TodoList
