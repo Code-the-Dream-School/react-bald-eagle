@@ -5,8 +5,7 @@ import AddTodoForm from "./AddTodoForm";
 function App() {
 
   const [todoList, setTodoList] = useState([]);
-  // Create a new state variable named "isLoading" with update function named "setIsLoading" with default value true
-  cont [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     new Promise ((resolve, reject) => {
