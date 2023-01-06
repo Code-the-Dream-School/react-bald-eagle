@@ -5,28 +5,25 @@ import AddTodoForm from "./AddTodoForm";
 function App() {
 
   const [todoList, setTodoList] = useState([]);
+  // Create a new state variable named "isLoading" with update function named "setIsLoading" with default value true
+  cont [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     new Promise ((resolve, reject) => {
       // ***Mimic a loading delay***
       setTimeout(() => resolve({ data: {todoList: JSON.parse(localStorage.getItem("savedTodoList")) ?? []
       }}), 2000)
-    // Chain a then method to your Promise constructor
-    }).then(
-      // Pass in a function with parameter "result"
-      (result) => {
-        // Use the state setter to update the list
-        setTodoList(
-          // Pass the todoList from your result object
-          [...result.data.todoList]
-        )
-    }
-    );
+    }).then((result) => {
+      setTodoList([...result.data.todoList])
+    });
   }, []);
 
-  useEffect(() => {
+  useEffect(() => { 
     const todoString = JSON.stringify(todoList)
-    localStorage.setItem("savedTodoList", todoString)
+    // Add an if statement to check that isLoading is false before setting localStorage
+    if (isLoading) {
+      localStorage.setItem("savedTodoList", todoString)
+    }
   }, [todoList]);
 
   function addTodo(newTodo) {
