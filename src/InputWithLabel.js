@@ -24,6 +24,7 @@ function InputWithLabel({ todoTitle, handleTitleChange, handleAddTodo, children,
         onChange={handleTitleChange}
         ref={inputRef}        
       />
+      <span> </span>
       <button type="submit">Add</button>
       </form>      
     </>
