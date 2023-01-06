@@ -8,6 +8,8 @@ function App() {
   
   const [todoList, setTodoList] = useState(JSON.parse(localStorage.getItem('savedTodoList')) || ('defaultValue'));
 
+  useEffect(() => {}, []);
+
   console.log("todoList", todoList);  
   
   const addTodo = (newTodo) => {
