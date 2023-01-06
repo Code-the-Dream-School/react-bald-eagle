@@ -4,12 +4,12 @@ import TodoListItem from "./TodoListItem";
 function TodoList({ todoList, onRemoveTodo }) {
   return (
     <ul>
-      {todoList.map(function(todo) {  
+      { todoList.map((todoListItem) => {  
         return (
-          <React.Fragment key={todo.id}>
+          <React.Fragment key={todoListItem.id}>
             <TodoListItem 
-              todo={todo} 
-              onRemoveTodo={() => onRemoveTodo(todo.id)} 
+              todoList={todoListItem} 
+              onRemoveTodo={onRemoveTodo} 
             />
           </React.Fragment>
         )
