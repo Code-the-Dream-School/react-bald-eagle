@@ -43,10 +43,10 @@ const App = () => {
   //   } else {
   //     localStorage.setItem("savedTodoList", JSON.stringify(todoList.data));
   //   }
-  // }, [todoList.data]); // passing value and key variables as dependencies to sideEffect
+  // }, [todoList.data, todoList.isLoading]); // passing value and key variables as dependencies to sideEffect
 
   const addTodo = (newTodo) => {
-    dispatchTodoList({type: 'LIST_FETCH_UPDATE', payload: [newTodo, ...todoList]});
+    dispatchTodoList({type: 'LIST_FETCH_UPDATE', payload: [newTodo, ...todoList.data]});
   };
 
   // decided to pass the item as opposed to the item id here
