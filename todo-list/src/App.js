@@ -17,20 +17,24 @@ const App = () => {
 
     dispatchTodoList({type: 'LIST_FETCH_INIT'})
     try {
-      const response = await fetch(`https://api.airtable.com/v0/${process.env.REACT_APP_AIRTABLE_BASE_ID}/Tasks?maxRecords=3&view=Grid%20view`, options)
+      const response = await fetch(`https://api.airtable.com/v0/${process.env.REACT_APP_AIRTABLE_BASE_ID}/Tasks`, options)
     
-      const data = response.json()
+      if (response.ok) {
+        const data = await response.json()
 
-      dispatchTodoList({type: 'LIST_FETCH_SUCCESS', payload: data})
+        dispatchTodoList({type: 'LIST_FETCH_SUCCESS', payload: [...data.records]})
+      } else {
+        dispatchTodoList({type: 'LIST_FETCH_FAILURE'})
+      }
     }
     catch {
       dispatchTodoList({type: 'LIST_FETCH_FAILURE'})
     }
   }
   
-  // useEffect(() => {
-  //   asyncData()
-  // }, [])
+  useEffect(() => {
+    asyncData()
+  }, [])
 
   // this usEffect handles the addition to and retreival of items from localStorage 
   // useEffect(() => {
@@ -46,10 +50,10 @@ const App = () => {
   };
 
   // decided to pass the item as opposed to the item id here
-  // const removeTodo = (item) => {
-  //   const newTodos = todoList.filter((todo) => todo.id !== item.id);
-  //   dispatchTodoList({type: 'REMOVE_LIST', payload: newTodos});
-  // };
+  const removeTodo = (item) => {
+    const newTodos = todoList.filter((todo) => todo.id !== item.id);
+    dispatchTodoList({type: 'REMOVE_LIST', payload: newTodos});
+  };
 
   return (
     <>
@@ -61,9 +65,9 @@ const App = () => {
         {todoList.isError && <p>Something went wrong...</p>}
 
         {todoList.isLoading ? <p>Loading...</p>
-          :
-          // <TodoList todoList={todoList} onRemoveTodo={removeTodo} />
-          <p>Placeholder</p>
+          : todoList.data.length > 0 ?
+            <TodoList todoList={todoList.data} onRemoveTodo={removeTodo} /> : 
+            <p>Placeholder</p> 
         }
       </div>
     </>
