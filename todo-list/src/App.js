@@ -1,45 +1,55 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useReducer } from "react";
 import TodoList from "./TodoList";
 import AddTodoForm from "./AddTodoForm";
+import ListReducer from "./Reducer";
 
 const App = () => {
-  const [todoList, setTodoList] = useState([]);
+  const [todoList, dispatchTodoList] = useReducer(ListReducer,
+    {data: {}, isLoading: false, isError: false})
 
-  const [isLoading, setIsLoading] = useState(true)
 
-  const [isError, setIsError] = useState(false)
+  const asyncData = async () => {
+    const options = {
+      headers: {
+        Authorization: `Bearer ${process.env.REACT_APP_AIRTABLE_API_KEY}`
+      }
+    }
 
-  const asyncData = (items) => {
-    new Promise((resolve) => {
-      setTimeout(() => resolve({ data: { todoList: items } }),
-        2000
-      );
-    }).then((result) => {
-      setTodoList(result.data.todoList)
-      setIsLoading(false)
-    }).catch(() => {
-      setIsError(true)
-    })
+    dispatchTodoList({type: 'LIST_FETCH_INIT'})
+    try {
+      const response = await fetch(`https://api.airtable.com/v0/${process.env.REACT_APP_AIRTABLE_BASE_ID}/Tasks?maxRecords=3&view=Grid%20view`, options)
+    
+      const data = response.json()
+
+      dispatchTodoList({type: 'LIST_FETCH_SUCCESS', payload: data})
+    }
+    catch {
+      dispatchTodoList({type: 'LIST_FETCH_FAILURE'})
+    }
   }
+  
+  // useEffect(() => {
+  //   asyncData()
+  // }, [])
 
   // this usEffect handles the addition to and retreival of items from localStorage 
-  useEffect(() => {
-    if (isLoading) {
-      asyncData(JSON.parse(localStorage.getItem("savedTodoList")) || [])
-    } else {
-      localStorage.setItem("savedTodoList", JSON.stringify(todoList));
-    }
-  }, [todoList, isLoading]); // passing value and key variables as dependencies to sideEffect
+  // useEffect(() => {
+  //   if (todoList.isLoading) {
+  //     asyncData(JSON.parse(localStorage.getItem("savedTodoList")) || [])
+  //   } else {
+  //     localStorage.setItem("savedTodoList", JSON.stringify(todoList));
+  //   }
+  // }, [todoList, todoList.isLoading]); // passing value and key variables as dependencies to sideEffect
 
   const addTodo = (newTodo) => {
-    setTodoList([newTodo, ...todoList]);
+    dispatchTodoList({type: 'LIST_FETCH_UPDATE', payload: [newTodo, ...todoList]});
   };
 
   // decided to pass the item as opposed to the item id here
-  const removeTodo = (item) => {
-    const newTodos = todoList.filter((todo) => todo.id !== item.id);
-    setTodoList(newTodos);
-  };
+  // const removeTodo = (item) => {
+  //   const newTodos = todoList.filter((todo) => todo.id !== item.id);
+  //   dispatchTodoList({type: 'REMOVE_LIST', payload: newTodos});
+  // };
 
   return (
     <>
@@ -48,11 +58,12 @@ const App = () => {
 
         <AddTodoForm onAddTodo={addTodo} />
 
-        { isError && <p>Something went wrong...</p>}
+        {todoList.isError && <p>Something went wrong...</p>}
 
-        { isLoading ? <p>Loading...</p>
-        :
-        <TodoList todoList={todoList} onRemoveTodo={removeTodo} />
+        {todoList.isLoading ? <p>Loading...</p>
+          :
+          // <TodoList todoList={todoList} onRemoveTodo={removeTodo} />
+          <p>Placeholder</p>
         }
       </div>
     </>
