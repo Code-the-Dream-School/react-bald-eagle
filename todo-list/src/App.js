@@ -1,4 +1,4 @@
-import React, { useEffect, useReducer } from "react";
+import React, { useState, useEffect, useReducer, useCallback } from "react";
 import TodoList from "./TodoList";
 import AddTodoForm from "./AddTodoForm";
 import ListReducer from "./Reducer";
@@ -6,9 +6,12 @@ import ListReducer from "./Reducer";
 const App = () => {
   const [todoList, dispatchTodoList] = useReducer(ListReducer,
     {data: {}, isLoading: false, isError: false})
+  const [endpoint, setEndpoint] = useState('')
 
 
-  const asyncData = async () => {
+  const asyncData = useCallback(async () => {
+    if (!endpoint) return
+
     const options = {
       headers: {
         Authorization: `Bearer ${process.env.REACT_APP_AIRTABLE_API_KEY}`
@@ -17,7 +20,7 @@ const App = () => {
 
     dispatchTodoList({type: 'LIST_FETCH_INIT'})
     try {
-      const response = await fetch(`https://api.airtable.com/v0/${process.env.REACT_APP_AIRTABLE_BASE_ID}/Tasks`, options)
+      const response = await fetch(endpoint, options)
     
       if (response.ok) {
         const data = await response.json()
@@ -30,11 +33,24 @@ const App = () => {
     catch {
       dispatchTodoList({type: 'LIST_FETCH_FAILURE'})
     }
-  }
+  }, [endpoint])
+  
+  const addTodo = async (newTodo) => {
+    try {
+      const response = await fetch()
+    }
+    catch {
+
+    }
+    dispatchTodoList({type: 'LIST_FETCH_UPDATE', payload: [newTodo, ...todoList.data]});
+  };
   
   useEffect(() => {
-    asyncData()
-  }, [])
+    setEndpoint(`https://api.airtable.com/v0/${process.env.REACT_APP_AIRTABLE_BASE_ID}/Tasks`)
+    setTimeout(() => {
+      asyncData()
+    }, 2000)
+  }, [asyncData])
 
   // this usEffect handles the addition to and retreival of items from localStorage 
   // useEffect(() => {
@@ -44,10 +60,6 @@ const App = () => {
   //     localStorage.setItem("savedTodoList", JSON.stringify(todoList.data));
   //   }
   // }, [todoList.data, todoList.isLoading]); // passing value and key variables as dependencies to sideEffect
-
-  const addTodo = (newTodo) => {
-    dispatchTodoList({type: 'LIST_FETCH_UPDATE', payload: [newTodo, ...todoList.data]});
-  };
 
   // decided to pass the item as opposed to the item id here
   const removeTodo = (item) => {
