@@ -13,6 +13,12 @@ function App() {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
+    if(!isLoading) {
+      localStorage.setItem('savedTodoList', JSON.stringify(todoList));
+    }
+  }, [todoList, isLoading]);
+
+  useEffect(() => {
     new Promise((resolve, reject) => {
       setTimeout(() => {
         resolve({
@@ -28,11 +34,7 @@ function App() {
 
   console.log("todoList", todoList);  
   
-  useEffect(() => {
-    if(!isLoading) {
-      localStorage.setItem('savedTodoList', JSON.stringify(todoList));
-    }
-  }, [todoList, isLoading]);
+ 
 
   const addTodo = (newTodo) => {
   setTodoList([...todoList, newTodo]);  
@@ -54,6 +56,11 @@ function App() {
       <div style={{ textAlign: 'center' }}>
         <h1>Todo List</h1>
         <AddToDoForm onAddTodo={addTodo}/>
+
+        {/* {isLoading? (
+          <p>"Loading..."</p>  
+        ): <ToDoList todoList={todoList} onRemoveTodo={removeTodo}/>} */}
+
         <ToDoList todoList={todoList} onRemoveTodo={removeTodo}/>    
         {/* <p>New Task: {newTodo}</p> */}
       </div>
