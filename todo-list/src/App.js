@@ -41,9 +41,9 @@ const App = () => {
   //   if (todoList.isLoading) {
   //     asyncData(JSON.parse(localStorage.getItem("savedTodoList")) || [])
   //   } else {
-  //     localStorage.setItem("savedTodoList", JSON.stringify(todoList));
+  //     localStorage.setItem("savedTodoList", JSON.stringify(todoList.data));
   //   }
-  // }, [todoList, todoList.isLoading]); // passing value and key variables as dependencies to sideEffect
+  // }, [todoList.data]); // passing value and key variables as dependencies to sideEffect
 
   const addTodo = (newTodo) => {
     dispatchTodoList({type: 'LIST_FETCH_UPDATE', payload: [newTodo, ...todoList]});
@@ -51,7 +51,7 @@ const App = () => {
 
   // decided to pass the item as opposed to the item id here
   const removeTodo = (item) => {
-    const newTodos = todoList.filter((todo) => todo.id !== item.id);
+    const newTodos = todoList.data.filter((todo) => todo.id !== item.id);
     dispatchTodoList({type: 'REMOVE_LIST', payload: newTodos});
   };
 
