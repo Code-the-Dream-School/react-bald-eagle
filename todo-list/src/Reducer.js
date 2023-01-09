@@ -28,6 +28,11 @@ const ListReducer = (state, action) => {
 				isLoading: false,
 				isError: true,
 			};
+		case 'ADD_LIST':
+			return {
+				...state,
+				data: action.payload,
+			};
 		case 'REMOVE_LIST':
 			return {
 				...state,
