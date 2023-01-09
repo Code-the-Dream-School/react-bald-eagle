@@ -3,12 +3,10 @@ import React, {useEffect, useState} from 'react';
 import ToDoList from './ToDoList';
 import AddToDoForm from './AddTodoForm';
 
-
 function App() {  
   
-  const [todoList, setTodoList] = useState({
-    todoList: [],    
-  });
+  // const [todoList, setTodoList] = useState(JSON.parse(localStorage.getItem('savedTodoList')) || ('defaultValue'));
+  const [todoList, setTodoList] = useState([]); 
 
   const [isLoading, setIsLoading] = useState(true);
 
@@ -23,26 +21,21 @@ function App() {
       setTimeout(() => {
         resolve({
           data: {
-            todoList: JSON.parse(localStorage.getItem('savedTodoList'))            
+            todoList: JSON.parse(localStorage.getItem('savedTodoList')) || ('defaultValue')  
           },
         });
       }, 2000);
     }).then((result) => {
-      setTodoList({ todoList: result.data.todoList, isLoading: false });
+      setTodoList(result.data.todoList);
+      setIsLoading(false)
     });
   }, []);
 
-  console.log("todoList", todoList);  
-  
- 
+  console.log("todoList", todoList); 
 
   const addTodo = (newTodo) => {
   setTodoList([...todoList, newTodo]);  
   }
-  
-  useEffect(() => {
-    localStorage.setItem('savedTodoList', JSON.stringify(todoList))
-  }, [todoList])
 
   const removeTodo = (item) => {
     const newTodo = todoList.filter(
@@ -56,13 +49,12 @@ function App() {
       <div style={{ textAlign: 'center' }}>
         <h1>Todo List</h1>
         <AddToDoForm onAddTodo={addTodo}/>
-
-        {/* {isLoading? (
+        
+        {isLoading? (
           <p>"Loading..."</p>  
-        ): <ToDoList todoList={todoList} onRemoveTodo={removeTodo}/>} */}
-
-        <ToDoList todoList={todoList} onRemoveTodo={removeTodo}/>    
-        {/* <p>New Task: {newTodo}</p> */}
+        ) : (
+        <ToDoList todoList={todoList} onRemoveTodo={removeTodo}/>
+        )}        
       </div>
     </>
   );
