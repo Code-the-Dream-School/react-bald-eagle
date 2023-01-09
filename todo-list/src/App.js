@@ -57,10 +57,8 @@ const App = () => {
     try {
       const response = await fetch(endpoint, options)
 
-      const data = await response.json()
-console.log('response', data)
       if (response.ok) {
-        dispatchTodoList({ type: 'ADD_LIST', payload: data })
+        fetchTodos()
       }
       dispatchTodoList({ type: 'LIST_FETCH_FAILURE' })
     }
