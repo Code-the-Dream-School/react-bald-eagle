@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useReducer, useCallback } from "react";
 import TodoList from "./TodoList";
-// import AddTodo from "./AddTodo";
 import AddTodoForm from "./AddTodoForm";
 import ListReducer from "./Reducer";
 
