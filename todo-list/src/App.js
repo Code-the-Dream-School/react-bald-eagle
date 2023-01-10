@@ -1,68 +1,81 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useReducer, useCallback } from "react";
 import TodoList from "./TodoList";
 import AddTodoForm from "./AddTodoForm";
+import ListReducer from "./Reducer";
 
 const App = () => {
-  const [todoList, setTodoList] = useState([]);
+  const [todoList, dispatchTodoList] = useReducer(ListReducer,
+    { data: {}, isLoading: false, isError: false })
+  const [endpoint, setEndpoint] = useState('')
 
-  const [isLoading, setIsLoading] = useState(true)
 
-  const [isError, setIsError] = useState(false)
+  const fetchTodos = useCallback(async () => {
+    if (!endpoint) return
 
-  // this simulates asynchronous load when app is initialized
-  // useEffect(() => {
-  //   new Promise((resolve) => {
-  //     setTimeout(() => resolve({ data: { todoList: todoList } }),
-  //       2000
-  //     );
-  //   }).then((result) => {
-  //     setTodoList(result.data.todoList)
-  //     setIsLoading(false)
-  //   }).catch(() => {
-  //     setIsError(true)
-  //   })
-  // }, []);
-
-  // the above code was used beceause the following warning was being received
-  // in the console when using the useEffect hook
-
-  // Warning: Maximum update depth exceeded. 
-  // This can happen when a component calls setState inside useEffect, 
-  // but useEffect either doesn't have a dependency array, 
-  // or one of the dependencies changes on every render.
-
-  // the following block has been used instead:
-
-  const asyncData = (items) => {
-    new Promise((resolve) => {
-      setTimeout(() => resolve({ data: { todoList: items } }),
-        2000
-      );
-    }).then((result) => {
-      setTodoList(result.data.todoList)
-      setIsLoading(false)
-    }).catch(() => {
-      setIsError(true)
-    })
-  }
-
-  // this usEffect handles the addition to and retreival of items from localStorage 
-  useEffect(() => {
-    if (isLoading) {
-      asyncData(JSON.parse(localStorage.getItem("savedTodoList")) || [])
-    } else {
-      localStorage.setItem("savedTodoList", JSON.stringify(todoList));
+    const options = {
+      headers: {
+        Authorization: `Bearer ${process.env.REACT_APP_AIRTABLE_API_KEY}`
+      }
     }
-  }, [todoList, isLoading]); // passing value and key variables as dependencies to sideEffect
 
-  const addTodo = (newTodo) => {
-    setTodoList([newTodo, ...todoList]);
+    dispatchTodoList({ type: 'LIST_FETCH_INIT' })
+    try {
+      const response = await fetch(endpoint, options)
+
+      if (response.ok) {
+        const data = await response.json()
+
+        dispatchTodoList({ type: 'LIST_FETCH_SUCCESS', payload: [...data.records] })
+      } else {
+        dispatchTodoList({ type: 'LIST_FETCH_FAILURE' })
+      }
+    }
+    catch {
+      dispatchTodoList({ type: 'LIST_FETCH_FAILURE' })
+    }
+  }, [endpoint])
+
+  const addTodo = async (newTodo) => {
+    const options = {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${process.env.REACT_APP_AIRTABLE_API_KEY}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        "records": [
+          {
+            "fields": {
+              "Name": `${newTodo.title}`
+            }
+          }
+        ]
+      })
+    }
+
+    try {
+      const response = await fetch(endpoint, options)
+
+      if (response.ok) {
+        fetchTodos()
+      }
+      dispatchTodoList({ type: 'LIST_FETCH_FAILURE' })
+    }
+    catch {
+      dispatchTodoList({ type: 'LIST_FETCH_FAILURE' })
+    }
   };
 
-  // decided to pass the item as opposed to the item id here
+  useEffect(() => {
+    setEndpoint(`https://api.airtable.com/v0/${process.env.REACT_APP_AIRTABLE_BASE_ID}/Tasks`)
+    setTimeout(() => {
+      fetchTodos()
+    }, 2000)
+  }, [fetchTodos])
+
   const removeTodo = (item) => {
-    const newTodos = todoList.filter((todo) => todo.id !== item.id);
-    setTodoList(newTodos);
+    const newTodos = todoList.data.filter((todo) => todo.id !== item.id);
+    dispatchTodoList({ type: 'REMOVE_LIST', payload: newTodos });
   };
 
   return (
@@ -72,11 +85,12 @@ const App = () => {
 
         <AddTodoForm onAddTodo={addTodo} />
 
-        { isError && <p>Something went wrong...</p>}
+        {todoList.isError && <p>Something went wrong...</p>}
 
-        { isLoading ? <p>Loading...</p>
-        :
-        <TodoList todoList={todoList} onRemoveTodo={removeTodo} />
+        {todoList.isLoading ? <p>Loading...</p>
+          : todoList.data.length > 0 ?
+            <TodoList todoList={todoList.data} onRemoveTodo={removeTodo} /> :
+            <p>No Data</p>
         }
       </div>
     </>
