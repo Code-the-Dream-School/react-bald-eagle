@@ -73,16 +73,6 @@ const App = () => {
     }, 2000)
   }, [fetchTodos])
 
-  // this usEffect handles the addition to and retreival of items from localStorage 
-  // useEffect(() => {
-  //   if (todoList.isLoading) {
-  //     fetchTodos(JSON.parse(localStorage.getItem("savedTodoList")) || [])
-  //   } else {
-  //     localStorage.setItem("savedTodoList", JSON.stringify(todoList.data));
-  //   }
-  // }, [todoList.data, todoList.isLoading]); // passing value and key variables as dependencies to sideEffect
-
-  // decided to pass the item as opposed to the item id here
   const removeTodo = (item) => {
     const newTodos = todoList.data.filter((todo) => todo.id !== item.id);
     dispatchTodoList({ type: 'REMOVE_LIST', payload: newTodos });
