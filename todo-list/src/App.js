@@ -73,9 +73,26 @@ const App = () => {
     }, 2000)
   }, [fetchTodos])
 
-  const removeTodo = (item) => {
-    const newTodos = todoList.data.filter((todo) => todo.id !== item.id);
-    dispatchTodoList({ type: 'REMOVE_LIST', payload: newTodos });
+  const removeTodo = async (id) => {
+    const options = {
+      method: 'DELETE',
+      headers: {
+        Authorization: `Bearer ${process.env.REACT_APP_AIRTABLE_API_KEY}`,
+        'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
+      },
+      body: JSON.stringify(`{--data-urlencode 'records[]=${[id]}}'`),
+    }
+    try {
+      const response = await fetch(endpoint, options)
+      
+      if (response.ok) {
+        console.log('response', response)
+        fetchTodos();
+      }
+    }
+    catch {
+      dispatchTodoList({ type: 'LIST_FETCH_FAILURE' })
+    }
   };
 
   return (
