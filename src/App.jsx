@@ -10,17 +10,20 @@ function App() {
   useEffect(() => {
     new Promise ((resolve, reject) => {
       // ***Mimic a loading delay***
-      setTimeout(() => resolve({ data: {todoList: JSON.parse(localStorage.getItem("savedTodoList")) ?? []
-      }}), 2000)
+      setTimeout(() => {
+        resolve({ data: {todoList: JSON.parse(localStorage.getItem("savedTodoList")) || []},
+    });
+   }, 2000)
     }).then((result) => {
-      setTodoList([...result.data.todoList])
+      setTodoList([...result.data.todoList]);
+      // Add another line to set isLoading state to false
+      setIsLoading(false);
     });
   }, []);
 
   useEffect(() => { 
     const todoString = JSON.stringify(todoList)
-    // Add an if statement to check that isLoading is false before setting localStorage
-    if (isLoading) {
+    if (!isLoading) {
       localStorage.setItem("savedTodoList", todoString)
     }
   }, [todoList]);
