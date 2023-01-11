@@ -24,7 +24,7 @@ function App() {
     if (!isLoading) {
       localStorage.setItem("savedTodoList", todoString)
     }
-  }, [todoList]);
+  }, [todoList, isLoading]);
 
   function addTodo(newTodo) {
     setTodoList([...todoList, newTodo]);
@@ -37,13 +37,18 @@ function App() {
     setTodoList([...modifiedTodo])
   };
 
+  // Using a ternary operator inside JSX, if isLoading is true render the loading message, otherwise render the TodoList component
   return (
     <React.Fragment>
       <h1>Todo List</h1>
         <AddTodoForm onAddTodo={addTodo} />
-        {/* Create a new paragraph element with text "Loading..." */}
-        <p>Loading...</p>
-        <TodoList todoList={todoList} onRemoveTodo={removeTodo}/>
+        <div>
+          {isLoading ? (
+            <p>Loading...</p>
+          ) : (
+            <TodoList todoList={todoList} onRemoveTodo={removeTodo}/>
+          )}
+        </div>
     </React.Fragment>
   );
 
