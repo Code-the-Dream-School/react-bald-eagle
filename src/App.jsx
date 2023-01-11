@@ -11,12 +11,10 @@ function App() {
     new Promise ((resolve, reject) => {
       // ***Mimic a loading delay***
       setTimeout(() => {
-        resolve({ data: {todoList: JSON.parse(localStorage.getItem("savedTodoList")) || []},
-    });
-   }, 2000)
+        resolve({ data: {todoList: JSON.parse(localStorage.getItem("savedTodoList")) || []}, });
+      }, 2000)
     }).then((result) => {
       setTodoList([...result.data.todoList]);
-      // Add another line to set isLoading state to false
       setIsLoading(false);
     });
   }, []);
@@ -43,6 +41,8 @@ function App() {
     <React.Fragment>
       <h1>Todo List</h1>
         <AddTodoForm onAddTodo={addTodo} />
+        {/* Create a new paragraph element with text "Loading..." */}
+        <p>Loading...</p>
         <TodoList todoList={todoList} onRemoveTodo={removeTodo}/>
     </React.Fragment>
   );
