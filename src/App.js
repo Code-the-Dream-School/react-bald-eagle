@@ -50,7 +50,6 @@ function App() {
         <h1>Todo List</h1>
         <AddToDoForm onAddTodo={addTodo}/>
         
-
         { isLoading?  
           <p>"Loading..."</p>: 
           <ToDoList todoList={todoList} onRemoveTodo={removeTodo}/>
