@@ -8,7 +8,7 @@ function ToDoListItem ({ item, onRemoveTodo }) {
   return (
     <>
       <li>
-        {item.title}
+        {item.fields.Title}
         <span> </span>
         <button type="button" onClick={handleRemoveTodo}>Remove</button>
       </li>

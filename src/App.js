@@ -14,22 +14,38 @@ function App() {
     if(!isLoading) {
       localStorage.setItem('savedTodoList', JSON.stringify(todoList));
     }
-  }, [todoList, isLoading]);
-
+  }, [todoList, isLoading]);  
+  
+  // async works
+  // useEffect(() => {
+  //   const getTasks = async () => {
+  //     const res = await fetch('https://api.airtable.com/v0/appWk9dODCbGoxXfg/Default', {
+  //       headers: {
+  //         Authorization: `Bearer ${process.env.REACT_APP_AIRTABLE_API_KEY}`, 
+  //       }         
+  //     });
+  //   const result = await res.json();
+  //   setTodoList(result.records);
+  //   setIsLoading(false);
+  //   console.log(result);
+  //   };
+  //   getTasks();  
+  // },[]);
+ 
   useEffect(() => {
-    new Promise((resolve, reject) => {
-      setTimeout(() => {
-        resolve({
-          data: {
-            todoList: JSON.parse(localStorage.getItem('savedTodoList')) || ('defaultValue')  
-          },
-        });
-      }, 2000);
-    }).then((result) => {
-      setTodoList(result.data.todoList);
-      setIsLoading(false)
-    });
-  }, []);
+    const getTasks = async () => {
+      const res = await fetch('https://api.airtable.com/v0/appWk9dODCbGoxXfg/Default', {
+        headers: {
+          Authorization: `Bearer ${process.env.REACT_APP_AIRTABLE_API_KEY}`, 
+        }         
+      });
+    const result = await res.json();
+    setTodoList(result.records);
+    setIsLoading(false);
+    console.log(result);
+    };
+    getTasks();  
+  },[]);
 
   console.log("todoList", todoList); 
 
@@ -48,8 +64,8 @@ function App() {
     <>
       <div style={{ textAlign: 'center' }}>
         <h1>Todo List</h1>
-        <AddToDoForm onAddTodo={addTodo}/>
-        
+        <AddToDoForm onAddTodo={addTodo}/>        
+
         { isLoading?  
           <p>"Loading..."</p>: 
           <ToDoList todoList={todoList} onRemoveTodo={removeTodo}/>
