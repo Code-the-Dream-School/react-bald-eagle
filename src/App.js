@@ -14,23 +14,7 @@ function App() {
     if(!isLoading) {
       localStorage.setItem('savedTodoList', JSON.stringify(todoList));
     }
-  }, [todoList, isLoading]);  
-  
-  // async works
-  // useEffect(() => {
-  //   const getTasks = async () => {
-  //     const res = await fetch('https://api.airtable.com/v0/appWk9dODCbGoxXfg/Default', {
-  //       headers: {
-  //         Authorization: `Bearer ${process.env.REACT_APP_AIRTABLE_API_KEY}`, 
-  //       }         
-  //     });
-  //   const result = await res.json();
-  //   setTodoList(result.records);
-  //   setIsLoading(false);
-  //   console.log(result);
-  //   };
-  //   getTasks();  
-  // },[]);
+  }, [todoList, isLoading]);
  
   useEffect(() => {
     const getTasks = async () => {
