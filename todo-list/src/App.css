@@ -1,0 +1,45 @@
+.current-list {
+	display: grid;
+	grid-template-rows: auto;
+	background-color: antiquewhite;
+	min-height: 100vh;
+}
+
+@media screen and (max-width: 1000px) {
+	.current-list{
+		font-size: 40px;
+	}
+
+	h1 {
+		padding: 8px;
+	}
+
+	form {
+		padding: 8px;
+	}
+
+	label {
+		padding: 2.5px;
+	}
+	
+	.todo-input {
+		margin-right: 2.5px;
+	}
+}
+@media screen and (min-width: 1000px) {
+	h1 {
+		padding: 16px;
+	}
+
+	form {
+		padding: 16px;
+	}
+
+	label {
+		padding: 5px;
+	}
+	
+	.todo-input {
+		margin-right: 5px;
+	}
+}

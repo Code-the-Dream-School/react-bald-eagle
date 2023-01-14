@@ -18,6 +18,7 @@ const InputWithLabel = ({
     <>
       <label htmlFor={id}> {children} </label>
       <input
+        className="todo-input"
         type={type}
         id={id}
         name={title}
