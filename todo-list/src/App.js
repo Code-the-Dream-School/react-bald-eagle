@@ -114,7 +114,9 @@ const App = () => {
           exact
           path='/new'
           element={
-            <NewList></NewList>
+            <NewList
+              addTodo={addTodo}
+            ></NewList>
           }
         ></Route>
       </Routes>
