@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useReducer, useCallback } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import TodoList from "./TodoList";
-import AddTodoForm from "./AddTodoForm";
 import ListReducer from "./Reducer";
+import NewList from "./New"
+import CurrentList from "./Current"
 
 const App = () => {
   const [todoList, dispatchTodoList] = useReducer(ListReducer,
@@ -84,7 +84,7 @@ const App = () => {
     }
     try {
       const response = await fetch(`https://api.airtable.com/v0/${process.env.REACT_APP_AIRTABLE_BASE_ID}/Tasks/${id}`, options)
-      
+
       if (response.ok) {
         console.log('response', response)
         fetchTodos();
@@ -102,19 +102,11 @@ const App = () => {
           exact
           path='/'
           element={
-            <div style={{ textAlign: "center" }}>
-              <h1>Todo List</h1>
-
-              <AddTodoForm onAddTodo={addTodo} />
-
-              {todoList.isError && <p>Something went wrong...</p>}
-
-              {todoList.isLoading ? <p>Loading...</p>
-                : todoList.data.length > 0 ?
-                  <TodoList todoList={todoList.data} onRemoveTodo={removeTodo} /> :
-                  <p>No Data</p>
-              }
-            </div>
+            <CurrentList
+              todoList={todoList}
+              addTodo={addTodo}
+              removeTodo={removeTodo}
+            ></CurrentList>
           }
         >
         </Route>
@@ -122,9 +114,7 @@ const App = () => {
           exact
           path='/new'
           element={
-            <div style={{ textAlign: "center" }}>
-              <h1>New Todo List</h1>
-            </div>
+            <NewList></NewList>
           }
         ></Route>
       </Routes>
