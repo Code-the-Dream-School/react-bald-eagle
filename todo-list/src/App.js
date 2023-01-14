@@ -81,21 +81,28 @@ const App = () => {
 
   return (
     <BrowserRouter>
-      <>
-        <div style={{ textAlign: "center" }}>
-          <h1>Todo List</h1>
+      <Routes>
+        <Route
+          path='/'
+          exact
+          element={
+            <div style={{ textAlign: "center" }}>
+              <h1>Todo List</h1>
 
-          <AddTodoForm onAddTodo={addTodo} />
+              <AddTodoForm onAddTodo={addTodo} />
 
-          {todoList.isError && <p>Something went wrong...</p>}
+              {todoList.isError && <p>Something went wrong...</p>}
 
-          {todoList.isLoading ? <p>Loading...</p>
-            : todoList.data.length > 0 ?
-              <TodoList todoList={todoList.data} onRemoveTodo={removeTodo} /> :
-              <p>No Data</p>
+              {todoList.isLoading ? <p>Loading...</p>
+                : todoList.data.length > 0 ?
+                  <TodoList todoList={todoList.data} onRemoveTodo={removeTodo} /> :
+                  <p>No Data</p>
+              }
+            </div>
           }
-        </div>
-      </>
+        >
+        </Route>
+      </Routes>
     </BrowserRouter>
   );
 };
