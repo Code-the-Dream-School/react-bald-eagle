@@ -79,12 +79,11 @@ const App = () => {
       method: 'DELETE',
       headers: {
         Authorization: `Bearer ${process.env.REACT_APP_AIRTABLE_API_KEY}`,
-        'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
+        'Content-Type': 'application/json',
       },
-      body: JSON.stringify(`{--data-urlencode 'records[]=${[id]}}'`),
     }
     try {
-      const response = await fetch(endpoint, options)
+      const response = await fetch(`https://api.airtable.com/v0/${process.env.REACT_APP_AIRTABLE_BASE_ID}/Tasks/${id}`, options)
       
       if (response.ok) {
         console.log('response', response)
