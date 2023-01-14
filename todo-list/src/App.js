@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useReducer, useCallback } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import TodoList from "./TodoList";
 import AddTodoForm from "./AddTodoForm";
 import ListReducer from "./Reducer";
@@ -79,21 +80,23 @@ const App = () => {
   };
 
   return (
-    <>
-      <div style={{ textAlign: "center" }}>
-        <h1>Todo List</h1>
+    <BrowserRouter>
+      <>
+        <div style={{ textAlign: "center" }}>
+          <h1>Todo List</h1>
 
-        <AddTodoForm onAddTodo={addTodo} />
+          <AddTodoForm onAddTodo={addTodo} />
 
-        {todoList.isError && <p>Something went wrong...</p>}
+          {todoList.isError && <p>Something went wrong...</p>}
 
-        {todoList.isLoading ? <p>Loading...</p>
-          : todoList.data.length > 0 ?
-            <TodoList todoList={todoList.data} onRemoveTodo={removeTodo} /> :
-            <p>No Data</p>
-        }
-      </div>
-    </>
+          {todoList.isLoading ? <p>Loading...</p>
+            : todoList.data.length > 0 ?
+              <TodoList todoList={todoList.data} onRemoveTodo={removeTodo} /> :
+              <p>No Data</p>
+          }
+        </div>
+      </>
+    </BrowserRouter>
   );
 };
 export default App;
