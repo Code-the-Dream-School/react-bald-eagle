@@ -83,8 +83,8 @@ const App = () => {
     <BrowserRouter>
       <Routes>
         <Route
-          path='/'
           exact
+          path='/'
           element={
             <div style={{ textAlign: "center" }}>
               <h1>Todo List</h1>
@@ -102,6 +102,15 @@ const App = () => {
           }
         >
         </Route>
+        <Route
+          exact
+          path='/new'
+          element={
+            <div style={{ textAlign: "center" }}>
+              <h1>New Todo List</h1>
+            </div>
+          }
+        ></Route>
       </Routes>
     </BrowserRouter>
   );
