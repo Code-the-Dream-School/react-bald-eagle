@@ -1,5 +1,6 @@
 body {
 	overflow-x: hidden;
+	min-height: 100vh;
 }
 
 h1 {
@@ -75,11 +76,12 @@ label {
 	.input-form {
 		max-width: 80%;
 		margin: 0 25% 0;
-		max-height: 20%;
+		min-height: 20%;
 	}
 
 	.todo-input {
-		margin-right: 5px;
+		margin-right: 10px;
+		padding: 10px;
 	}
 
 	.todo-list {
