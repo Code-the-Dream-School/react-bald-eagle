@@ -24,7 +24,7 @@ const AddTodoForm = ({ onAddTodo }) => {
         type="text"
         id="TodoTitle"
       >
-        Title
+        Task
       </InputWithLabel>
       <button className="add-todo-button" type="submit"> Add </button>
     </form>
