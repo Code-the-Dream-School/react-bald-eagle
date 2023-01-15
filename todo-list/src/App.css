@@ -2,6 +2,18 @@ body {
 	overflow-x: hidden;
 }
 
+h1 {
+	padding: 10px;
+}
+
+form {
+	padding: 10px;
+}
+
+label {
+	padding: 5px;
+}
+
 .current-list {
 	display: grid;
 	grid-template-rows: auto;
@@ -39,18 +51,6 @@ body {
 	.add-todo-button {
 		width: 50%;
 	}
-
-	h1 {
-		padding: 8px;
-	}
-
-	form {
-		padding: 8px;
-	}
-
-	label {
-		padding: 5px;
-	}
 	
 	.todo-input {
 		margin-right: 2.5px;
@@ -69,24 +69,18 @@ body {
 	}
 
 	.input-form {
-		margin: 0 auto;
+		max-width: 80%;
+		margin: 0 25% 0;
+		max-height: 20%;
 	}
 
 	.todo-input {
 		margin-right: 5px;
 	}
 
-	h1 {
-		padding: 16px;
-		margin: 0 auto;
-	}
-
-	form {
-		padding: 10px;
-	}
-
-	label {
-		padding: 10px;
+	.title {
+		margin: 5% 0 0;
+		max-height: min-content;
 	}
 
 	.todo-list {

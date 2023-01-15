@@ -4,7 +4,9 @@ import AddTodoForm from "./AddTodoForm";
 const CurrentList = ({ todoList, addTodo, removeTodo }) => {
 	return (
 		<div className="current-list" style={{ textAlign: "center" }}>
-			<h1>Todo List</h1>
+			<div className="title">
+				<h1>Todo List</h1>
+			</div>
 
 			<AddTodoForm onAddTodo={addTodo} />
 

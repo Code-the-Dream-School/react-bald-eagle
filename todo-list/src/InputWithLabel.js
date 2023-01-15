@@ -16,16 +16,16 @@ const InputWithLabel = ({
 
   return (
     <>
-      <label htmlFor={id}> {children} </label>
-      <input
-        className="todo-input"
+      <label className="form-label text-muted" htmlFor={id}> {children} </label>
+      <textarea
+        className="todo-input form-control"
         type={type}
         id={id}
         name={title}
         value={todoTitle}
         onChange={handleTitleChange}
         ref={inputRef}
-      />
+      ></textarea>
     </>
   );
 };

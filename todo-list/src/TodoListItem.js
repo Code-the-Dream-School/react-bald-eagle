@@ -7,7 +7,7 @@ const TodoListItem = ({ todo, onRemoveTodo }) => {
   return (
     <li className="todo-item">
       <b>{todo.fields.Name} </b>
-      <button className="remove-todo" type="button" onClick={removeTodo}>
+      <button className="remove-todo btn btn-dark" type="button" onClick={removeTodo}>
         Remove
       </button>
     </li>
