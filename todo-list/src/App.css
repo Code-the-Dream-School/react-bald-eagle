@@ -19,7 +19,11 @@ label {
 	grid-template-rows: auto;
 	background-color: antiquewhite;
 	background-attachment: fixed;
-	min-height: 1000px;
+	min-height: 100vh;
+}
+
+.title {
+	margin: 5% 0 0;
 }
 
 .todo-list {
@@ -76,11 +80,6 @@ label {
 
 	.todo-input {
 		margin-right: 5px;
-	}
-
-	.title {
-		margin: 5% 0 0;
-		max-height: min-content;
 	}
 
 	.todo-list {

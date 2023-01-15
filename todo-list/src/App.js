@@ -87,7 +87,6 @@ const App = () => {
       const response = await fetch(`https://api.airtable.com/v0/${process.env.REACT_APP_AIRTABLE_BASE_ID}/Tasks/${id}`, options)
 
       if (response.ok) {
-        console.log('response', response)
         fetchTodos();
       }
     }
