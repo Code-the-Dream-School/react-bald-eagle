@@ -24,7 +24,7 @@ function App() {
     if (!isLoading) {
       localStorage.setItem("savedTodoList", todoString)
     }
-  }, [todoList, isLoading]);
+  });
 
   function addTodo(newTodo) {
     setTodoList([...todoList, newTodo]);
@@ -43,11 +43,11 @@ function App() {
       <h1>Todo List</h1>
         <AddTodoForm onAddTodo={addTodo} />
         <div>
-          {isLoading ? (
+          {isLoading ? 
             <p>Loading...</p>
-          ) : (
+           : 
             <TodoList todoList={todoList} onRemoveTodo={removeTodo}/>
-          )}
+          }
         </div>
     </React.Fragment>
   );
