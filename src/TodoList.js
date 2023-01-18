@@ -6,13 +6,13 @@ const TodoList = ({ todoList, onRemoveTodo }) => {
   return (
     <>
       <ul>
-        {todoList.map((todo) => (
-          <TodoListItem key={todo.id} todo={todo} onRemoveTodo={onRemoveTodo}/>
+        {todoList.map((todoListItem) => (
+          <TodoListItem key={todoListItem.id} todo={todoListItem} onRemoveTodo={onRemoveTodo}/>
         ))}
       </ul>
     </>
   ); 
-  console.log(todoList);  
+  // console.log(todoList);  
 }
   
 export default TodoList;

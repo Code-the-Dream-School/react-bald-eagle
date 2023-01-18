@@ -2,11 +2,11 @@ import React from 'react';
 
 
 const TodoListItem = ({ todo, onRemoveTodo }) => {
-  const { title, id} = todo;
+  // const { title, id } = todo;
   return (
     <>
       <li> 
-        {title} 
+        {todo.fields.Title} 
         <button onClick={()=>onRemoveTodo(todo)}>Remove</button>
       </li>
     </>
