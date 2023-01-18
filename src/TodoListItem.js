@@ -5,10 +5,17 @@ function ToDoListItem ({ item, onRemoveTodo }) {
   const handleRemoveTodo = () => {
     onRemoveTodo(item);
   };
-  return (
+
+  let tableDate = item.fields["Due Date"]
+  let newTableDate = new Date (tableDate);
+
+  return (    
     <>
       <li>
         {item.fields.Title}
+        <span></span>
+        <span> dueDate: </span>
+        {newTableDate.toDateString()}
         <span> </span>
         <button type="button" onClick={handleRemoveTodo}>Remove</button>
       </li>
