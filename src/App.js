@@ -61,26 +61,21 @@ function App() {
 
   return (
     <BrowserRouter>
-        <routes>
-            <route exact path="/">            
-                <>
-                  <div style={{ textAlign: 'center' }}>
-                    <h1>Todo List</h1>
-                    <AddToDoForm onAddTodo={addTodo}/>        
-
-                    { isLoading?  
-                      <p>"Loading..."</p>: 
-                      <ToDoList todoList={todoList} onRemoveTodo={removeTodo}/>
-                    }        
-                  </div>
-                </>
-            </route>
-            <route path="/new">
-              <h1>New Todo List</h1>
-            </route>
-        </routes>
-    </BrowserRouter>
-    
+        <>
+          <div style={{ textAlign: 'center' }}>
+            <h1>Todo List</h1>
+            <AddToDoForm onAddTodo={addTodo}/>      
+            { isLoading?  
+              <p>"Loading..."</p>: 
+              <ToDoList todoList={todoList} onRemoveTodo={removeTodo}/>
+            }        
+          </div>
+        </>  
+        <Routes>
+            <Route exact path="/" element={<> </>} />                    
+            <Route path="/new" element={<h1>New Todo List</h1>} />            
+        </Routes>
+    </BrowserRouter>    
   );
 }
 
