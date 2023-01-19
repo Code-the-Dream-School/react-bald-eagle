@@ -8,15 +8,30 @@ function App() {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    new Promise ((resolve, reject) => {
-      // ***Mimic a loading delay***
-      setTimeout(() => {
-        resolve({ data: {todoList: JSON.parse(localStorage.getItem("savedTodoList")) || []}, });
-      }, 2000)
-    }).then((result) => {
-      setTodoList([...result.data.todoList]);
-      setIsLoading(false);
-    });
+    // Remove the placeholder "Promise"
+      // new Promise ((resolve, reject) => {
+      //   // ***Mimic a loading delay***
+      //   setTimeout(() => {
+      //     resolve({ data: {todoList: JSON.parse(localStorage.getItem("savedTodoList")) || []}, });
+      //   }, 2000)
+
+    // Using the Fetch API, create a "GET" request
+    fetch(`https://api.airtable.com/v0/${process.env.REACT_APP_AIRTABLE_BASE_ID}/Default`, { //url: the url of your request
+      method: 'GET',
+      // add the property 'headers' as an object
+      headers: {
+        'Authorization': `Bearer ${process.env.REACT_APP_AIRTABLE_API_KEY}` //the token to authorize the request
+      },
+    })
+    // Chain a then method to your fetch call and pass it a function that returns the response JSON data
+    .then((response) => {
+      return response.json();
+    })
+    .then((result) => {
+    // Update the setToDoList call to reference the new result format
+    setTodoList(result.records);
+    setIsLoading(false);
+  });
   }, []);
 
   useEffect(() => { 
@@ -37,7 +52,6 @@ function App() {
     setTodoList([...modifiedTodo])
   };
 
-  // Using a ternary operator inside JSX, if isLoading is true render the loading message, otherwise render the TodoList component
   return (
     <React.Fragment>
       <h1>Todo List</h1>
