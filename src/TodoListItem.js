@@ -1,10 +1,10 @@
 import React from "react";
 
 const TodoListItem = ({ todo, onRemoveTodo }) => {
-
+    console.log(todo)
     return (
         <li>
-            {todo.title} <span> </span>
+            {todo.title || todo.fields.Title} <span> </span>
             <button type="button" onClick={() => onRemoveTodo(todo)}>
                 Remove
             </button>
