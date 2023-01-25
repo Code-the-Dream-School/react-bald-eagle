@@ -8,7 +8,7 @@ function TodoList({ todoList, onRemoveTodo }) {
         return (
           <React.Fragment key={todoListItem.id}>
             <TodoListItem 
-              todoList={todoListItem} 
+              todo={todoListItem} 
               onRemoveTodo={onRemoveTodo} 
             />
           </React.Fragment>
