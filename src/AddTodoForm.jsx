@@ -12,7 +12,7 @@ function AddTodoForm({onAddTodo}) {
 
     function handleAddTodo(event) {
         event.preventDefault();
-        onAddTodo({title: todoTitle, id: Date.now()});
+        onAddTodo({fields: {Title: todoTitle}, id: Date.now()});
             // Disclaimer: we are suggesting Date.now() for now as a placeholder for unique number generation, but in the future you should not use this
         console.log(todoTitle);
         setTodoTitle("");

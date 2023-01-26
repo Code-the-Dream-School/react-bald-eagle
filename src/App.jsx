@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import TodoList from './TodoList';
 import AddTodoForm from "./AddTodoForm";
-
-// Import BrowserRouter, Routes, and Route from react-router-dom
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 function App() {
@@ -44,31 +42,31 @@ function App() {
     )
     setTodoList([...modifiedTodo])
   };
-return (
-  //  Wrap existing JSX within new BrowserRouter component
-  <BrowserRouter>
-    {/* Wrap existing JSX within new Routes component */}
-    <Routes>
-      {/* Wrap existing JSX within new Route component with prop path equal to the root path and prop exact */}
-      <Route exact path="/" element=
-      {
-        
+
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route exact path="/" element= {
           <React.Fragment>
             <h1>Todo List</h1>
-              <AddTodoForm onAddTodo={addTodo} />
-              <div>
-                {isLoading ? 
-                  <p>Loading...</p>
+            <AddTodoForm onAddTodo={addTodo} />
+            <div>
+              {isLoading ? 
+                <p>Loading...</p>
                 : 
-                  <TodoList todoList={todoList} onRemoveTodo={removeTodo}/>
-                }
-              </div>
+                <TodoList todoList={todoList} onRemoveTodo={removeTodo}/>
+              }
+            </div>
           </React.Fragment>
-        
-      } />
-    </Routes>
-  </BrowserRouter>
-);
+        } />
+        {/* Create a new Route with path "/new" */}
+        {/* Create a level-one heading with text "New Todo List" */}
+        <Route path="/new" element= {
+          <h1>New Todo List</h1>
+        }/>
+      </Routes>
+    </BrowserRouter>
+  );
 };
 
 export default App;
