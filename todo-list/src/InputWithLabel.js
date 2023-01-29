@@ -16,8 +16,9 @@ const InputWithLabel = ({
 
   return (
     <>
-      <label htmlFor={id}> {children} </label>
+      <label className="form-label text-muted" htmlFor={id}> {children} </label>
       <input
+        className="todo-input form-control-md"
         type={type}
         id={id}
         name={title}

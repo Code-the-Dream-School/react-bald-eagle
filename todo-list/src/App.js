@@ -1,7 +1,9 @@
 import React, { useState, useEffect, useReducer, useCallback } from "react";
-import TodoList from "./TodoList";
-import AddTodoForm from "./AddTodoForm";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import ListReducer from "./Reducer";
+import NewList from "./New"
+import CurrentList from "./Current"
+import "./App.css"
 
 const App = () => {
   const [todoList, dispatchTodoList] = useReducer(ListReducer,
@@ -73,27 +75,52 @@ const App = () => {
     }, 2000)
   }, [fetchTodos])
 
-  const removeTodo = (item) => {
-    const newTodos = todoList.data.filter((todo) => todo.id !== item.id);
-    dispatchTodoList({ type: 'REMOVE_LIST', payload: newTodos });
+  const removeTodo = async (id) => {
+    const options = {
+      method: 'DELETE',
+      headers: {
+        Authorization: `Bearer ${process.env.REACT_APP_AIRTABLE_API_KEY}`,
+        'Content-Type': 'application/json',
+      },
+    }
+    try {
+      const response = await fetch(`https://api.airtable.com/v0/${process.env.REACT_APP_AIRTABLE_BASE_ID}/Tasks/${id}`, options)
+
+      if (response.ok) {
+        fetchTodos();
+      }
+    }
+    catch {
+      dispatchTodoList({ type: 'LIST_FETCH_FAILURE' })
+    }
   };
 
   return (
-    <>
-      <div style={{ textAlign: "center" }}>
-        <h1>Todo List</h1>
-
-        <AddTodoForm onAddTodo={addTodo} />
-
-        {todoList.isError && <p>Something went wrong...</p>}
-
-        {todoList.isLoading ? <p>Loading...</p>
-          : todoList.data.length > 0 ?
-            <TodoList todoList={todoList.data} onRemoveTodo={removeTodo} /> :
-            <p>No Data</p>
-        }
-      </div>
-    </>
+    <BrowserRouter>
+      <Routes>
+        <Route
+          exact
+          path='/'
+          element={
+            <CurrentList
+              todoList={todoList}
+              addTodo={addTodo}
+              removeTodo={removeTodo}
+            ></CurrentList>
+          }
+        >
+        </Route>
+        <Route
+          exact
+          path='/new'
+          element={
+            <NewList
+              addTodo={addTodo}
+            ></NewList>
+          }
+        ></Route>
+      </Routes>
+    </BrowserRouter>
   );
 };
 export default App;
