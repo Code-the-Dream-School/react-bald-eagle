@@ -2,7 +2,7 @@ import React from "react";
 // Declare a function named TodoListItem
 //
 const TodoListItem = ({ todo, onRemoveTodo }) => (
-  <li>
+  <li >
     {todo.fields.Title}
     <button
       type="button"

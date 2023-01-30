@@ -39,13 +39,42 @@ export default function App() {
   }, [todoList, isLoading]);
   // addTodo function
   function addTodo(newTodo) {
-    setTodoList([...todoList, newTodo]);
+    fetch(
+      `https://api.airtable.com/v0/${process.env.REACT_APP_AIRTABLE_BASE_ID}/Default`,
+      {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${process.env.REACT_APP_AIRTABLE_API_KEY}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ fields: newTodo }),
+      }
+    )
+      .then((response) => response.json())
+      .then((res) => {
+        setTodoList([...todoList, { ...newTodo, id: res.id }]);
+      });
   }
 
   // remove button
   const removeTodo = (id) => {
-    const newTodoList = todoList.filter((todo) => id !== todo.id);
-    setTodoList(newTodoList);
+    fetch(
+      `https://api.airtable.com/v0/${process.env.REACT_APP_AIRTABLE_BASE_ID}/Default/${id}`,
+      {
+        method: "DELETE",
+        headers: {
+          Authorization: `Bearer ${process.env.REACT_APP_AIRTABLE_API_KEY}`,
+          "Content-Type": "application/json",
+        },
+      }
+    )
+      .then((response) => response.json())
+      .then((res) => {
+        console.log(res);
+
+        const newTodoList = todoList.filter((todo) => id !== todo.id);
+        setTodoList(newTodoList);
+      });
   };
 
   return (
