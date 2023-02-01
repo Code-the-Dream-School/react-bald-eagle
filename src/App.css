@@ -1,0 +1,58 @@
+button {
+    border: none;
+    margin-left: 10px;
+    font-family: "Poppins", sans-serif;
+    padding: 0.15rem 0.5rem;
+    border-radius: 1.5rem;
+    background-color: #3E505B;
+    color: var(--color-white);
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    font-size: 1.3rem;
+}
+
+button:hover {
+    background-color: #8AB0AB;
+    color: var(--color-dark);
+}
+
+.app__wrapper img {
+    /* position: relative; */
+    width: 12rem;
+}
+
+.column_headers th {
+    font-family: Papyrus, sans-serif;
+    letter-spacing: 0.25rem;
+    color: #192129e8;
+}
+
+td, th, h1 {
+    color: var(--color-dark);
+}
+
+.app__wrapper {
+    margin: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.add__form__container {
+    background-color: #c5decd36;
+    margin: 10px;
+}
+
+table td:nth-child(1), td:nth-child(4) {
+    border: none;
+}
+
+tbody th:nth-child(2), th:nth-child(3), th:nth-child(1), th:nth-child(4) {
+    background-color: #3E505B;
+    color: white;
+}
+
+tbody tr:nth-child(odd) {
+    background-color: #b7cece2d;
+}

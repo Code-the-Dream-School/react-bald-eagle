@@ -1,8 +1,11 @@
 import React, { useEffect, useRef } from 'react';
+import './InputWithLabel.css';
 
 const InputWithLabel = ({ 
-    todoTitle, 
-    handleTitleChange, 
+    givenValue,
+    givenId,
+    givenName,
+    handleChange,
     children 
 }) => {
     
@@ -10,20 +13,25 @@ const InputWithLabel = ({
 
     useEffect(() => {
         inputRef.current.focus();
-    }, [todoTitle]);
+        inputRef.current.value= "";
+    }, [givenValue]);
+
+ 
 
     return (
-        <>
-            <label htmlFor="todoTitle">{children}</label>
+        <div className='form__styling'>
+            <label htmlFor={givenName} className="label__for__input">{children}</label>
             <input 
                 ref={inputRef}
-                id="todoTitle" 
+                id={givenId} 
                 type="text" 
-                name="title" 
-                value={todoTitle} 
-                onChange={handleTitleChange} 
+                name={givenName} 
+                value={givenValue} 
+                onChange={handleChange} 
+                required={true}
+                placeholder="type here..."
             /> 
-        </>
+        </div>
     )
 }
 
