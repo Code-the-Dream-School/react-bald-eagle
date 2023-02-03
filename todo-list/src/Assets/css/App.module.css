@@ -1,7 +1,3 @@
-html * {
-	font-family: 'Staatliches', cursive;
-}
-
 body {
 	overflow-x: hidden;
 	min-height: 100vh;
@@ -9,7 +5,6 @@ body {
 
 h1 {
 	padding: 10px;
-	color: black;
 	font-weight: 300;
 }
 
@@ -22,8 +17,10 @@ label {
 }
 
 .title {
+	color: white;
 	margin: 5% 0 0;
 	text-shadow: 1px 1px rgb(29, 130, 135);
+	font-family: 'Rock Salt', cursive;
 }
 
 .addTodoButton {
@@ -48,6 +45,7 @@ label {
 	background-attachment: fixed;
 	min-height: 100vh;
 	text-align: center;
+	font-family: 'Staatliches', cursive;
 }
 
 .item {
@@ -59,7 +57,7 @@ label {
 .removeTodo {
 	bottom: 0;
 	max-width: 50%;
-	margin: 0 auto;
+	/* margin: 0 auto; */
 }
 
 @media screen and (max-width: 700px) {
@@ -88,6 +86,7 @@ label {
 		flex-direction: row;
 		justify-content: space-between;
 		text-align: center;
+		min-width: 80vw;
 	}
 }
 
@@ -124,5 +123,9 @@ label {
 		display: flex;
 		flex-direction: column;
 		justify-content: space-between;
+	}
+
+	.removeTodo {
+		margin: 0 auto;
 	}
 }
