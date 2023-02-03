@@ -1,0 +1,23 @@
+@media screen and (max-width: 1000px) {
+	.itemTextColor {
+		color: white;
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+	}
+}
+
+@media screen and (min-width: 1000px) {
+	.itemTextColor {
+		color: black;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+	}
+
+	.removeTodo {
+		bottom: 0;
+		max-width: 50%;
+		margin: 0 auto;
+	}
+}
