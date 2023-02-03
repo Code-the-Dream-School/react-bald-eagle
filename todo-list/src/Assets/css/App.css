@@ -27,13 +27,13 @@ label {
 	margin: 5% 0 0;
 }
 
-.todo-list {
+/* .todo-list { */
 	/* width: 100%;
 	padding: 20px;
 	display: flex;
 	flex-direction: column;
 	margin: 0 auto; */
-}
+/* } */
 
 .todo-item {
 	padding: 16px;
@@ -53,9 +53,9 @@ label {
 		align-items: center;
 	}
 
-	.add-todo-button {
+	/* .add-todo-button {
 		width: 50%;
-	}
+	} */
 	
 	.todo-input {
 		margin-right: 2.5px;
