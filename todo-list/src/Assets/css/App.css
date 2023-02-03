@@ -1,3 +1,7 @@
+html * {
+	font-family: 'Solitreo', cursive;
+}
+
 body {
 	overflow-x: hidden;
 	min-height: 100vh;
@@ -35,10 +39,10 @@ label {
 	margin: 0 auto; */
 /* } */
 
-.todo-item {
+/* .todo-item {
 	padding: 16px;
 	border: 1px solid black;
-}
+} */
 
 @media screen and (max-width: 1000px) {
 	.current-list{
