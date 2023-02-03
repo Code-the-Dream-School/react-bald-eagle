@@ -45,19 +45,18 @@ label {
 	background-attachment: fixed;
 	min-height: 100vh;
 	text-align: center;
-	font-family: 'Staatliches', cursive;
+	font-family: 'Cabin Sketch', cursive;
 }
 
 .item {
 	padding: 5px;
 	color:rgb(212, 211, 215);
-	font-weight: 100;
+	font-weight: 700;
 }
 
 .removeTodo {
 	bottom: 0;
 	max-width: 50%;
-	/* margin: 0 auto; */
 }
 
 @media screen and (max-width: 700px) {
@@ -123,6 +122,7 @@ label {
 		display: flex;
 		flex-direction: column;
 		justify-content: space-between;
+		border: 1px solid rgb(29, 130, 135);
 	}
 
 	.removeTodo {
