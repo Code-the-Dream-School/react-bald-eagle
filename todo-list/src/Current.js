@@ -1,11 +1,13 @@
 import TodoList from "./TodoList";
 import AddTodoForm from "./AddTodoForm";
 
-const CurrentList = ({ todoList, addTodo, removeTodo }) => {
+const CurrentList = ({ todoList, addTodo, removeTodo, currentUser }) => {
 	return (
 		<div className="current-list" style={{ textAlign: "center" }}>
 			<div className="title">
-				<h1>Todo List</h1>
+				{
+					currentUser.length > 0 ? <h1>{currentUser}'s Todo List</h1> : <h1>Todo List</h1>
+				}
 			</div>
 
 			<AddTodoForm onAddTodo={addTodo} />

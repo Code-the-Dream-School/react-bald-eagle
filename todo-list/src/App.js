@@ -9,7 +9,15 @@ const App = () => {
   const [todoList, dispatchTodoList] = useReducer(ListReducer,
     { data: {}, isLoading: false, isError: false })
   const [endpoint, setEndpoint] = useState('')
+  const [user, setUser] = useState('')
 
+  const getUser = () => {
+    setUser(prompt('Please enter your name'))
+  }
+
+  useEffect(() => {
+    getUser()
+  }, [])
 
   const fetchTodos = useCallback(async () => {
     if (!endpoint) return
@@ -106,6 +114,7 @@ const App = () => {
               todoList={todoList}
               addTodo={addTodo}
               removeTodo={removeTodo}
+              currentUser={user}
             ></CurrentList>
           }
         >
