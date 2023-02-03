@@ -1,3 +1,28 @@
+html * {
+	font-family: 'Staatliches', cursive;
+}
+
+body {
+	overflow-x: hidden;
+	min-height: 100vh;
+}
+
+h1 {
+	padding: 10px;
+}
+
+form {
+	padding: 10px;
+}
+
+label {
+	padding: 5px;
+}
+
+.title {
+	margin: 5% 0 0;
+}
+
 .addTodoButton {
 	margin-top: 3%;
 	width: 25%;
@@ -13,27 +38,59 @@
 	margin: 0 auto;
 }
 
-.itemTextColor {
+.currentList {
+	display: grid;
+	grid-template-rows: auto;
+	background-color: rgb(185, 127, 52);
+	background-attachment: fixed;
+	min-height: 100vh;
+	text-align: center;
+}
+
+.item {
 	padding: 5px;
 }
 
-@media screen and (max-width: 1000px) {
+@media screen and (max-width: 700px) {
 	.todoList {
 		padding: 10px;
 	}
 
-	.itemTextColor {
+	.inputForm {
+		display: flex;
+		flex-direction: column;
+		padding-bottom: 5px;
+		margin-bottom: 10px;
+		align-items: center;
+	}
+
+	.todoInput {
+		margin-right: 2.5px;
+	}
+
+	.currentList{
+		font-size: 40px;
+	}
+
+	.item {
 		color: white;
 		display: flex;
 		flex-direction: row;
 		justify-content: space-between;
+		text-align: center;
 	}
 }
 
-@media screen and (min-width: 1000px) {
+@media screen and (min-width: 700px) {
 	.addTodoButton {
 		margin-top: 5%;
 		width: 50%;
+	}
+
+	.inputForm {
+		max-width: 80%;
+		margin: 0 25% 0;
+		min-height: 20%;
 	}
 
 	.todoList {
@@ -44,7 +101,16 @@
 		justify-self: center;
 	}
 
-	.itemTextColor {
+	.todoInput {
+		margin-right: 10px;
+		padding: 10px;
+	}
+
+	.currentList{
+		font-size: 30px;
+	}
+
+	.item {
 		color: black;
 		display: flex;
 		flex-direction: column;

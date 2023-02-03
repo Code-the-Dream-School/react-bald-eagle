@@ -17,7 +17,7 @@ const AddTodoForm = ({ onAddTodo }) => {
   };
 
   return (
-    <form className="input-form form-floating" onSubmit={handleAddTodo}>
+    <form className={`${styles.inputForm} form-floating`} onSubmit={handleAddTodo}>
       <InputWithLabel
         todoTitle={todoTitle}
         handleTitleChange={handleTitleChange}

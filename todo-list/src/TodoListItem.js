@@ -1,4 +1,3 @@
-/* eslint-disable no-sequences */
 import React from "react";
 import styles from "./Assets/css/App.module.css"
 
@@ -7,7 +6,7 @@ const TodoListItem = ({ todo, onRemoveTodo }) => {
     onRemoveTodo(todo.id)
   }
   return (
-    <li className={styles.itemTextColor}>
+    <li className={styles.item}>
       <b>{todo.fields.Name} </b>
       <button className={`btn ${styles.removeTodo} btn-dark`} type="button" onClick={removeTodo}>
         Remove
