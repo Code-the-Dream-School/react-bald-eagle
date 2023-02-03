@@ -61,11 +61,11 @@ label {
 		margin-right: 2.5px;
 	}
 	
-	.todo-item {
+	/* .todo-item {
 		display: flex;
 		flex-direction: row;
 		justify-content: space-between;
-	}
+	} */
 
 	.todo-list {
 		padding: 10px;
@@ -96,15 +96,15 @@ label {
 		justify-self: center;
 	}
 
-	.todo-item {
+	/* .todo-item {
 		display: flex;
 		flex-direction: column;
 		justify-content: space-between;
-	}
+	} */
 
-	.remove-todo {
+	/* .remove-todo {
 		bottom: 0;
 		max-width: 50%;
 		margin: 0 auto;
-	}
+	} */
 }
