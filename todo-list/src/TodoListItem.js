@@ -1,6 +1,6 @@
 /* eslint-disable no-sequences */
 import React from "react";
-import styles from "./Assets/css/TodoListItem.module.css"
+import styles from "./Assets/css/App.module.css"
 
 const TodoListItem = ({ todo, onRemoveTodo }) => {
   const removeTodo = () => {

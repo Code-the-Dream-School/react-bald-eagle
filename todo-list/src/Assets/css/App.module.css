@@ -1,0 +1,59 @@
+.addTodoButton {
+	margin-top: 3%;
+	width: 25%;
+	padding-top: 15px;
+	text-align: center;
+}
+
+.todoList {
+	width: 100%;
+	padding: 20px;
+	display: flex;
+	flex-direction: column;
+	margin: 0 auto;
+}
+
+.itemTextColor {
+	padding: 5px;
+}
+
+@media screen and (max-width: 1000px) {
+	.todoList {
+		padding: 10px;
+	}
+
+	.itemTextColor {
+		color: white;
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+	}
+}
+
+@media screen and (min-width: 1000px) {
+	.addTodoButton {
+		margin-top: 5%;
+		width: 50%;
+	}
+
+	.todoList {
+		display: grid;
+		grid-template-columns: 33% 33% 33%;
+		column-gap: 1%;
+		row-gap: 2%;
+		justify-self: center;
+	}
+
+	.itemTextColor {
+		color: black;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+	}
+
+	.removeTodo {
+		bottom: 0;
+		max-width: 50%;
+		margin: 0 auto;
+	}
+}

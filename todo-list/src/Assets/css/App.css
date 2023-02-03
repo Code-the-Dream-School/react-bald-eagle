@@ -22,7 +22,7 @@ label {
 .current-list {
 	display: grid;
 	grid-template-rows: auto;
-	background-color: antiquewhite;
+	background-color: rgb(185, 127, 52);
 	background-attachment: fixed;
 	min-height: 100vh;
 }
