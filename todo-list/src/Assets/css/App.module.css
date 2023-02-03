@@ -9,6 +9,8 @@ body {
 
 h1 {
 	padding: 10px;
+	color: black;
+	font-weight: 300;
 }
 
 form {
@@ -21,6 +23,7 @@ label {
 
 .title {
 	margin: 5% 0 0;
+	text-shadow: 1px 1px rgb(29, 130, 135);
 }
 
 .addTodoButton {
@@ -41,7 +44,7 @@ label {
 .currentList {
 	display: grid;
 	grid-template-rows: auto;
-	background-color: rgb(185, 127, 52);
+	background-image: linear-gradient(to bottom, rgb(1, 90, 94), black);
 	background-attachment: fixed;
 	min-height: 100vh;
 	text-align: center;
@@ -49,6 +52,14 @@ label {
 
 .item {
 	padding: 5px;
+	color:rgb(212, 211, 215);
+	font-weight: 100;
+}
+
+.removeTodo {
+	bottom: 0;
+	max-width: 50%;
+	margin: 0 auto;
 }
 
 @media screen and (max-width: 700px) {
@@ -73,7 +84,6 @@ label {
 	}
 
 	.item {
-		color: white;
 		display: flex;
 		flex-direction: row;
 		justify-content: space-between;
@@ -111,15 +121,8 @@ label {
 	}
 
 	.item {
-		color: black;
 		display: flex;
 		flex-direction: column;
 		justify-content: space-between;
-	}
-
-	.removeTodo {
-		bottom: 0;
-		max-width: 50%;
-		margin: 0 auto;
 	}
 }

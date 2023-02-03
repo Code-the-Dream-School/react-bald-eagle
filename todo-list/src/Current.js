@@ -15,10 +15,10 @@ const CurrentList = ({ todoList, addTodo, removeTodo, currentUser }) => {
 
 			{todoList.isError && <p>Something went wrong...</p>}
 
-			{todoList.isLoading ? <p>Loading...</p>
+			{todoList.isLoading ? <p style={{color: 'white'}}>Loading...</p>
 				: todoList.data.length > 0 ?
 					<TodoList todoList={todoList.data} onRemoveTodo={removeTodo} /> :
-					<p>No Data</p>
+					<p style={{color: 'white'}}>No Data</p>
 			}
 		</div>
 	)
