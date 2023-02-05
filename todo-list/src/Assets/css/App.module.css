@@ -19,6 +19,7 @@ label {
 .title {
 	color: white;
 	margin: 5% 0 0;
+	margin-top: 2%;
 	text-shadow: 2px 2px rgb(29, 130, 135);
 	font-family: 'Rock Salt', cursive;
 }
