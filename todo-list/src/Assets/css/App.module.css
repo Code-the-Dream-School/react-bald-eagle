@@ -95,6 +95,7 @@ label {
 @media screen and (min-width: 700px) {
 	.addTodoButton {
 		margin-top: 5%;
+		margin-bottom: 5%;
 		width: 50%;
 	}
 
