@@ -23,10 +23,9 @@ const addTableData = async (newRow) => {
     return data;
   }
 
-//   console.log('this is response from addTableData', addTableData())
-
-function AddTodoForm({fetchTableData}) {
-    const [todoList, setTodoList] = useState(''); // chanded from string to an array
+// function AddTodoForm({fetchTableData, todoList, setTodoList}) {
+function AddTodoForm({ fetchTableData }) {
+    const [todoList, setTodoList] = useState([]); // doubled!!! how to fix it..?? I also have it in the App comp.
 
     const handleFormSubmit = async (event) => {
         event.preventDefault();
@@ -34,7 +33,7 @@ function AddTodoForm({fetchTableData}) {
         const title = event.target.todoTitle.value;
         const note = event.target.todoNote.value;
         const completed = event.target.checked;
-        const data = await addTableData({ title, note, completed }) // ({ title, note, completed })
+        const data = await addTableData({ title, note, completed }) 
         // debugger
         setTodoList([...data.records, todoList]); 
         event.target.reset();

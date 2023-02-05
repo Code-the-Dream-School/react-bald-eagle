@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState } from 'react';
 import TodoList from './TodoList';
 import AddTodoForm from './AddTodoForm';
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
@@ -48,7 +48,7 @@ function App() {
             <img src="https://cdn.pixabay.com/photo/2020/01/21/18/39/todo-4783676_960_720.png" alt='list'/>
             <div className='add__form__container'>
               <AddTodoForm fetchTableData={fetchTableData} /> 
-              {/* <AddTodoForm onAddTodo={addTodo} /> */}
+              {/* //todoList={todoList} setTodoList={setTodoList} */}
             </div>
             {isLoading ? (
               <p>Loading...</p>
