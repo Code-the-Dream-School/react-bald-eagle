@@ -26,7 +26,6 @@ const App = () => {
 
       if (response.ok) {
         const data = await response.json()
-
         dispatchTodoList({ type: 'LIST_FETCH_SUCCESS', payload: [...data.records] })
       } else {
         dispatchTodoList({ type: 'LIST_FETCH_FAILURE' })
@@ -49,6 +48,37 @@ const App = () => {
           {
             "fields": {
               "Name": `${newTodo.title}`
+            }
+          }
+        ]
+      })
+    }
+
+    try {
+      const response = await fetch(endpoint, options)
+
+      if (response.ok) {
+        fetchTodos()
+      }
+      dispatchTodoList({ type: 'LIST_FETCH_FAILURE' })
+    }
+    catch {
+      dispatchTodoList({ type: 'LIST_FETCH_FAILURE' })
+    }
+  };
+
+  const handleDoneChange = async (boolean) => {
+    const options = {
+      method: 'PATCH',
+      headers: {
+        Authorization: `Bearer ${process.env.REACT_APP_AIRTABLE_API_KEY}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        "records": [
+          {
+            "fields": {
+              "Done": `${boolean}`,
             }
           }
         ]
@@ -106,6 +136,7 @@ const App = () => {
               todoList={todoList}
               addTodo={addTodo}
               removeTodo={removeTodo}
+              onDone={handleDoneChange}
             ></CurrentList>
           }
         >

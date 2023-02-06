@@ -1,7 +1,7 @@
 import TodoList from "./TodoList";
 import AddTodoForm from "./AddTodoForm";
 
-const CurrentList = ({ todoList, addTodo, removeTodo }) => {
+const CurrentList = ({ todoList, addTodo, removeTodo, onDone }) => {
 	return (
 		<div className="current-list" style={{ textAlign: "center" }}>
 			<div className="title">
@@ -14,7 +14,7 @@ const CurrentList = ({ todoList, addTodo, removeTodo }) => {
 
 			{todoList.isLoading ? <p>Loading...</p>
 				: todoList.data.length > 0 ?
-					<TodoList todoList={todoList.data} onRemoveTodo={removeTodo} /> :
+					<TodoList todoList={todoList.data} onRemoveTodo={removeTodo} onDone={onDone} /> :
 					<p>No Data</p>
 			}
 		</div>

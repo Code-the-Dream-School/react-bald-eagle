@@ -2,7 +2,7 @@ import React, { useRef, useEffect } from "react";
 
 const InputWithLabel = ({
   todoTitle,
-  handleTitleChange,
+  handleChange,
   title,
   type,
   id,
@@ -23,7 +23,7 @@ const InputWithLabel = ({
         id={id}
         name={title}
         value={todoTitle}
-        onChange={handleTitleChange}
+        onChange={handleChange}
         ref={inputRef}
       />
     </>
