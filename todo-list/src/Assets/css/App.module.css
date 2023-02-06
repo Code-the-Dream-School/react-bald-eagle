@@ -1,0 +1,145 @@
+body {
+	overflow-x: hidden;
+	min-height: 100vh;
+}
+
+h1 {
+	padding: 10px;
+	font-weight: 300;
+}
+
+form {
+	padding: 10px;
+}
+
+label {
+	padding: 5px;
+}
+
+.title {
+	color: white;
+	margin: 5% 0 0;
+	margin-top: 2%;
+	text-shadow: 2px 2px rgb(29, 130, 135);
+	font-family: 'Rock Salt', cursive;
+}
+
+.addTodoButton {
+	margin-top: 3%;
+	margin: 0 auto;
+	min-width: 50%;
+	padding-top: 15px;
+	text-align: center;
+}
+
+.todoList {
+	width: 100%;
+	padding: 20px;
+	flex-direction: column;
+	margin: 0 auto;
+}
+
+.currentList {
+	display: flex;
+	flex-direction: column;
+	background-image: linear-gradient(180deg, rgb(1, 90, 94), rgb(0, 22, 23));
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-blend-mode: multiply;
+	background-attachment: fixed;
+	min-height: 100vh;
+	text-align: center;
+	font-family: 'Cabin Sketch', cursive;
+}
+
+.item {
+	padding: 5px;
+	color:rgb(212, 211, 215);
+	font-weight: 700;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+}
+
+.item:hover {
+	box-shadow: 1px 1px 8px 2px rgb(126, 203, 207);
+	padding: 5px;
+	height: 110%;
+	width: 100%;
+}
+
+.removeTodo {
+	bottom: 0;
+	max-width: 50%;
+}
+
+@media screen and (max-width: 700px) {
+	.addTodoButton {
+		margin-top: 5%;
+	}
+
+	.todoList {
+		padding: 10px;
+	}
+
+	.inputForm {
+		display: flex;
+		flex-direction: column;
+		padding-bottom: 5px;
+		margin-bottom: 10px;
+		align-items: center;
+	}
+
+	.todoInput {
+		margin-right: 2.5px;
+	}
+
+	.currentList{
+		font-size: 40px;
+	}
+
+	.item {
+		text-align: center;
+		min-width: 80vw;
+	}
+}
+
+@media screen and (min-width: 700px) {
+	.inputForm {
+		display: flex;
+		flex-direction: column;
+		max-width: 80%;
+		margin: 0 25% 0;
+		min-height: 20%;
+	}
+	
+	.todoInput {
+		padding: 10px;
+	}
+
+	.addTodoButton {
+		margin-top: 5%;
+		margin-bottom: 5%;
+		width: inherit;
+		padding: 10px;
+	}
+
+	.todoList {
+		padding: 40px;
+		padding-top: 10px;
+		padding-bottom: 10px;
+		width: 80%;
+		box-shadow: 1px 1px 8px 2px rgb(126, 203, 207);
+		background-color: rgb(0, 46, 48);
+		margin-bottom: 40px;
+	}
+
+	.currentList{
+		font-size: 30px;
+	}
+
+	.removeTodo {
+		margin: 0 auto;
+		margin-right: 0;
+	}
+}
