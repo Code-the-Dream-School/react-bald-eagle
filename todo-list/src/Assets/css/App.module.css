@@ -60,6 +60,13 @@ label {
 	justify-content: space-between;
 }
 
+.item:hover {
+	box-shadow: 1px 1px 8px 2px rgb(126, 203, 207);
+	padding: 5px;
+	height: 110%;
+	width: 100%;
+}
+
 .removeTodo {
 	bottom: 0;
 	max-width: 50%;
