@@ -26,7 +26,8 @@ label {
 
 .addTodoButton {
 	margin-top: 3%;
-	width: 25%;
+	margin: 0 auto;
+	min-width: 50%;
 	padding-top: 15px;
 	text-align: center;
 }
@@ -73,6 +74,10 @@ label {
 }
 
 @media screen and (max-width: 700px) {
+	.addTodoButton {
+		margin-top: 5%;
+	}
+
 	.todoList {
 		padding: 10px;
 	}
