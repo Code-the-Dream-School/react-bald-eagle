@@ -7,7 +7,7 @@ const TodoListItem = ({ todo, onRemoveTodo, handleDoneChange }) => {
   }
 
   const handleChange = (event) => {
-    handleDoneChange(event.target.checked)
+    handleDoneChange(event.target.checked, todo)
   }
 
   return (

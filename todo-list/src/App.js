@@ -67,7 +67,9 @@ const App = () => {
     }
   };
 
-  const handleDoneChange = async (boolean) => {
+  const handleDoneChange = async (boolean, todo) => {
+    const done = boolean.toString().toLowerCase();
+  
     const options = {
       method: 'PATCH',
       headers: {
@@ -76,9 +78,11 @@ const App = () => {
       },
       body: JSON.stringify({
         "records": [
-          {
+          { 
+            "id": `${todo.id}`,
             "fields": {
-              "Done": `${boolean}`,
+              "Name": `${todo.fields.Name}`,
+              "Done": `${done}`,
             }
           }
         ]
