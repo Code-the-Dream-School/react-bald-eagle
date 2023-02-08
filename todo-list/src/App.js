@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import ListReducer from "./Reducer";
 import NewList from "./New"
 import CurrentList from "./Current"
+import EditList from "./Edit"
 
 const App = () => {
   const [todoList, dispatchTodoList] = useReducer(ListReducer,
@@ -118,6 +119,17 @@ const App = () => {
           }
         >
         </Route>
+        <Route
+          exact
+          path='/edit'
+          element={
+            <EditList
+              user={user}
+              todoList={todoList}
+              removeTodo={removeTodo}
+            ></EditList>
+          }
+        ></Route>
         <Route
           exact
           path='/new'
