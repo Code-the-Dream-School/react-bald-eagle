@@ -97,7 +97,12 @@ const App = () => {
       const response = await fetch(`https://api.airtable.com/v0/${process.env.REACT_APP_AIRTABLE_BASE_ID}/Tasks/${id}`, options)
 
       if (response.ok) {
-        fetchTodos();
+        const newTodos = todoList.data.filter(todo => todo.id !== id)
+console.log('wtf', newTodos)
+        dispatchTodoList({
+          type: 'LIST_FETCH_SUCCESS',
+          payload: [...newTodos]
+        })
       }
     }
     catch {
