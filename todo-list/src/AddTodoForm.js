@@ -12,7 +12,7 @@ const AddTodoForm = ({ onAddTodo }) => {
 
   const handleAddTodo = (event) => {
     event.preventDefault();
-    onAddTodo({ title: todoTitle, id: Date.now() });
+    onAddTodo({ Name: todoTitle, id: Date.now(), Done: false });
     setTodoTitle("");
   };
 
@@ -21,7 +21,7 @@ const AddTodoForm = ({ onAddTodo }) => {
       <InputWithLabel
         todoTitle={todoTitle}
         handleTitleChange={handleTitleChange}
-        title="Title"
+        name="Title"
         type="text"
         id="TodoTitle"
       >

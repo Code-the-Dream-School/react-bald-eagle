@@ -46,6 +46,8 @@ const App = () => {
   }, [endpoint])
 
   const addTodo = async (newTodo) => {
+    delete newTodo["id"]
+
     const options = {
       method: 'POST',
       headers: {
@@ -56,7 +58,7 @@ const App = () => {
         "records": [
           {
             "fields": {
-              "Name": `${newTodo.title}`
+              ...newTodo
             }
           }
         ]
