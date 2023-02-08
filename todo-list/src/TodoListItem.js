@@ -21,9 +21,12 @@ const TodoListItem = ({ todo, onRemoveTodo, handleDoneChange }) => {
         type="Checkbox"
         id="todoDone?"
       ></InputWithLabel>
-      <button className={`btn ${styles.removeTodo} btn-dark`} type="button" onClick={removeTodo}>
-        Remove
-      </button>
+      {onRemoveTodo ?
+        <button className={`btn ${styles.removeTodo} btn-dark`} type="button" onClick={removeTodo}>
+          Remove
+        </button> :
+        <></>
+      }
     </li>
   );
 };

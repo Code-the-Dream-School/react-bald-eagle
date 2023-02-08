@@ -2,7 +2,7 @@ import TodoList from "./TodoList";
 import AddTodoForm from "./AddTodoForm";
 import styles from "./Assets/css/App.module.css"
 
-const CurrentList = ({ todoList, addTodo, removeTodo, currentUser, onDone }) => {
+const CurrentList = ({ todoList, addTodo, currentUser, onDone }) => {
 	return (
 		<div className={styles.currentList}>
 			<div className={styles.title}>
@@ -17,7 +17,7 @@ const CurrentList = ({ todoList, addTodo, removeTodo, currentUser, onDone }) => 
 
 			{todoList.isLoading ? <p style={{color: 'white'}}>Loading...</p>
 				: todoList.data.length > 0 ?
-					<TodoList todoList={todoList.data} onRemoveTodo={removeTodo} onDone={onDone} /> :
+					<TodoList todoList={todoList.data} onDone={onDone} /> :
 					<p style={{color: 'white'}}>No Data</p>
 			}
 		</div>
