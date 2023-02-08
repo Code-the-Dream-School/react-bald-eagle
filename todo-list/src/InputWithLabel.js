@@ -1,4 +1,5 @@
 import React, { useRef, useEffect } from "react";
+import styles from "./Assets/css/App.module.css"
 
 const InputWithLabel = ({
   todoTitle,
@@ -16,9 +17,9 @@ const InputWithLabel = ({
 
   return (
     <>
-      <label className="form-label text-muted" htmlFor={id}> {children} </label>
+      <label className={`form-label text-muted`} htmlFor={id}> {children} </label>
       <input
-        className="todo-input form-control-md"
+        className={`${styles.todoInput} form-control-md`}
         type={type}
         id={id}
         name={title}

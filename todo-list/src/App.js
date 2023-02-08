@@ -3,13 +3,20 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import ListReducer from "./Reducer";
 import NewList from "./New"
 import CurrentList from "./Current"
-import "./App.css"
 
 const App = () => {
   const [todoList, dispatchTodoList] = useReducer(ListReducer,
     { data: {}, isLoading: false, isError: false })
   const [endpoint, setEndpoint] = useState('')
+  const [user, setUser] = useState('')
 
+  const getUser = () => {
+    setUser(prompt('Please enter your name'))
+  }
+
+  useEffect(() => {
+    getUser()
+  }, [])
 
   const fetchTodos = useCallback(async () => {
     if (!endpoint) return
@@ -141,6 +148,7 @@ const App = () => {
               addTodo={addTodo}
               removeTodo={removeTodo}
               onDone={handleDoneChange}
+              currentUser={user}
             ></CurrentList>
           }
         >

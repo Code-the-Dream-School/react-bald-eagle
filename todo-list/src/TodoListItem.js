@@ -1,4 +1,5 @@
 import React from "react";
+import styles from "./Assets/css/App.module.css"
 import InputWithLabel from "./InputWithLabel";
 
 const TodoListItem = ({ todo, onRemoveTodo, handleDoneChange }) => {
@@ -11,7 +12,7 @@ const TodoListItem = ({ todo, onRemoveTodo, handleDoneChange }) => {
   }
 
   return (
-    <li className="todo-item">
+    <li className={styles.item}>
       <b>{todo.fields.Name} </b>
       <InputWithLabel
         todoTitle={todo.title}
@@ -20,7 +21,7 @@ const TodoListItem = ({ todo, onRemoveTodo, handleDoneChange }) => {
         type="Checkbox"
         id="todoDone?"
       ></InputWithLabel>
-      <button className="remove-todo btn btn-dark" type="button" onClick={removeTodo}>
+      <button className={`btn ${styles.removeTodo} btn-dark`} type="button" onClick={removeTodo}>
         Remove
       </button>
     </li>
