@@ -49,7 +49,7 @@ const App = () => {
     const formattedTodo = {}
 
     // format for API
-    Object.keys(newTodo).forEach(function(key) {
+    Object.keys(newTodo).forEach(function (key) {
       if (key !== "id") {
         formattedTodo[key] = newTodo[key]
       }
@@ -91,7 +91,6 @@ const App = () => {
           payload: [...newTodos]
         })
       }
-      dispatchTodoList({ type: 'LIST_FETCH_FAILURE' })
     }
     catch {
       dispatchTodoList({ type: 'LIST_FETCH_FAILURE' })
