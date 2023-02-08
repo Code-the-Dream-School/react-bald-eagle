@@ -46,7 +46,15 @@ const App = () => {
   }, [endpoint])
 
   const addTodo = async (newTodo) => {
-    delete newTodo["id"]
+    const formattedTodo = {}
+
+    // format for API
+    Object.keys(newTodo).forEach(function(key) {
+      if (key !== "id") {
+        formattedTodo[key] = newTodo[key]
+      }
+      return formattedTodo
+    })
 
     const options = {
       method: 'POST',
@@ -58,7 +66,7 @@ const App = () => {
         "records": [
           {
             "fields": {
-              ...newTodo
+              ...formattedTodo
             }
           }
         ]
@@ -69,7 +77,19 @@ const App = () => {
       const response = await fetch(endpoint, options)
 
       if (response.ok) {
-        fetchTodos()
+        const newFormat = {
+          id: newTodo.id.toString(),
+          fields: {
+            ...formattedTodo
+          }
+        }
+
+        const newTodos = [...todoList.data, newFormat]
+
+        dispatchTodoList({
+          type: 'LIST_FETCH_SUCCESS',
+          payload: [...newTodos]
+        })
       }
       dispatchTodoList({ type: 'LIST_FETCH_FAILURE' })
     }
@@ -98,7 +118,7 @@ const App = () => {
 
       if (response.ok) {
         const newTodos = todoList.data.filter(todo => todo.id !== id)
-console.log('wtf', newTodos)
+
         dispatchTodoList({
           type: 'LIST_FETCH_SUCCESS',
           payload: [...newTodos]

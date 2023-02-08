@@ -5,6 +5,7 @@ const TodoListItem = ({ todo, onRemoveTodo }) => {
   const removeTodo = () => {
     onRemoveTodo(todo.id)
   }
+
   return (
     <li className={styles.item}>
       <b>{todo.fields.Name} </b>
