@@ -96,9 +96,7 @@ const App = () => {
     }
   };
 
-  const handleDoneChange = async (boolean, todo) => {
-    const done = boolean.toString().toLowerCase();
-  
+  const handleDoneChange = async (boolean, todo) => {  
     const options = {
       method: 'PATCH',
       headers: {
@@ -114,14 +112,7 @@ const App = () => {
     }
 
     try {
-      const response = await fetch(`${endpoint}/${todo.id}`, options)
-
-      if (response.ok) {
-        console.log('success')
-        // const data = response.json()
-        // fetchTodos()
-      }
-      dispatchTodoList({ type: 'LIST_FETCH_FAILURE' })
+      await fetch(`${endpoint}/${todo.id}`, options)
     }
     catch {
       dispatchTodoList({ type: 'LIST_FETCH_FAILURE' })

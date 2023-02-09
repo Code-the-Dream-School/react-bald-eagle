@@ -8,6 +8,7 @@ const InputWithLabel = ({
   type,
   id,
   children,
+  boxChecked
 }) => {
   const inputRef = useRef();
 
@@ -26,6 +27,7 @@ const InputWithLabel = ({
         value={todoTitle}
         onChange={handleChange}
         ref={inputRef}
+        checked={boxChecked}
       />
     </>
   );
