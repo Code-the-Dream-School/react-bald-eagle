@@ -1,8 +1,10 @@
-import { useNavigate } from "react-router-dom";
-
-const TodoButton = ({type, action, children}) => {
+const TodoButton = ({type, action, children, path}) => {
+    console.log('path', path, 'action', action)
+    const handleClick = (path) => {
+        action(path)
+    }
     return (
-        <button type={type} onClick={action}>{children}</button>
+        <button type={type} onClick={handleClick}>{children}</button>
     )
 }
 

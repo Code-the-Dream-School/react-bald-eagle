@@ -5,10 +5,10 @@ import TodoButton from "./TodoButton";
 import styles from "./Assets/css/App.module.css"
 
 const CurrentList = ({ todoList, addTodo, currentUser }) => {
-	let navigate = useNavigate(); 
+	let navigate = useNavigate();
+	let path = '/edit';  
   
-	const routeChange = () =>{ 
-	  let path = `/edit`; 
+	const routeChange = () =>{
 	  navigate(path);
 	}
 	return (
@@ -30,7 +30,8 @@ const CurrentList = ({ todoList, addTodo, currentUser }) => {
 			}
 			<TodoButton
 			  type="button"
-			  onClick={routeChange}
+			  action={routeChange}
+			  path={path}
 			>EDIT</TodoButton>
 		</div>
 	)

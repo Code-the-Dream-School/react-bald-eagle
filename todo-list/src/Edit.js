@@ -6,9 +6,9 @@ import styles from "./Assets/css/App.module.css"
 
 const Edit = ({user, todoList, removeTodo}) => {
     let navigate = useNavigate(); 
+    let path = '/';
   
-    const routeChange = () =>{ 
-      let path = `/`; 
+    const routeChange = () =>{  
       navigate(path);
     }
     return (
@@ -28,7 +28,8 @@ const Edit = ({user, todoList, removeTodo}) => {
         }
         <TodoButton
           type="button"
-          onClick={routeChange}
+          action={routeChange}
+          path={path}
         >HOME</TodoButton>
     </div>
     )
