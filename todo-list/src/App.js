@@ -106,24 +106,19 @@ const App = () => {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        "records": [
-          { 
-            "id": `${todo.id}`,
             "fields": {
               "Name": `${todo.fields.Name}`,
-              "Done": `${boolean}`,
+              "Done": boolean
             }
-          }
-        ]
       })
     }
 
     try {
-      const response = await fetch(endpoint, options)
-      console.log('done', done)
+      const response = await fetch(`${endpoint}/${todo.id}`, options)
 
       if (response.ok) {
-        const data = response.json()
+        console.log('success')
+        // const data = response.json()
         // fetchTodos()
       }
       dispatchTodoList({ type: 'LIST_FETCH_FAILURE' })
