@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import ListReducer from "./Reducer";
 import NewList from "./New"
 import CurrentList from "./Current"
+import EditList from "./Edit"
 
 const App = () => {
   const [todoList, dispatchTodoList] = useReducer(ListReducer,
@@ -10,13 +11,21 @@ const App = () => {
   const [endpoint, setEndpoint] = useState('')
   const [user, setUser] = useState('')
 
-  const getUser = () => {
+  const getUser = () => { 
     setUser(prompt('Please enter your name'))
   }
 
   useEffect(() => {
-    getUser()
+    if (localStorage.getItem('user')) {
+      setUser(JSON.parse(localStorage.getItem('user')))
+    }else {
+      getUser()
+    }
   }, [])
+
+  useEffect(() => {
+    localStorage.setItem('user', JSON.stringify(user))
+  }, [user])
 
   const fetchTodos = useCallback(async () => {
     if (!endpoint) return
@@ -45,6 +54,16 @@ const App = () => {
   }, [endpoint])
 
   const addTodo = async (newTodo) => {
+    const formattedTodo = {}
+
+    // format for API
+    Object.keys(newTodo).forEach(function (key) {
+      if (key !== "id") {
+        formattedTodo[key] = newTodo[key]
+      }
+      return formattedTodo
+    })
+
     const options = {
       method: 'POST',
       headers: {
@@ -55,7 +74,7 @@ const App = () => {
         "records": [
           {
             "fields": {
-              "Name": `${newTodo.title}`
+              ...formattedTodo
             }
           }
         ]
@@ -66,9 +85,20 @@ const App = () => {
       const response = await fetch(endpoint, options)
 
       if (response.ok) {
-        fetchTodos()
+        const newFormat = {
+          id: newTodo.id.toString(),
+          fields: {
+            ...formattedTodo
+          }
+        }
+
+        const newTodos = [...todoList.data, newFormat]
+
+        dispatchTodoList({
+          type: 'LIST_FETCH_SUCCESS',
+          payload: [...newTodos]
+        })
       }
-      dispatchTodoList({ type: 'LIST_FETCH_FAILURE' })
     }
     catch {
       dispatchTodoList({ type: 'LIST_FETCH_FAILURE' })
@@ -94,7 +124,12 @@ const App = () => {
       const response = await fetch(`https://api.airtable.com/v0/${process.env.REACT_APP_AIRTABLE_BASE_ID}/Tasks/${id}`, options)
 
       if (response.ok) {
-        fetchTodos();
+        const newTodos = todoList.data.filter(todo => todo.id !== id)
+
+        dispatchTodoList({
+          type: 'LIST_FETCH_SUCCESS',
+          payload: [...newTodos]
+        })
       }
     }
     catch {
@@ -118,6 +153,17 @@ const App = () => {
           }
         >
         </Route>
+        <Route
+          exact
+          path='/edit'
+          element={
+            <EditList
+              user={user}
+              todoList={todoList}
+              removeTodo={removeTodo}
+            ></EditList>
+          }
+        ></Route>
         <Route
           exact
           path='/new'
