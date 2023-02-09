@@ -1,8 +1,16 @@
 import TodoList from "./TodoList";
+import { useNavigate } from "react-router-dom";
 import AddTodoForm from "./AddTodoForm";
+import TodoButton from "./TodoButton";
 import styles from "./Assets/css/App.module.css"
 
 const CurrentList = ({ todoList, addTodo, currentUser }) => {
+	let navigate = useNavigate(); 
+  
+	const routeChange = () =>{ 
+	  let path = `/edit`; 
+	  navigate(path);
+	}
 	return (
 		<div className={styles.currentList}>
 			<div className={styles.title}>
@@ -20,6 +28,10 @@ const CurrentList = ({ todoList, addTodo, currentUser }) => {
 					<TodoList todoList={todoList.data} /> :
 					<p style={{color: 'white'}}>No Data</p>
 			}
+			<TodoButton
+			  type="button"
+			  onClick={routeChange}
+			>EDIT</TodoButton>
 		</div>
 	)
 }

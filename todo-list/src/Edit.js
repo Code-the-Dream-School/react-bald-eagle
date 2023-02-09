@@ -1,8 +1,16 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import TodoList from "./TodoList";
+import TodoButton from "./TodoButton";
 import styles from "./Assets/css/App.module.css"
 
 const Edit = ({user, todoList, removeTodo}) => {
+    let navigate = useNavigate(); 
+  
+    const routeChange = () =>{ 
+      let path = `/`; 
+      navigate(path);
+    }
     return (
     <div className={styles.currentList}>
         <div className={styles.title}>
@@ -18,6 +26,10 @@ const Edit = ({user, todoList, removeTodo}) => {
                 <TodoList todoList={todoList.data} onRemoveTodo={removeTodo} /> :
                 <p style={{color: 'white'}}>No Data</p>
         }
+        <TodoButton
+          type="button"
+          onClick={routeChange}
+        >HOME</TodoButton>
     </div>
     )
 }
