@@ -1,7 +1,7 @@
 import TodoList from "./TodoList";
 import { useNavigate } from "react-router-dom";
 import AddTodoForm from "./AddTodoForm";
-import TodoButton from "./TodoButton";
+import NavButton from "./NavButton";
 import styles from "./Assets/css/App.module.css"
 
 const CurrentList = ({ todoList, addTodo, currentUser }) => {
@@ -25,14 +25,14 @@ const CurrentList = ({ todoList, addTodo, currentUser }) => {
 
 			{todoList.isLoading ? <p style={{color: 'white'}}>Loading...</p>
 				: todoList.data.length > 0 ?
-					<TodoList todoList={todoList.data} /> :
+					<TodoList todoList={todoList.data} path={path} /> :
 					<p style={{color: 'white'}}>No Data</p>
 			}
-			<TodoButton
+			<NavButton
 			  type="button"
 			  action={routeChange}
 			  path={path}
-			>EDIT</TodoButton>
+			>EDIT</NavButton>
 		</div>
 	)
 }

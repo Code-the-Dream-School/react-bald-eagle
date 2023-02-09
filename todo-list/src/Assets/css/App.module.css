@@ -32,6 +32,13 @@ label {
 	text-align: center;
 }
 
+.navigationButton {
+	max-width: 50%;
+	margin: 0 auto;
+	margin-bottom: 5%;
+	margin-top: 5%;
+}
+
 .todoList {
 	width: 100%;
 	padding: 20px;
@@ -52,13 +59,22 @@ label {
 	font-family: 'Cabin Sketch', cursive;
 }
 
-.item {
+.itemEdit {
 	padding: 5px;
 	color:rgb(212, 211, 215);
 	font-weight: 700;
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
+}
+
+.item {
+	padding: 5px;
+	color:rgb(212, 211, 215);
+	font-weight: 700;
+	display: flex;
+	flex-direction: row;
+	text-align: center;
 }
 
 .item:hover {
@@ -98,9 +114,21 @@ label {
 		font-size: 40px;
 	}
 
+	.itemEdit {
+		text-align: left;
+		min-width: 80vw;
+		align-items: center;
+	}
+
 	.item {
+		display: flex;
+		flex-direction: row;
 		text-align: center;
 		min-width: 80vw;
+	}
+
+	.removeTodo {
+		max-height: 45px;
 	}
 }
 
