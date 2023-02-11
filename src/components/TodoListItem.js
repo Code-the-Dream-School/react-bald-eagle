@@ -1,12 +1,13 @@
 import React from "react";
-import style from './TodoListItem.module.css'
+import PropTypes from "prop-types";
+import style from "../TodoListItem.module.css";
 // Declare a function named TodoListItem
 //
 const TodoListItem = ({ todo, onRemoveTodo }) => (
-  <li className={style.ListItem}>
+  <li key={todo.id} className={style.ListItem}>
     {todo.fields.Title}
     <button
-      type="button"
+      type="submit"
       onClick={() => {
         onRemoveTodo(todo.id);
       }}
@@ -15,6 +16,10 @@ const TodoListItem = ({ todo, onRemoveTodo }) => (
     </button>
   </li>
 );
+TodoListItem.prototypes = {
+  todo: PropTypes.any,
+  onRemoveTodo: PropTypes.func,
+};
 
 // Export TodoListItem function as default
 export default TodoListItem;

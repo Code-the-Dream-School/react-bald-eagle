@@ -1,17 +1,34 @@
 import * as React from "react";
 // import the AddTodoForm
-import AddTodoForm from "./AddTodoForm";
+import AddTodoForm from "./components/AddTodoForm";
 import style from "./TodoListItem.module.css";
 //import Router
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 // import the TodoList
-import TodoList from "./TodoList";
+import TodoList from "./components/TodoList";
 
 export default function App() {
   const [todoList, setTodoList] = React.useState([]);
   const [isLoading, setIsLoading] = React.useState(true);
-
+// addTodo function
+function addTodo(newTodo) {
+  fetch(
+    `https://api.airtable.com/v0/${process.env.REACT_APP_AIRTABLE_BASE_ID}/Default`,
+    {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${process.env.REACT_APP_AIRTABLE_API_KEY}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ fields: newTodo }),
+    }
+  )
+    .then((response) => response.json())
+    .then((res) => {
+      setTodoList([...todoList, { ...newTodo, id: res.id }]);
+    });
+}
   React.useEffect(() => {
     // existing code for fetching data
     fetch(
@@ -38,24 +55,7 @@ export default function App() {
       return;
     }
   }, [todoList, isLoading]);
-  // addTodo function
-  function addTodo(newTodo) {
-    fetch(
-      `https://api.airtable.com/v0/${process.env.REACT_APP_AIRTABLE_BASE_ID}/Default`,
-      {
-        method: "POST",
-        headers: {
-          Authorization: `Bearer ${process.env.REACT_APP_AIRTABLE_API_KEY}`,
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ fields: newTodo }),
-      }
-    )
-      .then((response) => response.json())
-      .then((res) => {
-        setTodoList([...todoList, { ...newTodo, id: res.id }]);
-      });
-  }
+  
 
   // remove button
   const removeTodo = (id) => {
@@ -79,13 +79,13 @@ export default function App() {
   };
 
   return (
-    <BrowserRouter >
+    <BrowserRouter>
       <Routes>
         <Route
           exact
           path="/"
           element={
-            <div className={style.Container} >
+            <div className={style.Container}>
               <h1>Todo List</h1>
               <AddTodoForm onAddTodo={addTodo} />
               {isLoading ? (
@@ -96,7 +96,7 @@ export default function App() {
             </div>
           }
         ></Route>
-        <Route path="/new" element={<h1>New Todo List</h1>}></Route>
+        <Route path="/new" element={<h1>New Page Content</h1>}></Route>
       </Routes>
     </BrowserRouter>
   );
