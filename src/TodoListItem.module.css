@@ -1,0 +1,101 @@
+body {
+  font-family: "Open Sans", sans-serif;
+  background-image: url("https://bg.siteorigin.com/api/image?2x=0&blend=8&color=%23D1F0FD&intensity=10&invert=0&noise=0&pattern=arab_tile");
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+}
+@media screen and (min-width: 768px) {
+  .Container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 500px;
+    margin: auto;
+    margin-top: 5em;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.5); /* semi-transparent white */
+    border-radius: 20px;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.19),
+      0px 6px 6px rgba(0, 0, 0, 0.23);
+  }
+  .Container > form {
+    display: flex;
+    align-items: center;
+  }
+  /* Style input */
+  .Container > form > input[type="text"] {
+    border-radius: 10px;
+    margin-top: 20px;
+    padding: 10px;
+    margin: 10px;
+  }
+
+  .Container > ul {
+    list-style: none;
+    width: 80%;
+    margin-top: 20px;
+    padding: 1em;
+  }
+  /* Style list items */
+  .ListItem {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+    font-size: large;
+    color: blue;
+  }
+  .ListItem > button {
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+}
+
+@media screen and (min-width: 375px) and (max-width: 768px) {
+  .Container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 330px;
+    margin: auto;
+    margin-top: 5em;
+
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 20px;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.19),
+      0px 6px 6px rgba(0, 0, 0, 0.23);
+  }
+  .Container > form {
+    display: flex;
+    align-items: center;
+  }
+  .Container > form > input[type="text"] {
+    border-radius: 10px;
+    margin-top: 20px;
+    padding: 10px;
+    margin: 10px;
+  }
+
+  .Container > ul {
+    list-style: none;
+    width: 80%;
+    margin-top: 20px;
+    padding: 1em;
+  }
+  .ListItem {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+    font-size: large;
+    color: blue;
+  }
+  .ListItem > button {
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+}

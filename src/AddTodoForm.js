@@ -1,6 +1,5 @@
 import React from "react";
 import InputWithLabel from "./InputWithLabel";
-
 const AddTodoForm = ({ onAddTodo }) => {
   //Create new state variable named todoTitle with setter setTodoTitle
   const [todoTitle, setTodoTitle] = React.useState("");
@@ -49,7 +48,9 @@ const AddTodoForm = ({ onAddTodo }) => {
       >
         <b>Title:</b>
       </InputWithLabel>
-      <button type="submit">Add</button>
+      <button type="submit">
+      <img src="https://img.icons8.com/cute-clipart/20/plus-math.png" alt=""/>
+      </button>
     </form>
   );
 };

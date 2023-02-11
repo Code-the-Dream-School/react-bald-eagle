@@ -1,6 +1,7 @@
 import * as React from "react";
 // import the AddTodoForm
 import AddTodoForm from "./AddTodoForm";
+import style from "./TodoListItem.module.css";
 //import Router
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
@@ -78,13 +79,13 @@ export default function App() {
   };
 
   return (
-    <BrowserRouter>
+    <BrowserRouter >
       <Routes>
         <Route
           exact
           path="/"
           element={
-            <>
+            <div className={style.Container} >
               <h1>Todo List</h1>
               <AddTodoForm onAddTodo={addTodo} />
               {isLoading ? (
@@ -92,7 +93,7 @@ export default function App() {
               ) : (
                 <TodoList todoList={todoList} onRemoveTodo={removeTodo} />
               )}
-            </>
+            </div>
           }
         ></Route>
         <Route path="/new" element={<h1>New Todo List</h1>}></Route>
