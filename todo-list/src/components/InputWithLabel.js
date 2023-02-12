@@ -18,7 +18,7 @@ const InputWithLabel = ({
   return (
     <>
       {
-        type == "Checkbox" ? <div className="form-check-reverse form-switch">
+        type === "Checkbox" ? <div className="form-check-reverse form-switch">
           <label className={`form-check-label text-muted`} htmlFor={id}> Complete </label>
           <input
             className={`${styles.todoInput} form-check-input`}

@@ -1,5 +1,6 @@
 import TodoList from "./TodoList";
 import { useNavigate } from "react-router-dom";
+import PropTypes from "prop-types";
 import AddTodoForm from "./AddTodoForm";
 import NavButton from "./NavButton";
 import styles from "../Assets/css/App.module.css"
@@ -39,6 +40,13 @@ const CurrentList = ({ todoList, addTodo, currentUser, onDone }) => {
 			</div>
 		</div>
 	)
+}
+
+CurrentList.propTypes = {
+	todoList: PropTypes.object.isRequired,
+	addTodo: PropTypes.func,
+	currentUser: PropTypes.string,
+	onDone: PropTypes.func.isRequired
 }
 
 export default CurrentList
