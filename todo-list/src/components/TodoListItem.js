@@ -1,4 +1,5 @@
 import { useState } from "react";
+import PropTypes from "prop-types";
 import styles from "../Assets/css/App.module.css"
 import InputWithLabel from "./InputWithLabel";
 
@@ -35,5 +36,11 @@ const TodoListItem = ({ todo, onRemoveTodo, handleDoneChange }) => {
     </li>
   );
 };
+
+TodoListItem.propTypes = {
+  todo: PropTypes.object.isRequired,
+  onRemoveTodo: PropTypes.func.isRequired,
+  handleDoneChange: PropTypes.func.isRequired
+}
 
 export default TodoListItem;
