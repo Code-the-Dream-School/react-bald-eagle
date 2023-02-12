@@ -18,7 +18,7 @@ const TodoListItem = ({ todo, onRemoveTodo, handleDoneChange }) => {
     <li className={onRemoveTodo ? styles.itemEdit : styles.item }>
       <b>{todo.fields.Name} </b>
       <InputWithLabel
-        todoTitle={todo.title}
+        todoTitle={todo.fields.Name}
         handleChange={handleChange}
         title="Done?"
         type="Checkbox"
