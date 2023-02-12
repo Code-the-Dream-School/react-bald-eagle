@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import AddTodoForm from "./AddTodoForm"
+import AddTodoForm from "./AddTodoForm";
 
 const NewList = ({ addTodo }) => {
 	return (

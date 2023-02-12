@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import PropTypes from "prop-types";
 import AddTodoForm from "./AddTodoForm";
 import NavButton from "./NavButton";
-import styles from "../Assets/css/App.module.css"
+import styles from "../Assets/css/App.module.css";
 
 const CurrentList = ({ todoList, addTodo, currentUser, onDone }) => {
 	let navigate = useNavigate();
