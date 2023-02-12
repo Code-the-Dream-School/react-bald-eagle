@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useReducer, useCallback } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import PropTypes from "prop-types";
 import ListReducer from "./Reducer";
 import NewList from "./components/New"
 import CurrentList from "./components/Current"
@@ -200,4 +201,13 @@ const App = () => {
     </BrowserRouter>
   );
 };
+
+App.propTypes = {
+  todoList: PropTypes.object,
+  addTodo: PropTypes.func,
+  removeTodo: PropTypes.func,
+  handleDoneChange: PropTypes.func,
+  user: PropTypes.string
+}
+
 export default App;
