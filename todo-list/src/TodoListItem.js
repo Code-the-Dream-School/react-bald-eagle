@@ -15,21 +15,22 @@ const TodoListItem = ({ todo, onRemoveTodo, handleDoneChange }) => {
   }
 
   return (
-    <li className={onRemoveTodo ? styles.itemEdit : styles.item }>
+    <li className={onRemoveTodo || handleChange ? styles.itemEdit : styles.item}>
       <b>{todo.fields.Name} </b>
-      <InputWithLabel
-        todoTitle={todo.fields.Name}
-        handleChange={handleChange}
-        title="Done?"
-        type="Checkbox"
-        id="todoDone?"
-        boxChecked={done}
-      ></InputWithLabel>
       {onRemoveTodo ?
         <button className={`btn ${styles.removeTodo} btn-dark`} type="button" onClick={removeTodo}>
           Remove
         </button> :
-        <></>
+        <>
+          <InputWithLabel
+            todoTitle={todo.fields.Name}
+            handleChange={handleChange}
+            title="Done?"
+            type="Checkbox"
+            id="todoDone?"
+            boxChecked={done}
+          ></InputWithLabel>
+        </>
       }
     </li>
   );
