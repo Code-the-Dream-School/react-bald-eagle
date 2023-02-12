@@ -15,7 +15,7 @@ const TodoListItem = ({ todo, onRemoveTodo, handleDoneChange }) => {
   }
 
   return (
-    <li className={styles.item}>
+    <li className={onRemoveTodo ? styles.itemEdit : styles.item }>
       <b>{todo.fields.Name} </b>
       <InputWithLabel
         todoTitle={todo.title}

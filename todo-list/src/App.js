@@ -11,13 +11,21 @@ const App = () => {
   const [endpoint, setEndpoint] = useState('')
   const [user, setUser] = useState('')
 
-  const getUser = () => {
+  const getUser = () => { 
     setUser(prompt('Please enter your name'))
   }
 
   useEffect(() => {
-    getUser()
+    if (localStorage.getItem('user')) {
+      setUser(JSON.parse(localStorage.getItem('user')))
+    }else {
+      getUser()
+    }
   }, [])
+
+  useEffect(() => {
+    localStorage.setItem('user', JSON.stringify(user))
+  }, [user])
 
   const fetchTodos = useCallback(async () => {
     if (!endpoint) return
