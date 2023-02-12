@@ -4,7 +4,7 @@ import AddTodoForm from "./AddTodoForm";
 import NavButton from "./NavButton";
 import styles from "./Assets/css/App.module.css"
 
-const CurrentList = ({ todoList, addTodo, currentUser }) => {
+const CurrentList = ({ todoList, addTodo, currentUser, onDone }) => {
 	let navigate = useNavigate();
 	let path = '/edit';  
   
@@ -21,11 +21,11 @@ const CurrentList = ({ todoList, addTodo, currentUser }) => {
 
 			<AddTodoForm onAddTodo={addTodo} />
 
-			{todoList.isError && <p>Something went wrong...</p>}
+			{todoList.isError && <p style={{color: 'white'}}>Something went wrong...</p>}
 
 			{todoList.isLoading ? <p style={{color: 'white'}}>Loading...</p>
 				: todoList.data.length > 0 ?
-					<TodoList todoList={todoList.data} path={path} /> :
+					<TodoList todoList={todoList.data} onDone={onDone} path={path} /> :
 					<p style={{color: 'white'}}>No Data</p>
 			}
 			<NavButton

@@ -42,7 +42,6 @@ const App = () => {
 
       if (response.ok) {
         const data = await response.json()
-
         dispatchTodoList({ type: 'LIST_FETCH_SUCCESS', payload: [...data.records] })
       } else {
         dispatchTodoList({ type: 'LIST_FETCH_FAILURE' })
@@ -105,6 +104,29 @@ const App = () => {
     }
   };
 
+  const handleDoneChange = async (boolean, todo) => { 
+    const options = {
+      method: 'PATCH',
+      headers: {
+        Authorization: `Bearer ${process.env.REACT_APP_AIRTABLE_API_KEY}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+            "fields": {
+              "Name": `${todo.fields.Name}`,
+              "Done": boolean
+            }
+      })
+    }
+
+    try {
+      await fetch(`${endpoint}/${todo.id}`, options)
+    }
+    catch {
+      dispatchTodoList({ type: 'LIST_FETCH_FAILURE' })
+    }
+  };
+
   useEffect(() => {
     setEndpoint(`https://api.airtable.com/v0/${process.env.REACT_APP_AIRTABLE_BASE_ID}/Tasks`)
     setTimeout(() => {
@@ -148,6 +170,7 @@ const App = () => {
               todoList={todoList}
               addTodo={addTodo}
               removeTodo={removeTodo}
+              onDone={handleDoneChange}
               currentUser={user}
             ></CurrentList>
           }
