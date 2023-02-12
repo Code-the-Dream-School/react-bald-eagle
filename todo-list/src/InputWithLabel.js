@@ -3,8 +3,7 @@ import styles from "./Assets/css/App.module.css"
 
 const InputWithLabel = ({
   todoTitle,
-  handleDoneChange,
-  handleTitlechange,
+  handleChange,
   name,
   type,
   id,
@@ -26,7 +25,7 @@ const InputWithLabel = ({
         id={id}
         name={name}
         value={todoTitle}
-        onChange={handleTitlechange}
+        onChange={handleChange}
         ref={inputRef}
         checked={boxChecked}
       />

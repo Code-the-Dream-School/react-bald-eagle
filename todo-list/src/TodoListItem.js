@@ -7,7 +7,7 @@ const TodoListItem = ({ todo, onRemoveTodo, handleDoneChange }) => {
     onRemoveTodo(todo.id)
   }
 
-  const handleChange = (event) => {
+  const handleDoneChange = (event) => {
     handleDoneChange(event.target.checked, todo)
   }
 
@@ -16,7 +16,7 @@ const TodoListItem = ({ todo, onRemoveTodo, handleDoneChange }) => {
       <b>{todo.fields.Name} </b>
       <InputWithLabel
         todoTitle={todo.title}
-        handleChange={handleChange}
+        handleChange={handleDoneChange}
         title="Done?"
         type="Checkbox"
         id="todoDone?"

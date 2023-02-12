@@ -97,6 +97,7 @@ const App = () => {
   };
 
   const handleDoneChange = async (boolean, todo) => {  
+    console.log('boolean', boolean)
     const options = {
       method: 'PATCH',
       headers: {
