@@ -1,14 +1,17 @@
-import React from "react";
+import { useState } from "react";
 import styles from "./Assets/css/App.module.css"
 import InputWithLabel from "./InputWithLabel";
 
 const TodoListItem = ({ todo, onRemoveTodo, handleDoneChange }) => {
+  const [done, setDone] = useState(todo.fields.Done)
+
   const removeTodo = () => {
     onRemoveTodo(todo.id)
   }
 
   const handleChange = (event) => {
     handleDoneChange(event.target.checked, todo)
+    setDone(event.target.checked)
   }
 
   return (
@@ -20,7 +23,7 @@ const TodoListItem = ({ todo, onRemoveTodo, handleDoneChange }) => {
         title="Done?"
         type="Checkbox"
         id="todoDone?"
-        boxChecked={todo.fields.Done}
+        boxChecked={done}
       ></InputWithLabel>
       {onRemoveTodo ?
         <button className={`btn ${styles.removeTodo} btn-dark`} type="button" onClick={removeTodo}>
