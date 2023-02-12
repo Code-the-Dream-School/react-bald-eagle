@@ -20,7 +20,7 @@ const AddTodoForm = ({ onAddTodo }) => {
     <form className={`${styles.inputForm} form-floating`} onSubmit={handleAddTodo}>
       <InputWithLabel
         todoTitle={todoTitle}
-        handleTitleChange={handleTitleChange}
+        onChange={handleTitleChange}
         name="Title"
         type="text"
         id="TodoTitle"
