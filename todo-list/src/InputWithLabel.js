@@ -7,7 +7,6 @@ const InputWithLabel = ({
   name,
   type,
   id,
-  children,
   boxChecked
 }) => {
   const inputRef = useRef();
@@ -19,8 +18,8 @@ const InputWithLabel = ({
   return (
     <>
       {
-        type == "Checkbox" ? <div className="form-check form-switch">
-          <label className={`form-check-label text-muted`} htmlFor={id}> {children} </label>
+        type == "Checkbox" ? <div className="form-check-reverse form-switch">
+          <label className={`form-check-label text-muted`} htmlFor={id}> Done? </label>
           <input
             className={`${styles.todoInput} form-check-input`}
             type={type}
@@ -32,7 +31,7 @@ const InputWithLabel = ({
             checked={boxChecked}
           />
         </div> : <>
-          <label className={`form-label text-muted`} htmlFor={id}> {children} </label>
+          <label className={`form-label text-muted`} htmlFor={id}></label>
           <input
             className={`${styles.todoInput} form-control-md`}
             type={type}
