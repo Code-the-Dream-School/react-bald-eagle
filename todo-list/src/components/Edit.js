@@ -2,7 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import TodoList from "./TodoList";
 import NavButton from "./NavButton";
-import styles from "./Assets/css/App.module.css"
+import styles from "../Assets/css/App.module.css"
 
 const Edit = ({ user, todoList, removeTodo }) => {
 	let navigate = useNavigate();

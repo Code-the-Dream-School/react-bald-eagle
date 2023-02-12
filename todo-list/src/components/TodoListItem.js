@@ -1,5 +1,5 @@
 import { useState } from "react";
-import styles from "./Assets/css/App.module.css"
+import styles from "../Assets/css/App.module.css"
 import InputWithLabel from "./InputWithLabel";
 
 const TodoListItem = ({ todo, onRemoveTodo, handleDoneChange }) => {

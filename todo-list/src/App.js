@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useReducer, useCallback } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import ListReducer from "./Reducer";
-import NewList from "./New"
-import CurrentList from "./Current"
-import EditList from "./Edit"
+import NewList from "./components/New"
+import CurrentList from "./components/Current"
+import EditList from "./components/Edit"
 
 const App = () => {
   const [todoList, dispatchTodoList] = useReducer(ListReducer,
