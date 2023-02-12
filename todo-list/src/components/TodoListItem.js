@@ -39,8 +39,8 @@ const TodoListItem = ({ todo, onRemoveTodo, handleDoneChange }) => {
 
 TodoListItem.propTypes = {
   todo: PropTypes.object.isRequired,
-  onRemoveTodo: PropTypes.func.isRequired,
-  handleDoneChange: PropTypes.func.isRequired
+  onRemoveTodo: PropTypes.func,
+  handleDoneChange: PropTypes.func
 }
 
 export default TodoListItem;
