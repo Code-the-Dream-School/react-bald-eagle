@@ -18,17 +18,33 @@ const InputWithLabel = ({
 
   return (
     <>
-      <label className={`form-label text-muted`} htmlFor={id}> {children} </label>
-      <input
-        className={`${styles.todoInput} form-control-md`}
-        type={type}
-        id={id}
-        name={name}
-        value={todoTitle}
-        onChange={handleChange}
-        ref={inputRef}
-        checked={boxChecked}
-      />
+      {
+        type == "Checkbox" ? <div className="form-check form-switch">
+          <label className={`form-check-label text-muted`} htmlFor={id}> {children} </label>
+          <input
+            className={`${styles.todoInput} form-check-input`}
+            type={type}
+            id={id}
+            name={name}
+            value={todoTitle}
+            onChange={handleChange}
+            ref={inputRef}
+            checked={boxChecked}
+          />
+        </div> : <>
+          <label className={`form-label text-muted`} htmlFor={id}> {children} </label>
+          <input
+            className={`${styles.todoInput} form-control-md`}
+            type={type}
+            id={id}
+            name={name}
+            value={todoTitle}
+            onChange={handleChange}
+            ref={inputRef}
+            checked={boxChecked}
+          />
+        </>
+      }
     </>
   );
 };
