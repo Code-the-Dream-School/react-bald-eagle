@@ -45,7 +45,7 @@ const CurrentList = ({ todoList, addTodo, currentUser, onDone }) => {
 CurrentList.propTypes = {
 	todoList: PropTypes.object.isRequired,
 	addTodo: PropTypes.func,
-	currentUser: PropTypes.string,
+	currentUser: PropTypes.string.isRequired,
 	onDone: PropTypes.func.isRequired
 }
 

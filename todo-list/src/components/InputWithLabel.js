@@ -1,4 +1,5 @@
 import React, { useRef, useEffect } from "react";
+import PropTypes from "prop-types";
 import styles from "../Assets/css/App.module.css"
 
 const InputWithLabel = ({
@@ -47,5 +48,14 @@ const InputWithLabel = ({
     </>
   );
 };
+
+InputWithLabel.propTypes = {
+  todoTitle: PropTypes.string.isRequired,
+  handleChange: PropTypes.func.isRequired,
+  name: PropTypes.string,
+  type: PropTypes.string.isRequired,
+  id: PropTypes.string.isRequired,
+  boxChecked: PropTypes.bool
+}
 
 export default InputWithLabel;

@@ -1,5 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import PropTypes from "prop-types";
 import TodoList from "./TodoList";
 import NavButton from "./NavButton";
 import styles from "../Assets/css/App.module.css"
@@ -38,6 +39,12 @@ const Edit = ({ user, todoList, removeTodo }) => {
 			</div>
 		</div>
 	)
+}
+
+Edit.propTypes = {
+	user: PropTypes.string.isRequired,
+	todoList: PropTypes.object.isRequired,
+	removeTodo: PropTypes.func.isRequired
 }
 
 export default Edit
