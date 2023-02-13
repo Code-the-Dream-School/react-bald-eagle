@@ -1,8 +1,11 @@
+// import TodoList from "../components/TodoList"
+
+jest.mock('../App')
+
 const App = require("../App.js")
 
-test("todoList is an object", () => {
-  const todoList = App.todoList
-  expect(todoList).not.toBeUndefined()
+test("return todoList object", () => {
+  return App.fetchTodos().then(data => expect(data.records).not.toBeUndefined())
 })
 
 
