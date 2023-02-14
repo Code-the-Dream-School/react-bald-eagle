@@ -43,7 +43,6 @@ const App = () => {
 
       if (response.ok) {
         const data = await response.json()
-        console.log('data', data)
         dispatchTodoList({ type: 'LIST_FETCH_SUCCESS', payload: [...data.records] })
       } else {
         dispatchTodoList({ type: 'LIST_FETCH_FAILURE' })

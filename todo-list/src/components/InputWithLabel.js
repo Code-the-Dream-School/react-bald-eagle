@@ -19,7 +19,18 @@ const InputWithLabel = ({
   return (
     <>
       {
-        type === "Checkbox" ? <div className="form-check-reverse form-switch">
+        type !== "Checkbox" ? <>
+          <label className={`form-label text-muted`} htmlFor={id}></label>
+          <input
+            className={`${styles.todoInput} form-control-md`}
+            type={type}
+            id={id}
+            name={name}
+            value={todoTitle}
+            onChange={handleChange}
+            ref={inputRef}
+          />
+        </> : <div className="form-check-reverse form-switch">
           <label className={`form-check-label text-muted`} htmlFor={id}> Complete </label>
           <input
             className={`${styles.todoInput} form-check-input`}
@@ -31,19 +42,7 @@ const InputWithLabel = ({
             ref={inputRef}
             checked={boxChecked}
           />
-        </div> : <>
-          <label className={`form-label text-muted`} htmlFor={id}></label>
-          <input
-            className={`${styles.todoInput} form-control-md`}
-            type={type}
-            id={id}
-            name={name}
-            value={todoTitle}
-            onChange={handleChange}
-            ref={inputRef}
-            checked={boxChecked}
-          />
-        </>
+        </div>
       }
     </>
   );
