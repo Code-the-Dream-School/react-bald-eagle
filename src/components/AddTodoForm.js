@@ -1,10 +1,8 @@
 import React from "react";
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 import InputWithLabel from "./InputWithLabel";
 
-
 const AddTodoForm = ({ onAddTodo }) => {
-  //Create new state variable named todoTitle with setter setTodoTitle
   const [todoTitle, setTodoTitle] = React.useState("");
 
   const handleTitleChange = (e) => {
@@ -52,15 +50,17 @@ const AddTodoForm = ({ onAddTodo }) => {
         <b>Title:</b>
       </InputWithLabel>
       <button type="submit">
-      <img src="https://img.icons8.com/cute-clipart/20/plus-math.png" alt=""/>
+        <img
+          src="https://img.icons8.com/cute-clipart/20/plus-math.png"
+          alt=""
+        />
       </button>
     </form>
   );
 };
 
-
 AddTodoForm.prototypes = {
-  onAddTodo: PropTypes.func
-}
+  onAddTodo: PropTypes.func,
+};
 
 export default AddTodoForm;

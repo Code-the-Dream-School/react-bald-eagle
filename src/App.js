@@ -1,19 +1,14 @@
 import * as React from "react";
-//import Router
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-// import the AddTodoForm
 import AddTodoForm from "./components/AddTodoForm";
 import style from "./TodoListItem.module.css";
 
-// import the TodoList
 import TodoList from "./components/TodoList";
 
 export default function App() {
   const [todoList, setTodoList] = React.useState([]);
   const [isLoading, setIsLoading] = React.useState(true);
-  //
 
-  // addTodo function
   function addTodo(newTodo) {
     fetch(
       `https://api.airtable.com/v0/${process.env.REACT_APP_AIRTABLE_BASE_ID}/Default`,
@@ -50,17 +45,12 @@ export default function App() {
   }, []);
 
   React.useEffect(() => {
-    // check that isLoading is false before setting localStorage
     if (isLoading === false) {
       localStorage.setItem("todoList", JSON.stringify(todoList));
       return;
     }
   }, [todoList, isLoading]);
 
-  //
- 
-
-  // remove button
   const removeTodo = (id) => {
     fetch(
       `https://api.airtable.com/v0/${process.env.REACT_APP_AIRTABLE_BASE_ID}/Default/${id}`,
@@ -94,11 +84,7 @@ export default function App() {
               {isLoading ? (
                 <p>Loading...</p>
               ) : (
-                <TodoList
-                  todoList={todoList}
-                  onRemoveTodo={removeTodo}
-                  
-                />
+                <TodoList todoList={todoList} onRemoveTodo={removeTodo} />
               )}
             </div>
           }
