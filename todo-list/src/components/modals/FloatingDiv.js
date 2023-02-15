@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import AddTodoForm from "../AddTodoForm";
 import NavButton from "../NavButton";
 import styles from "../../Assets/css/App.module.css";
@@ -11,18 +12,24 @@ export const FloatingDiv = ({ currentUser, addTodo, routeChange, path, buttonTex
         }
       </div>
 
-      <form method={"dialog"}>
-        {
-          addTodo ? <AddTodoForm onAddTodo={addTodo} /> : <></>
-        }
+      {
+        addTodo ? <AddTodoForm onAddTodo={addTodo} /> : <></>
+      }
 
-        <NavButton
-          type="button"
-          action={routeChange}
-          path={path}
-        >{buttonText}</NavButton>
-        <button type="button" className={`btn btn-dark`}>Cancel</button>
-      </form>
+      <NavButton
+        type="button"
+        action={routeChange}
+        path={path}
+      >{buttonText}</NavButton>
+      <button type="button" className={`btn btn-dark`}>Cancel</button>
     </dialog>
   )
 };
+
+FloatingDiv.propTypes = {
+  currentUser: PropTypes.string.isRequired,
+  addTodo: PropTypes.func,
+  routeChange: PropTypes.func.isRequired,
+  path: PropTypes.string.isRequired,
+  buttonText: PropTypes.string.isRequired
+}
