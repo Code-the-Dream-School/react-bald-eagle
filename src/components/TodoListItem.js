@@ -6,8 +6,9 @@ import style from "../TodoListItem.module.css";
 const TodoListItem = ({ todo, onRemoveTodo }) => (
   <li key={todo.id} className={style.ListItem}>
     {todo.fields.Title}
+    
     <button
-      type="submit"
+      type="button"
       onClick={() => {
         onRemoveTodo(todo.id);
       }}

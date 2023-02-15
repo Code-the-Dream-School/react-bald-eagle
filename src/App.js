@@ -1,9 +1,9 @@
 import * as React from "react";
+//import Router
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 // import the AddTodoForm
 import AddTodoForm from "./components/AddTodoForm";
 import style from "./TodoListItem.module.css";
-//import Router
-import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 // import the TodoList
 import TodoList from "./components/TodoList";
@@ -11,26 +11,27 @@ import TodoList from "./components/TodoList";
 export default function App() {
   const [todoList, setTodoList] = React.useState([]);
   const [isLoading, setIsLoading] = React.useState(true);
-// addTodo function
-function addTodo(newTodo) {
-  fetch(
-    `https://api.airtable.com/v0/${process.env.REACT_APP_AIRTABLE_BASE_ID}/Default`,
-    {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${process.env.REACT_APP_AIRTABLE_API_KEY}`,
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ fields: newTodo }),
-    }
-  )
-    .then((response) => response.json())
-    .then((res) => {
-      setTodoList([...todoList, { ...newTodo, id: res.id }]);
-    });
-}
+  //
+
+  // addTodo function
+  function addTodo(newTodo) {
+    fetch(
+      `https://api.airtable.com/v0/${process.env.REACT_APP_AIRTABLE_BASE_ID}/Default`,
+      {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${process.env.REACT_APP_AIRTABLE_API_KEY}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ fields: newTodo }),
+      }
+    )
+      .then((response) => response.json())
+      .then((res) => {
+        setTodoList([...todoList, { ...newTodo, id: res.id }]);
+      });
+  }
   React.useEffect(() => {
-    // existing code for fetching data
     fetch(
       `https://api.airtable.com/v0/${process.env.REACT_APP_AIRTABLE_BASE_ID}/Default`,
       {
@@ -55,7 +56,9 @@ function addTodo(newTodo) {
       return;
     }
   }, [todoList, isLoading]);
-  
+
+  //
+ 
 
   // remove button
   const removeTodo = (id) => {
@@ -91,7 +94,11 @@ function addTodo(newTodo) {
               {isLoading ? (
                 <p>Loading...</p>
               ) : (
-                <TodoList todoList={todoList} onRemoveTodo={removeTodo} />
+                <TodoList
+                  todoList={todoList}
+                  onRemoveTodo={removeTodo}
+                  
+                />
               )}
             </div>
           }

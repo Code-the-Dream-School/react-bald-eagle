@@ -1,6 +1,6 @@
 body {
   font-family: "Open Sans", sans-serif;
-  background-image: url("https://bg.siteorigin.com/api/image?2x=0&blend=8&color=%23D1F0FD&intensity=10&invert=0&noise=0&pattern=arab_tile");
+  background-image: url("https://images.pexels.com/photos/129731/pexels-photo-129731.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2");
   background-size: cover;
   background-position: center;
   height: 100vh;
@@ -50,6 +50,7 @@ body {
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    background-color: #dabce4;
   }
 }
 
@@ -97,5 +98,6 @@ body {
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    background-color: #dabce4;
   }
 }
