@@ -134,7 +134,8 @@ label {
 
 @media screen and (min-width: 700px) {
 	.floatingDiv {
-		left: 20vw;
+		margin: 0 auto;
+		top: 20vh;
 		background-image: linear-gradient(180deg, rgb(1, 90, 94), rgb(0, 22, 23));
 		position: fixed;
 		z-index: 1000;
@@ -147,15 +148,13 @@ label {
 	}
 
 	.todoItems {
-		padding-top: 30vh;
+		padding-top: 7vh;
 	}
 
 	.inputForm {
 		display: flex;
 		flex-direction: column;
-		max-width: 60%;
 		margin: 0 25% 0;
-		min-height: 20%;
 	}
 	
 	.todoInput {

@@ -2,7 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import PropTypes from "prop-types";
 import TodoList from "./TodoList";
-import { FloatingDiv } from "./FloatingDiv";
+import { FloatingDiv } from "./modals/FloatingDiv";
 import NavButton from "./NavButton";
 import styles from "../Assets/css/App.module.css";
 
