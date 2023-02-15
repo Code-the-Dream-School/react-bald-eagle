@@ -2,6 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import PropTypes from "prop-types";
 import TodoList from "./TodoList";
+import { FloatingDiv } from "./FloatingDiv";
 import NavButton from "./NavButton";
 import styles from "../Assets/css/App.module.css";
 
@@ -14,19 +15,12 @@ const Edit = ({ user, todoList, removeTodo }) => {
 	}
 	return (
 		<div className={styles.currentList}>
-			<div className={styles.floatingDiv}>
-				<div className={styles.title}>
-					{
-						user.length > 0 ? <h1>Edit {user}'s Todo List</h1> : <h1>Todo List</h1>
-					}
-				</div>
-
-				<NavButton
-					type="button"
-					action={routeChange}
-					path={path}
-				>HOME</NavButton>
-			</div>
+			<FloatingDiv
+				currentUser={user}
+				routeChange={routeChange}
+				path={path}
+				buttonText={"HOME"}
+			>Edit {user}'s Todo List</FloatingDiv>
 
 			<div className={styles.todoItems}>
 				{todoList.isError && <p>Something went wrong...</p>}

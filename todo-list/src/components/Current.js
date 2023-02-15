@@ -18,7 +18,8 @@ const CurrentList = ({ todoList, addTodo, currentUser, onDone }) => {
 				addTodo={addTodo}
 				routeChange={routeChange}
 				path={path}
-			></FloatingDiv>
+				buttonText={"EDIT"}
+			>{currentUser}'s Todo List</FloatingDiv>
 
 			<div className={styles.todoItems}>
 				{todoList.isError && <p style={{ color: 'white' }}>Something went wrong...</p>}
