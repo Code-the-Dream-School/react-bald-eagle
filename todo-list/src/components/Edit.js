@@ -26,7 +26,7 @@ const Edit = ({ user, todoList, removeTodo, show, handleClose, handleShow }) => 
 				buttonText={"View List"}
 				show={show}
 				handleClose={handleClose}
-			>{user}'s Todo List</FloatingDiv>
+			>Edit {user}'s Todo List</FloatingDiv>
 
 			<div className={styles.todoItems}>
 				{todoList.isError && <p>Something went wrong...</p>}
