@@ -57,6 +57,8 @@ const AddTodoForm = ({ onAddTodo }) => {
     </form>
   );
 };
+
+
 AddTodoForm.prototypes = {
   onAddTodo: PropTypes.func
 }

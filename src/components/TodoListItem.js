@@ -18,7 +18,7 @@ const TodoListItem = ({ todo, onRemoveTodo }) => (
   </li>
 );
 TodoListItem.prototypes = {
-  todo: PropTypes.any,
+  todo: PropTypes.string,
   onRemoveTodo: PropTypes.func,
 };
 
