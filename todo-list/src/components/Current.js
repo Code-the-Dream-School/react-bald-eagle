@@ -1,24 +1,32 @@
+import Button from 'react-bootstrap/Button';
 import TodoList from "./TodoList";
 import { useNavigate } from "react-router-dom";
 import PropTypes from "prop-types";
 import { FloatingDiv } from "./modals/FloatingDiv";
 import styles from "../Assets/css/App.module.css";
 
-const CurrentList = ({ todoList, addTodo, currentUser, onDone }) => {
+const CurrentList = ({ todoList, addTodo, currentUser, onDone, show, handleShow, handleClose }) => {
 	let navigate = useNavigate();
 	let path = '/edit';
 
 	const routeChange = () => {
 		navigate(path);
 	}
+
 	return (
 		<div className={styles.currentList}>
+			<Button variant="dark" onClick={handleShow}>
+        Edit Your List
+      </Button>
+		
 			<FloatingDiv
 				currentUser={currentUser}
 				addTodo={addTodo}
 				routeChange={routeChange}
 				path={path}
-				buttonText={"EDIT"}
+				buttonText={"Edit List"}
+				show={show}
+				handleClose={handleClose}
 			>{currentUser}'s Todo List</FloatingDiv>
 
 			<div className={styles.todoItems}>
@@ -38,7 +46,10 @@ CurrentList.propTypes = {
 	todoList: PropTypes.object.isRequired,
 	addTodo: PropTypes.func,
 	currentUser: PropTypes.string.isRequired,
-	onDone: PropTypes.func.isRequired
+	onDone: PropTypes.func.isRequired,
+	show: PropTypes.bool.isRequired,
+	handleShow: PropTypes.func,
+	handleClose: PropTypes.func
 }
 
 export default CurrentList

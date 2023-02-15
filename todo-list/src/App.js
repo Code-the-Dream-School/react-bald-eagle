@@ -11,10 +11,16 @@ const App = () => {
     { data: {}, isLoading: false, isError: false })
   const [endpoint, setEndpoint] = useState('')
   const [user, setUser] = useState('')
+  const [show, setShow] = useState(false)
 
   const getUser = () => { 
     setUser(prompt('Please enter your name'))
   }
+
+  
+
+	const handleShow = () => setShow(true)
+	const handleClose = () => setShow(false)
 
   useEffect(() => {
     if (localStorage.getItem('user')) {
@@ -173,6 +179,10 @@ const App = () => {
               removeTodo={removeTodo}
               onDone={handleDoneChange}
               currentUser={user}
+              show={show}
+              setShow={setShow}
+              handleClose={handleClose}
+              handleShow={handleShow}
             ></CurrentList>
           }
         >
@@ -185,6 +195,10 @@ const App = () => {
               user={user}
               todoList={todoList}
               removeTodo={removeTodo}
+              show={show}
+              setShow={setShow}
+              handleClose={handleClose}
+              handleShow={handleShow}
             ></EditList>
           }
         ></Route>

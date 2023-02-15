@@ -1,12 +1,11 @@
-import React from "react";
+import Button from 'react-bootstrap/Button';
 import { useNavigate } from "react-router-dom";
 import PropTypes from "prop-types";
 import TodoList from "./TodoList";
 import { FloatingDiv } from "./modals/FloatingDiv";
-import NavButton from "./NavButton";
 import styles from "../Assets/css/App.module.css";
 
-const Edit = ({ user, todoList, removeTodo }) => {
+const Edit = ({ user, todoList, removeTodo, show, handleClose, handleShow }) => {
 	let navigate = useNavigate();
 	let path = '/';
 
@@ -16,12 +15,18 @@ const Edit = ({ user, todoList, removeTodo }) => {
 
 	return (
 		<div className={styles.currentList}>
+			<Button variant="dark" onClick={handleShow}>
+				View Your List
+			</Button>
+
 			<FloatingDiv
 				currentUser={user}
 				routeChange={routeChange}
 				path={path}
-				buttonText={"HOME"}
-			>Edit {user}'s Todo List</FloatingDiv>
+				buttonText={"View List"}
+				show={show}
+				handleClose={handleClose}
+			>{user}'s Todo List</FloatingDiv>
 
 			<div className={styles.todoItems}>
 				{todoList.isError && <p>Something went wrong...</p>}
