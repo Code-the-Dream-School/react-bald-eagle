@@ -1,0 +1,20 @@
+.AddTodoForm_formStyle__3z-tL input {
+    font-family: Papyrus, sans-serif;
+    height: 25px;
+}
+
+.label__for__input, input {
+    font-family: 'Lucida Console', Helvetica, sans-serif;
+    font-size: 20px;
+    color: #495159;
+    font-weight: 500;
+    border: none;
+    padding: 7px;
+}
+
+.input__boxes, input {
+    margin: 0.7rem;
+    color: #100f1ea9;
+    font-size: 20px;
+    font-weight: 800;
+}

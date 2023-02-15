@@ -1,0 +1,282 @@
+@import url('https://fonts.googleapis.com/css?family=Share+Tech+Mono&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Shadows+Into+Light&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Poppins&display=swap');
+
+*,
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+/* index.css - for fonts and resets */
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "Poppins", sans-serif;
+    /* width: 70%; */
+    background-color: #dad9c41d;
+}
+
+:root {
+    /* COLORS */
+    --color-dark: #3E505B;
+    --color-white: white;
+    /* CONTAINERS */
+
+    /* SCREEN SIZES - common screen resolutions in px*/
+    /* --screen-1: 1920px;
+    --screen-2: 1536px;
+    --screen-3: 1366px;
+    --screen-4: 414px;
+    --screen-5: 375px;
+    --screen-6: 360px; */
+}
+
+.app__wrapper {
+    position: relative;
+}
+
+@media (min-width: 50px) {
+    .app__wrapper {
+        width: 70%;
+        left: 30px
+    }
+
+    body {
+        font-size: 0.7rem;
+        position: absolute;
+        right: auto;
+        left: 30px;
+        background-color:white;
+    }
+
+    .TodoListItem_buttons__3zE9i {
+        font-size: small;
+        padding: 5px;
+    }
+
+    .app__wrapper img {
+        width: 90px;
+    }
+
+    .AddTodoForm_formStyle__3z-tL {
+        display:block;
+    }
+
+    .AddTodoForm_formStyle__3z-tL button {
+        background-color:cadetblue;
+        font-size: 12px;
+    }
+
+    .AddTodoForm_formStyle__3z-tL label {
+        position: relative;
+        font-size: 15px;
+    }
+
+    .AddTodoForm_formStyle__3z-tL input {
+        height: 30px;
+        border: 2px solid #3E505B;
+        min-width: 90%;
+        position: relative;
+        font-size: 15px;
+    }
+
+    .add__form__container {
+        min-width: 300px;
+       
+    }
+    .label__for__input, input {
+        max-width: 100px;
+        position: absolute;
+        left: 0;
+        right: 0;
+    }
+}
+
+@media (min-width: 375px) {
+    .app__wrapper {
+        width: 70%;
+        left: 30px
+    }
+
+    body {
+        font-size: 0.7rem;
+        position: absolute;
+        right: auto;
+        left: 30px;
+        background-color:white;
+    }
+
+    .TodoListItem_buttons__3zE9i {
+        font-size: small;
+        padding: 5px;
+    }
+
+    .app__wrapper img {
+        width: 90px;
+    }
+
+    .AddTodoForm_formStyle__3z-tL {
+        display:block;
+    }
+
+    .AddTodoForm_formStyle__3z-tL button {
+        background-color:cadetblue;
+        font-size: 12px;
+    }
+
+    .AddTodoForm_formStyle__3z-tL label {
+        position: relative;
+        font-size: 15px;
+    }
+
+    .AddTodoForm_formStyle__3z-tL input {
+        height: 30px;
+        border: 2px solid #3E505B;
+        min-width: 90%;
+        position: relative;
+        font-size: 15px;
+    }
+
+    .add__form__container {
+        min-width: 300px;
+       
+    }
+    .label__for__input, input {
+        max-width: 100px;
+        position: absolute;
+        left: 0;
+        right: 0;
+    }
+}
+
+@media (min-width: 480px) {
+    .app__wrapper {
+        width: 80%;
+        align-items: left;
+    }
+
+    body {
+        font-size: 0.8rem;
+        position: absolute;
+        right: auto;
+        left: 28px;
+        background-color:white;
+    }
+
+    .TodoListItem_buttons__3zE9i {
+        font-size: small;
+        padding: 5px;
+    }
+
+    .app__wrapper img {
+        width: 110px;
+    }
+
+    .AddTodoForm_formStyle__3z-tL {
+        display:block;
+    }
+
+    .AddTodoForm_formStyle__3z-tL button {
+        background-color:cadetblue;
+        font-size: 12px;
+    }
+
+    .AddTodoForm_formStyle__3z-tL label {
+        position: relative;
+        font-size: 15px;
+    }
+
+    .AddTodoForm_formStyle__3z-tL input {
+        height: 30px;
+        border: 2px solid #3E505B;
+        min-width: 90%;
+        position: relative;
+        font-size: 15px;
+    }
+
+    .add__form__container {
+        min-width: 300px;
+       
+    }
+    .label__for__input, input {
+        max-width: 100px;
+        position: absolute;
+        left: 0;
+        right: 0;
+    }
+}
+
+@media (min-width: 768px) {
+    .app__wrapper {
+        width: 90%;
+        align-items: left;
+    }
+
+    body {
+        font-size: 1.2rem;
+        background-color: var(--color-white);
+    }
+
+    .TodoListItem_buttons__3zE9i {
+        font-size: small;
+        padding: 5px;
+    }
+
+    .app__wrapper img {
+        width: 210px;
+    }
+
+    .AddTodoForm_formStyle__3z-tL {
+        display: flex;
+        margin: 10px;
+        padding: 10px;
+    }
+
+    .AddTodoForm_formStyle__3z-tL button {
+        background-color:cadetblue;
+        font-size: 18px;
+        height: 50px;
+        width: 80px;
+    }
+
+    .AddTodoForm_formStyle__3z-tL label {
+        position: relative;
+        font-size: 18px;
+        margin: 10px;
+        padding: 10px;
+    }
+
+    .AddTodoForm_formStyle__3z-tL input {
+        height: 40px;
+        border: 2px solid #3E505B;
+        max-width: 100%;
+        font-size: 18px;
+        margin: 10px;
+        padding: 10px;
+    }
+
+    .TodoListItem_buttons__3zE9i {
+        font-size: medium;
+        padding: 10px;
+    }
+}
+
+@media (min-width: 880px) {
+    .app__wrapper {
+        width: 90%;
+        margin-left: 210px;
+        align-items: center;
+    }    
+}
+
+@media (min-width: 1366px) {
+    .app__wrapper {
+        width: 100%;
+        margin-left: 350px;
+        align-items: center;
+    }    
+}
