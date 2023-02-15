@@ -16,6 +16,11 @@ label {
 	padding: 5px;
 }
 
+.openButton {
+	margin: 0 auto;
+	margin-top: 5%;
+}
+
 .title {
 	color: white;
 	margin: 5% 0 0;

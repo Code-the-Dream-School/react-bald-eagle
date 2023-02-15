@@ -15,7 +15,7 @@ const Edit = ({ user, todoList, removeTodo, show, handleClose, handleShow }) => 
 
 	return (
 		<div className={styles.currentList}>
-			<Button variant="dark" onClick={handleShow}>
+			<Button variant="dark" onClick={handleShow} className={styles.openButton}>
 				View Your List
 			</Button>
 

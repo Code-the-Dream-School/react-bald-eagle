@@ -15,7 +15,7 @@ const CurrentList = ({ todoList, addTodo, currentUser, onDone, show, handleShow,
 
 	return (
 		<div className={styles.currentList}>
-			<Button variant="dark" onClick={handleShow}>
+			<Button variant="dark" onClick={handleShow} className={styles.openButton}>
         Edit Your List
       </Button>
 		
