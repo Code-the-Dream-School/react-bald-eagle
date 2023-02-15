@@ -13,6 +13,7 @@ const Edit = ({ user, todoList, removeTodo }) => {
 	const routeChange = () => {
 		navigate(path);
 	}
+	console.log('user', user)
 	return (
 		<div className={styles.currentList}>
 			<FloatingDiv

@@ -3,6 +3,7 @@ import NavButton from "./NavButton";
 import styles from "../Assets/css/App.module.css";
 
 export const FloatingDiv = ({ currentUser, addTodo, routeChange, path, buttonText, children }) => {
+  console.log('children', children)
   return (
     <div className={styles.floatingDiv}>
       <div className={styles.title}>
