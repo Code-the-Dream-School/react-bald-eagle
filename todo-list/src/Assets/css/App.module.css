@@ -16,6 +16,11 @@ label {
 	padding: 5px;
 }
 
+.openButton {
+	margin: 0 auto;
+	margin-top: 5%;
+}
+
 .title {
 	color: white;
 	margin: 5% 0 0;
@@ -88,13 +93,14 @@ label {
 	max-width: 50%;
 }
 
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 500px) {
 	.addTodoButton {
 		margin-top: 5%;
 	}
 
 	.todoList {
 		padding: 10px;
+		font-size: 20px;
 	}
 
 	.inputForm {
@@ -107,6 +113,10 @@ label {
 
 	.todoInput {
 		margin-right: 2.5px;
+	}
+
+	.todoItems {
+		min-width: 100%;
 	}
 
 	.currentList{
@@ -131,9 +141,20 @@ label {
 	}
 }
 
-@media screen and (min-width: 700px) {
+@media screen and (min-width: 1000px) {
+	.openButton {
+		margin-top: 70%;
+		margin-left: 30%;
+		max-height: 50px;
+	}
+
 	.todoItems {
 		padding-top: 7vh;
+    overflow-y: scroll;
+    position: fixed;
+    right: 0;
+    height: 100vh;
+    min-width: 80vw;
 	}
 
 	.inputForm {
@@ -154,7 +175,6 @@ label {
 	}
 
 	.todoList {
-		padding: 40px;
 		padding-top: 10px;
 		padding-bottom: 10px;
 		width: 80%;
@@ -164,7 +184,11 @@ label {
 	}
 
 	.currentList{
-		font-size: 30px;
+		display: grid;
+    grid-template-columns: 1fr 2fr;
+    background-attachment: fixed;
+    justify-content: center;
+    height: 100vh;
 	}
 
 	.removeTodo {

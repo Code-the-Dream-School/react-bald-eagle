@@ -15,11 +15,7 @@ const Edit = ({ user, todoList, removeTodo, show, handleClose, handleShow }) => 
 
 	return (
 		<div className={styles.currentList}>
-			<Button
-				variant="dark"
-				onClick={handleShow}
-				style={{ 'margin-top': '5%', margin: '0 auto', padding: '20px' }}
-			>
+			<Button variant="dark" onClick={handleShow} className={styles.openButton}>
 				View Your List
 			</Button>
 
@@ -27,10 +23,10 @@ const Edit = ({ user, todoList, removeTodo, show, handleClose, handleShow }) => 
 				currentUser={user}
 				routeChange={routeChange}
 				path={path}
-				buttonText={"Back"}
+				buttonText={"View List"}
 				show={show}
 				handleClose={handleClose}
-			>{user}'s Todo List</FloatingDiv>
+			>Edit {user}'s Todo List</FloatingDiv>
 
 			<div className={styles.todoItems}>
 				{todoList.isError && <p>Something went wrong...</p>}
