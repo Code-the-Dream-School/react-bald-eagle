@@ -22,6 +22,12 @@ const CurrentList = ({ todoList, addTodo, currentUser, onDone }) => {
 				</div>
 
 				<AddTodoForm onAddTodo={addTodo} />
+
+				<NavButton
+					type="button"
+					action={routeChange}
+					path={path}
+				>EDIT</NavButton>
 			</div>
 
 			<div className={styles.todoItems}>
@@ -32,11 +38,6 @@ const CurrentList = ({ todoList, addTodo, currentUser, onDone }) => {
 						<TodoList todoList={todoList.data} onDone={onDone} path={path} /> :
 						<p style={{ color: 'white' }}>No Data</p>
 				}
-				<NavButton
-					type="button"
-					action={routeChange}
-					path={path}
-				>EDIT</NavButton>
 			</div>
 		</div>
 	)

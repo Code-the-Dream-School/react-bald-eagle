@@ -146,6 +146,10 @@ label {
     -moz-box-shadow: 1px 1px 3px rgba(0,0,0,0.4);
 	}
 
+	.todoItems {
+		padding-top: 30vh;
+	}
+
 	.inputForm {
 		display: flex;
 		flex-direction: column;
@@ -163,10 +167,6 @@ label {
 		margin-bottom: 5%;
 		width: inherit;
 		padding: 10px;
-	}
-
-	.todoItems {
-		padding-top: 12em;
 	}
 
 	.todoList {
