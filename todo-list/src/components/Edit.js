@@ -15,7 +15,11 @@ const Edit = ({ user, todoList, removeTodo, show, handleClose, handleShow }) => 
 
 	return (
 		<div className={styles.currentList}>
-			<Button variant="dark" onClick={handleShow}>
+			<Button
+				variant="dark"
+				onClick={handleShow}
+				style={{ 'margin-top': '5%', margin: '0 auto', padding: '20px' }}
+			>
 				View Your List
 			</Button>
 

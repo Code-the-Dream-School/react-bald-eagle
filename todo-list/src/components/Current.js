@@ -15,10 +15,18 @@ const CurrentList = ({ todoList, addTodo, currentUser, onDone, show, handleShow,
 
 	return (
 		<div className={styles.currentList}>
-			<Button variant="dark" onClick={handleShow}>
-        Edit Your List
-      </Button>
-		
+			<Button
+				variant="dark"
+				onClick={handleShow}
+				style={{
+					'margin-top': '25%',
+					margin: '0 auto',
+					padding: '20px'
+				}}
+			>
+				Edit Your List
+			</Button>
+
 			<FloatingDiv
 				currentUser={currentUser}
 				addTodo={addTodo}
