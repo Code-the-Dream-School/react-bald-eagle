@@ -23,7 +23,7 @@ const Edit = ({ user, todoList, removeTodo, show, handleClose, handleShow }) => 
 				currentUser={user}
 				routeChange={routeChange}
 				path={path}
-				buttonText={"View List"}
+				buttonText={"Back"}
 				show={show}
 				handleClose={handleClose}
 			>{user}'s Todo List</FloatingDiv>
