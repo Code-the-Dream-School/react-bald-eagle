@@ -1,7 +1,7 @@
 import Button from 'react-bootstrap/Button';
 import { useNavigate } from "react-router-dom";
 import PropTypes from "prop-types";
-import TodoList from "./TodoList";
+import TodoList from "./lists/TodoList";
 import { FloatingDiv } from "./modals/FloatingDiv";
 import styles from "../Assets/css/App.module.css";
 
@@ -15,7 +15,7 @@ const Edit = ({ user, todoList, removeTodo, show, handleClose, handleShow }) => 
 
 	return (
 		<div className={styles.currentList}>
-			<Button variant="dark" onClick={handleShow}>
+			<Button variant="dark" onClick={handleShow} className={styles.openButton}>
 				View Your List
 			</Button>
 
@@ -26,16 +26,20 @@ const Edit = ({ user, todoList, removeTodo, show, handleClose, handleShow }) => 
 				buttonText={"View List"}
 				show={show}
 				handleClose={handleClose}
-			>{user}'s Todo List</FloatingDiv>
+			>Edit {user}'s list</FloatingDiv>
 
-			<div className={styles.todoItems}>
-				{todoList.isError && <p>Something went wrong...</p>}
 
-				{todoList.isLoading ? <p style={{ color: 'white' }}>Loading...</p>
-					: todoList.data.length > 0 ?
-						<TodoList todoList={todoList.data} onRemoveTodo={removeTodo} path={path} /> :
-						<p style={{ color: 'white' }}>No Data</p>
-				}
+			<div className={styles.listDiv}>
+				<h1 className={styles.mainTitle}>{user}'s Todo List</h1>
+				<div className={styles.todoItems}>
+					{todoList.isError && <p>Something went wrong...</p>}
+
+					{todoList.isLoading ? <p style={{ color: 'white' }}>Loading...</p>
+						: todoList.data.length > 0 ?
+							<TodoList todoList={todoList.data} onRemoveTodo={removeTodo} path={path} /> :
+							<p style={{ color: 'white' }}>No Data</p>
+					}
+				</div>
 			</div>
 		</div>
 	)

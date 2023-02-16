@@ -1,7 +1,7 @@
 import { useState } from "react";
 import PropTypes from "prop-types";
-import styles from "../Assets/css/App.module.css";
-import InputWithLabel from "./InputWithLabel";
+import styles from "../../Assets/css/App.module.css";
+import InputWithLabel from "../inputs-forms/InputWithLabel";
 
 const TodoListItem = ({ todo, onRemoveTodo, handleDoneChange }) => {
   const [done, setDone] = useState(todo.fields.Done)

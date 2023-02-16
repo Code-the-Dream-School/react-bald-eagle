@@ -16,12 +16,33 @@ label {
 	padding: 5px;
 }
 
+.openButton {
+	margin: 0 auto;
+	margin-top: 5%;
+}
+
+.listDiv {
+	display: flex;
+	flex-direction: column;
+	min-width: 80vw;
+}
+
+.mainTitle {
+	color: white;
+	text-shadow: 2px 2px rgb(29, 130, 135);
+	z-index: 0;
+	opacity: 50%;
+}
+
+.mainTitle:scroll {
+	display: none;
+}
+
 .title {
 	color: white;
 	margin: 5% 0 0;
 	margin-top: 2%;
 	text-shadow: 2px 2px rgb(29, 130, 135);
-	font-family: 'Rock Salt', cursive;
 }
 
 .addTodoButton {
@@ -56,7 +77,7 @@ label {
 	background-attachment: fixed;
 	min-height: 100vh;
 	text-align: center;
-	font-family: 'Cabin Sketch', cursive;
+	/* font-family: 'Cabin Sketch', cursive; */
 }
 
 .itemEdit {
@@ -89,13 +110,14 @@ label {
 	max-width: 50%;
 }
 
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 500px) {
 	.addTodoButton {
 		margin-top: 5%;
 	}
 
 	.todoList {
 		padding: 10px;
+		font-size: 20px;
 	}
 
 	.inputForm {
@@ -108,6 +130,10 @@ label {
 
 	.todoInput {
 		margin-right: 2.5px;
+	}
+
+	.todoItems {
+		min-width: 100%;
 	}
 
 	.currentList{
@@ -132,23 +158,20 @@ label {
 	}
 }
 
-@media screen and (min-width: 700px) {
-	/* .floatingDiv {
-		margin: 0 auto;
-		top: 20vh;
-		background-image: linear-gradient(180deg, rgb(1, 90, 94), rgb(0, 22, 23));
-		position: fixed;
-		z-index: 1000;
-		min-width: 60vw;
-		height: fit-content;
-		box-shadow: 1px 1px 3px 2px rgb(126, 203, 207);
-		border:4px outset rgb(16, 82, 87);
-    -webkit-box-shadow: 1px 1px 3px 2px rgb(126, 203, 207);
-    -moz-box-shadow: 1px 1px 3px rgba(0,0,0,0.4);
-	} */
+@media screen and (min-width: 1000px) {
+	.openButton {
+		margin-top: 90%;
+		margin-left: 50%;
+		max-height: 50px;
+	}
 
 	.todoItems {
-		padding-top: 7vh;
+		padding-top: 15vh;
+    overflow-y: scroll;
+    position: fixed;
+    right: 0;
+    height: 100vh;
+    min-width: 80vw;
 	}
 
 	.inputForm {
@@ -169,7 +192,6 @@ label {
 	}
 
 	.todoList {
-		padding: 40px;
 		padding-top: 10px;
 		padding-bottom: 10px;
 		width: 80%;
@@ -179,7 +201,11 @@ label {
 	}
 
 	.currentList{
-		font-size: 30px;
+		display: grid;
+    grid-template-columns: 1fr 2fr;
+    background-attachment: fixed;
+    justify-content: center;
+    height: 100vh;
 	}
 
 	.removeTodo {
