@@ -2,8 +2,10 @@ import React from 'react';
 import InputWithLabel from './InputWithLabel';
 import { useState } from "react";
 import style from './TodoListItem.module.css';
+import PropTypes from 'prop-types';
 
 const AddTodoForm = ({ onAddTodo }) => {
+ 
   const [todoTitle, setTodoTitle] = useState('');
 
   const handleTitleChange = (event) => {
@@ -29,7 +31,12 @@ const AddTodoForm = ({ onAddTodo }) => {
         <button className = {style.ButtonClass} type="submit">Add</button>
       </form>
     </> 
-  )
+  );
+}; 
+
+ // exercise 4.1
+AddTodoForm.propTypes = {
+  onAddTodo: PropTypes.func,
 }
 
 export default AddTodoForm;

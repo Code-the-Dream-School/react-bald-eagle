@@ -1,9 +1,9 @@
 import React from 'react';
-import TodoList from './TodoList';
-import AddTodoForm from './AddTodoForm';
+import TodoList from './components/TodoList';
+import AddTodoForm from './components/AddTodoForm';
 import { useState, useEffect } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import style from './TodoListItem.module.css';
+import style from './components/TodoListItem.module.css';
 
 function App() {
 
@@ -65,7 +65,7 @@ function App() {
       <Routes>
         <Route path="/" exact element=
         {
-          <div className={style.wrapper}>
+          <div>
             <h1 style={{ color: "white" }}>Todo List</h1>
             <AddTodoForm onAddTodo={addTodo}/>
             {isLoading ? (<p>Loading...</p>) : 
