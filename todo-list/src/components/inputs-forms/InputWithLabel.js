@@ -1,4 +1,3 @@
-import React, { useRef, useEffect } from "react";
 import PropTypes from "prop-types";
 import styles from "../../Assets/css/App.module.css";
 
@@ -10,12 +9,6 @@ const InputWithLabel = ({
   id,
   boxChecked
 }) => {
-  const inputRef = useRef();
-
-  useEffect(() => {
-    inputRef.current.focus();
-  }, []);
-
   return (
     <>
       {
@@ -28,7 +21,6 @@ const InputWithLabel = ({
             name={name}
             value={todoTitle}
             onChange={handleChange}
-            ref={inputRef}
           />
         </> : <div className="form-check-reverse form-switch">
           <label className={`form-check-label text-muted`} htmlFor={id}> Complete </label>
@@ -39,7 +31,6 @@ const InputWithLabel = ({
             name={name}
             value={todoTitle}
             onChange={handleChange}
-            ref={inputRef}
             checked={boxChecked}
           />
         </div>

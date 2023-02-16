@@ -16,7 +16,7 @@ const CurrentList = ({ todoList, addTodo, currentUser, onDone, show, handleShow,
 	return (
 		<div className={styles.currentList}>
 			<Button variant="dark" onClick={handleShow} className={styles.openButton}>
-        Edit Your List
+        Add Task
       </Button>
 		
 			<FloatingDiv
@@ -24,7 +24,7 @@ const CurrentList = ({ todoList, addTodo, currentUser, onDone, show, handleShow,
 				addTodo={addTodo}
 				routeChange={routeChange}
 				path={path}
-				buttonText={"Edit List"}
+				buttonText={"Trim List"}
 				show={show}
 				handleClose={handleClose}
 			>{currentUser}'s Todo List</FloatingDiv>

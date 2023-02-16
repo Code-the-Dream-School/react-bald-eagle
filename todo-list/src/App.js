@@ -109,7 +109,7 @@ const App = () => {
     }
   };
 
-  const handleDoneChange = async (boolean, todo) => { 
+  const handleDoneChange = async (boolean, todo) => {
     const options = {
       method: 'PATCH',
       headers: {
@@ -128,7 +128,7 @@ const App = () => {
       await fetch(`${endpoint}/${todo.id}`, options)
     }
     catch {
-      dispatchTodoList({ type: 'LIST_FETCH_FAILURE' })
+      alert("Failed to change the task status. Please refresh the page and try again")
     }
   };
 
@@ -160,7 +160,7 @@ const App = () => {
       }
     }
     catch {
-      dispatchTodoList({ type: 'LIST_FETCH_FAILURE' })
+      alert("Failed to remove task. Please refresh the page and try again")
     }
   };
 
