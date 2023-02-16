@@ -1,4 +1,5 @@
-import AddTodoForm from "./AddTodoForm"
+import PropTypes from "prop-types";
+import AddTodoForm from "./AddTodoForm";
 
 const NewList = ({ addTodo }) => {
 	return (
@@ -8,6 +9,10 @@ const NewList = ({ addTodo }) => {
 			<AddTodoForm onAddTodo={addTodo} />
 		</div>
 	)
+}
+
+NewList.propTypes = {
+	addTodo: PropTypes.func.isRequired
 }
 
 export default NewList

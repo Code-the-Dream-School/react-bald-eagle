@@ -1,19 +1,26 @@
 import React, { useState, useEffect, useReducer, useCallback } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import PropTypes from "prop-types";
 import ListReducer from "./Reducer";
-import NewList from "./New"
-import CurrentList from "./Current"
-import EditList from "./Edit"
+import NewList from "./components/New";
+import CurrentList from "./components/Current";
+import EditList from "./components/Edit";
 
 const App = () => {
   const [todoList, dispatchTodoList] = useReducer(ListReducer,
     { data: {}, isLoading: false, isError: false })
   const [endpoint, setEndpoint] = useState('')
   const [user, setUser] = useState('')
+  const [show, setShow] = useState(false)
 
   const getUser = () => { 
     setUser(prompt('Please enter your name'))
   }
+
+  
+
+	const handleShow = () => setShow(true)
+	const handleClose = () => setShow(false)
 
   useEffect(() => {
     if (localStorage.getItem('user')) {
@@ -172,6 +179,10 @@ const App = () => {
               removeTodo={removeTodo}
               onDone={handleDoneChange}
               currentUser={user}
+              show={show}
+              setShow={setShow}
+              handleClose={handleClose}
+              handleShow={handleShow}
             ></CurrentList>
           }
         >
@@ -184,6 +195,10 @@ const App = () => {
               user={user}
               todoList={todoList}
               removeTodo={removeTodo}
+              show={show}
+              setShow={setShow}
+              handleClose={handleClose}
+              handleShow={handleShow}
             ></EditList>
           }
         ></Route>
@@ -200,4 +215,13 @@ const App = () => {
     </BrowserRouter>
   );
 };
+
+App.propTypes = {
+  todoList: PropTypes.object,
+  addTodo: PropTypes.func,
+  removeTodo: PropTypes.func,
+  handleDoneChange: PropTypes.func,
+  user: PropTypes.string
+}
+
 export default App;

@@ -1,5 +1,6 @@
 import { useState } from "react";
-import styles from "./Assets/css/App.module.css"
+import PropTypes from "prop-types";
+import styles from "../Assets/css/App.module.css";
 import InputWithLabel from "./InputWithLabel";
 
 const TodoListItem = ({ todo, onRemoveTodo, handleDoneChange }) => {
@@ -35,5 +36,11 @@ const TodoListItem = ({ todo, onRemoveTodo, handleDoneChange }) => {
     </li>
   );
 };
+
+TodoListItem.propTypes = {
+  todo: PropTypes.object.isRequired,
+  onRemoveTodo: PropTypes.func,
+  handleDoneChange: PropTypes.func
+}
 
 export default TodoListItem;
