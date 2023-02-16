@@ -1,7 +1,7 @@
 import Button from 'react-bootstrap/Button';
 import { useNavigate } from "react-router-dom";
 import PropTypes from "prop-types";
-import TodoList from "./TodoList";
+import TodoList from "./lists/TodoList";
 import { FloatingDiv } from "./modals/FloatingDiv";
 import styles from "../Assets/css/App.module.css";
 

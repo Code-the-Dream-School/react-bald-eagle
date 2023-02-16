@@ -17,8 +17,6 @@ const App = () => {
     setUser(prompt('Please enter your name'))
   }
 
-  
-
 	const handleShow = () => setShow(true)
 	const handleClose = () => setShow(false)
 

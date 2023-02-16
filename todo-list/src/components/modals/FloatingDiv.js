@@ -1,8 +1,8 @@
 import PropTypes from "prop-types";
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
-import AddTodoForm from "../AddTodoForm";
-import NavButton from "../NavButton";
+import AddTodoForm from "../inputs-forms/AddTodoForm";
+import NavButton from "../inputs-forms/NavButton";
 
 export const FloatingDiv = ({ currentUser, addTodo, routeChange, path, buttonText, children, show, handleClose }) => {
   return (
