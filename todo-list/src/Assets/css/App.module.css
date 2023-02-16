@@ -21,6 +21,23 @@ label {
 	margin-top: 5%;
 }
 
+.listDiv {
+	display: flex;
+	flex-direction: column;
+	min-width: 80vw;
+}
+
+.mainTitle {
+	color: white;
+	text-shadow: 2px 2px rgb(29, 130, 135);
+	z-index: 0;
+	opacity: 50%;
+}
+
+.mainTitle:scroll {
+	display: none;
+}
+
 .title {
 	color: white;
 	margin: 5% 0 0;
@@ -143,13 +160,13 @@ label {
 
 @media screen and (min-width: 1000px) {
 	.openButton {
-		margin-top: 70%;
-		margin-left: 30%;
+		margin-top: 90%;
+		margin-left: 50%;
 		max-height: 50px;
 	}
 
 	.todoItems {
-		padding-top: 7vh;
+		padding-top: 15vh;
     overflow-y: scroll;
     position: fixed;
     right: 0;

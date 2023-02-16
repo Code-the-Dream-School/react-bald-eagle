@@ -16,9 +16,9 @@ const CurrentList = ({ todoList, addTodo, currentUser, onDone, show, handleShow,
 	return (
 		<div className={styles.currentList}>
 			<Button variant="dark" onClick={handleShow} className={styles.openButton}>
-        Add Task
-      </Button>
-		
+				Add Task
+			</Button>
+
 			<FloatingDiv
 				currentUser={currentUser}
 				addTodo={addTodo}
@@ -27,16 +27,19 @@ const CurrentList = ({ todoList, addTodo, currentUser, onDone, show, handleShow,
 				buttonText={"Trim List"}
 				show={show}
 				handleClose={handleClose}
-			>{currentUser}'s Todo List</FloatingDiv>
+			>Add tasks to {currentUser}'s list</FloatingDiv>
 
-			<div className={styles.todoItems}>
-				{todoList.isError && <p style={{ color: 'white' }}>Something went wrong...</p>}
+			<div className={styles.listDiv}>
+				<h1 className={styles.mainTitle}>{currentUser}'s Todo List</h1>
+				<div className={styles.todoItems}>
+					{todoList.isError && <p style={{ color: 'white' }}>Something went wrong...</p>}
 
-				{todoList.isLoading ? <p style={{ color: 'white' }}>Loading...</p>
-					: todoList.data.length > 0 ?
-						<TodoList todoList={todoList.data} onDone={onDone} path={path} /> :
-						<p style={{ color: 'white' }}>No Data</p>
-				}
+					{todoList.isLoading ? <p style={{ color: 'white' }}>Loading...</p>
+						: todoList.data.length > 0 ?
+							<TodoList todoList={todoList.data} onDone={onDone} path={path} /> :
+							<p style={{ color: 'white' }}>No Data</p>
+					}
+				</div>
 			</div>
 		</div>
 	)

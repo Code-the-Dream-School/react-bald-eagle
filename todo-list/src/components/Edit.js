@@ -26,16 +26,20 @@ const Edit = ({ user, todoList, removeTodo, show, handleClose, handleShow }) => 
 				buttonText={"View List"}
 				show={show}
 				handleClose={handleClose}
-			>Edit {user}'s Todo List</FloatingDiv>
+			>Edit {user}'s list</FloatingDiv>
 
-			<div className={styles.todoItems}>
-				{todoList.isError && <p>Something went wrong...</p>}
 
-				{todoList.isLoading ? <p style={{ color: 'white' }}>Loading...</p>
-					: todoList.data.length > 0 ?
-						<TodoList todoList={todoList.data} onRemoveTodo={removeTodo} path={path} /> :
-						<p style={{ color: 'white' }}>No Data</p>
-				}
+			<div className={styles.listDiv}>
+				<h1 className={styles.mainTitle}>{user}'s Todo List</h1>
+				<div className={styles.todoItems}>
+					{todoList.isError && <p>Something went wrong...</p>}
+
+					{todoList.isLoading ? <p style={{ color: 'white' }}>Loading...</p>
+						: todoList.data.length > 0 ?
+							<TodoList todoList={todoList.data} onRemoveTodo={removeTodo} path={path} /> :
+							<p style={{ color: 'white' }}>No Data</p>
+					}
+				</div>
 			</div>
 		</div>
 	)
