@@ -1,0 +1,33 @@
+.ListItem {
+  color: #009dff;
+  font-size: 1.1rem;
+  font-weight: bold;
+  margin: 0.3px;
+  padding: 0.3px;
+  font-family: Lobster, Monospace;  
+}
+
+.ButtonClass {
+  border-radius: 30%;
+  border-color: aqua;
+  border-style: inherit;
+}
+
+button:hover {
+  background-color: rgb(111, 114, 111);
+}
+
+.wrapper {
+    background: gold;
+}
+  
+@media screen and (min-width: 480px) {
+  .wrapper {
+    background-color: light green;
+  }
+}
+
+body {
+  background: rgb(255, 173, 65);
+}
+
