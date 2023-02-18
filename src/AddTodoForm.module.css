@@ -1,6 +1,12 @@
 .formStyle {
-    margin-bottom: 200px;
     margin: 1rem;
     display: flex;
+    justify-content: center;
+    flex-direction: column;
 }
 
+.form_button {
+    width: 50px;
+    margin-top: 20px;
+    margin-left: 70%;
+}

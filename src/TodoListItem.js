@@ -8,15 +8,9 @@ const TodoListItem = ({ todo, onRemoveTodo }) => {
    
     return (
         <>
-            {/* <td>{<Checkbox className={style.checkbox__styled} /> || todo.fields.completed}</td> */}
-                <td><Checkbox className={style.checkbox__styled}/></td>
-            <td className={style.todoListItem}
-                // contentEditable='true'
-                // onInput={e => console.log('text inside div', e.currentTarget.textContent)}
-            >
-                {todo.title || todo.fields.title}
-            </td>
-            <td className={style.todoListItem}>{todo.todoNote || todo.fields.note}</td>
+            <td><Checkbox className={style.checkbox__styled}/></td>
+            <td className={style.todoListItem}>{todo.title || todo.fields.Title}</td>
+            <td className={style.todoListItem}>{todo.note || todo.fields.Note}</td>
             <td>
                 <button 
                     className={style.buttons} 
