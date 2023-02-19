@@ -1,16 +1,19 @@
 .ListItem {
-  color: #009dff;
-  font-size: 1.1rem;
-  font-weight: bold;
-  margin: 0.3px;
-  padding: 0.3px;
-  font-family: Lobster, Monospace;  
+  color: #515255; 
+  font-size: 15px; 
+  font-family: "Libre Baskerville", serif; 
+  line-height: 3px;  
+  text-shadow: 0 1px 1px #fff; 
+  padding-top: 8px;  
 }
 
 .ButtonClass {
   border-radius: 30%;
   border-color: aqua;
   border-style: inherit;
+  margin: 5px;
+  font-size: 17px; 
+  font-family: "Libre Baskerville", serif;
 }
 
 button:hover {
@@ -30,4 +33,48 @@ button:hover {
 body {
   background: rgb(255, 173, 65);
 }
+
+h1 { 
+  color: #d54d7b; 
+  font-family: "Great Vibes", cursive; 
+  font-size: 70px; 
+  line-height: 70px; 
+  font-weight: normal; 
+  margin-bottom: 15px; 
+  margin-top: 15px; 
+  text-shadow: 0 1px 1px #fff; 
+}
+
+p { 
+  color: #7a7c7f; 
+  font-size: 29px; 
+  font-family: "Libre Baskerville", serif; 
+  line-height: 20px; 
+  text-align: center; 
+  text-shadow: 0 1px 1px #fff; 
+  padding-top: 20px; 
+}
+
+p.byline { 
+  font-style: italic; 
+  color: #B6B6B6; 
+  font-size: 24px; 
+  margin-top: 20px; 
+  text-align: center; 
+  text-shadow: 0 1px 1px #fff; 
+}
+
+nav { 
+  color: #d54d7b; 
+  font-family: "Great Vibes", cursive; 
+  font-size: 15px; 
+  line-height: 15px; 
+  font-weight: normal; 
+  margin-bottom: 15px; 
+  margin-top: 15px; 
+  text-shadow: 0 1px 1px #fff; 
+}
+
+
+
 

@@ -30,7 +30,7 @@ const AddTodoForm = ({ onAddTodo }) => {
         </InputWithLabel>
         <button className = {style.ButtonClass} type="submit">Add</button>
       </form>
-    </> 
+    </>    
   );
 }; 
 
