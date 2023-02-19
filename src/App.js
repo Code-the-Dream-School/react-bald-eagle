@@ -38,7 +38,7 @@ function App() {
     fields: {
         Title: newRow.title,
         Note: newRow.note,
-        Completed: newRow.completed,
+        Completed: newRow.completed
     },
     };
     const options = {
@@ -54,9 +54,9 @@ function App() {
     .then((response) => response.json())
     .then((data) => {
         todo.id = data.id;
-        todo.title = data.fields.Title;
-        todo.note = data.fields.Note;
-        todo.completed = data.fields.Completed;
+        todo.title = data.fields.title;
+        todo.note = data.fields.note;
+        todo.completed = data.fields.completed
         setTodoList([...todoList, todo]);
     });
 }

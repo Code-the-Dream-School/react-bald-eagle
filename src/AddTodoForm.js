@@ -40,6 +40,7 @@ function AddTodoForm({onAddTodo}) {
           givenId="todoTitle"
           givenName="title"
           focusOnChange='title'
+          required={true}
           className={style.formStyle1}
         >
             Title: 
@@ -49,6 +50,7 @@ function AddTodoForm({onAddTodo}) {
           handleChange={handleNoteChange} 
           givenId="todoNote"
           givenName="noteDescription"
+          required={false}
           className={style.formStyle2}
         >
             Note: 
