@@ -1,10 +1,10 @@
 import React from "react";
-import style from './TodoListItem.module.css'
-// Declare a function named TodoListItem
-//
+import PropTypes from "prop-types";
+import style from "../TodoListItem.module.css";
 const TodoListItem = ({ todo, onRemoveTodo }) => (
-  <li className={style.ListItem}>
+  <li key={todo.id} className={style.ListItem}>
     {todo.fields.Title}
+    
     <button
       type="button"
       onClick={() => {
@@ -15,6 +15,9 @@ const TodoListItem = ({ todo, onRemoveTodo }) => (
     </button>
   </li>
 );
+TodoListItem.prototypes = {
+  todo: PropTypes.string,
+  onRemoveTodo: PropTypes.func,
+};
 
-// Export TodoListItem function as default
 export default TodoListItem;
