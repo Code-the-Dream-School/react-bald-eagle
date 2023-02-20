@@ -47,7 +47,17 @@ const App = () => {
 
       if (response.ok) {
         const data = await response.json()
-        dispatchTodoList({ type: 'LIST_FETCH_SUCCESS', payload: [...data.records] })
+        const sortedRecords = data.records.sort((recordA, recordB) => {
+          if (recordA.fields.Name > recordB.fields.Name) {
+            return 1
+          }
+          if (recordA.fields.Name < recordB.fields.Name) {
+            return -1
+          } else {
+            return 0
+          }
+        })
+        dispatchTodoList({ type: 'LIST_FETCH_SUCCESS', payload: [...sortedRecords] })
       } else {
         dispatchTodoList({ type: 'LIST_FETCH_FAILURE' })
       }
@@ -133,7 +143,7 @@ const App = () => {
   };
 
   useEffect(() => {
-    setEndpoint(`https://api.airtable.com/v0/${process.env.REACT_APP_AIRTABLE_BASE_ID}/Tasks?sort[0][field]=Name&sort[0][direction]=asc`)
+    setEndpoint(`https://api.airtable.com/v0/${process.env.REACT_APP_AIRTABLE_BASE_ID}/Tasks`)
     setTimeout(() => {
       fetchTodos()
     }, 2000)
