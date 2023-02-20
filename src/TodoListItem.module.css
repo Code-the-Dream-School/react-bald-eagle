@@ -1,34 +1,85 @@
-body {
+/* body {
   font-family: "Open Sans", sans-serif;
   background-image: url("https://images.pexels.com/photos/129731/pexels-photo-129731.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2");
   background-size: cover;
   background-position: center;
   height: 100vh;
+} */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
 }
-@media screen and (min-width: 768px) {
+
+body {
+  background: linear-gradient(
+    90deg,
+    rgb(35, 35, 36) 0%,
+    rgb(129, 129, 157) 100%
+  );
+}
+@media screen and (min-width: 614px) {
   .Container {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     width: 500px;
     margin: auto;
     margin-top: 5em;
     padding: 1rem;
-    background: rgba(255, 255, 255, 0.5); /* semi-transparent white */
+    background: rgb(0, 7, 16);
     border-radius: 20px;
     box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.19),
       0px 6px 6px rgba(0, 0, 0, 0.23);
+    color: #fff;
+    text-transform: capitalize;
+    font-size: larger;
   }
   .Container > form {
+    padding-top: 2em;
     display: flex;
     align-items: center;
+    justify-content: center;
   }
   /* Style input */
   .Container > form > input[type="text"] {
-    border-radius: 10px;
-    margin-top: 20px;
-    padding: 10px;
-    margin: 10px;
+    padding: 1em;
+    border-radius: 4px 0 0 4px;
+    border: 2px solid #5d0cff;
+    outline: none;
+    border-right: none;
+    /* width: 320px; */
+    background: transparent;
+    color: #fff;
+  }
+  .EditInput {
+    border: 2px solid #149fff;
+    background: transparent;
+
+    border-right: none;
+    padding: 0.5em;
+    border: 2px solid #149fff;
+    outline: none;
+    color: white;
+  }
+  .Container > form > input::placeholder {
+    color: #e2e2e2;
+  }
+  .Container > form > button {
+    padding: 1em;
+    border-radius: 0 40px 0 0;
+    border: 2px solid #5d0cff;
+    outline: none;
+    border-left: none;
+    background: linear-gradient(
+      90deg,
+      rgba(93, 12, 255, 1) 0%,
+      rgba(155, 0, 250, 1) 100%
+    );
+    color: #fff;
   }
 
   .Container > ul {
@@ -37,47 +88,130 @@ body {
     margin-top: 20px;
     padding: 1em;
   }
-  /* Style list items */
+
   .ListItem {
     display: flex;
     width: 100%;
     justify-content: space-between;
     margin-bottom: 1rem;
-    font-size: large;
-    color: blue;
+    font-size: larger;
   }
-  .ListItem > button {
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    background-color: #dabce4;
+
+  .Complete {
+    text-decoration: line-through;
+    opacity: 0.4;
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+    font-size: larger;
+  }
+  .ListItemIcons {
+    display: flex;
+    width: 15%;
+    justify-content: space-between;
+    padding: 0;
+  }
+
+  .EditForm > {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .SaveBtn {
+    border: 2px solid #149fff;
+
+    background: linear-gradient(
+      90deg,
+      rgba(20, 159, 255, 1) 0%,
+      rgba(17, 122, 255, 1) 100%
+    );
+    padding: 0.5em;
+    border: 2px solid #149fff;
+    margin-right: 4rem;
+  }
+  .CancelBtn {
+    border: none !important;
+
+    background: linear-gradient(
+      90deg,
+      rgba(20, 159, 255, 1) 0%,
+      rgba(17, 122, 255, 1) 100%
+    );
+    padding: 0.5em;
+  }
+  .DeleteIcon {
+    color: red;
+  }
+  .EditIcon {
+    color: yellowgreen;
   }
 }
 
-@media screen and (min-width: 375px) and (max-width: 768px) {
+@media screen and (min-width: 500px) and (max-width: 614px) {
   .Container {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 330px;
+    justify-content: center;
+    width: 475px;
     margin: auto;
     margin-top: 5em;
-
     padding: 1rem;
-    background: rgba(255, 255, 255, 0.5);
-    border-radius: 20px;
+    background: rgb(0, 7, 16);
+    border-radius: 5%;
     box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.19),
       0px 6px 6px rgba(0, 0, 0, 0.23);
+    color: #fff;
+    text-transform: capitalize;
+    font-size: small;
   }
   .Container > form {
+    padding-top: 2em;
+    width: 95%;
     display: flex;
     align-items: center;
+    justify-content: center;
   }
+  /* Style input */
   .Container > form > input[type="text"] {
-    border-radius: 10px;
-    margin-top: 20px;
-    padding: 10px;
-    margin: 10px;
+    padding: 1em;
+    border-radius: 4px 0 0 4px;
+    border: 2px solid #5d0cff;
+    outline: none;
+    border-right: none;
+    /* width: 320px; */
+    background: transparent;
+    color: #fff;
+  }
+  .EditInput {
+    border: 2px solid #149fff;
+    background: transparent;
+
+    border-right: none;
+    padding: 0.5em;
+    border: 2px solid #149fff;
+    outline: none;
+    color: white;
+  }
+  .Container > form > input::placeholder {
+    color: #e2e2e2;
+  }
+  .Container > form > button {
+    padding: 1em;
+    border-radius: 0 40px 0 0;
+    border: 2px solid #5d0cff;
+    outline: none;
+    border-left: none;
+    /* width: 320px; */
+    background: linear-gradient(
+      90deg,
+      rgba(93, 12, 255, 1) 0%,
+      rgba(155, 0, 250, 1) 100%
+    );
+    color: #fff;
+    cursor: pointer;
   }
 
   .Container > ul {
@@ -86,18 +220,63 @@ body {
     margin-top: 20px;
     padding: 1em;
   }
+
   .ListItem {
     display: flex;
     width: 100%;
     justify-content: space-between;
     margin-bottom: 1rem;
-    font-size: large;
-    color: blue;
+    font-size: small;
   }
-  .ListItem > button {
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    background-color: #dabce4;
+
+  .Complete {
+    text-decoration: line-through;
+    opacity: 0.4;
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+    font-size: small;
+  }
+  .ListItemIcons {
+    display: flex;
+    width: 15%;
+    justify-content: space-between;
+    padding: 0;
+  }
+
+  .EditForm > {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .SaveBtn {
+    border: 2px solid #149fff;
+
+    background: linear-gradient(
+      90deg,
+      rgba(20, 159, 255, 1) 0%,
+      rgba(17, 122, 255, 1) 100%
+    );
+    padding: 0.5em;
+    border: 2px solid #149fff;
+    margin-right: 3rem;
+  }
+  .CancelBtn {
+    border: none !important;
+
+    background: linear-gradient(
+      90deg,
+      rgba(20, 159, 255, 1) 0%,
+      rgba(17, 122, 255, 1) 100%
+    );
+    padding: 0.5em;
+  }
+  .DeleteIcon {
+    color: red;
+  }
+  .EditIcon {
+    color: yellowgreen;
   }
 }

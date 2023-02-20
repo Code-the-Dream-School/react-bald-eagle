@@ -1,17 +1,12 @@
-import React from "react";
+import React, { useRef, useEffect } from "react";
 import PropTypes from "prop-types";
 
 const InputWithLabel = ({ children, todoTitle, handleTitleChange }) => {
-  const inputRef = React.useRef();
-  React.useEffect(() => {
+  const inputRef = useRef();
+  useEffect(() => {
     inputRef.current.focus();
   }, []);
 
-  InputWithLabel.propTypes = {
-    children: PropTypes.any,
-    todoTitle: PropTypes.string,
-    handleTitleChange: PropTypes.func,
-  };
   return (
     <>
       <label htmlFor="title">{children} </label>
@@ -20,11 +15,16 @@ const InputWithLabel = ({ children, todoTitle, handleTitleChange }) => {
         ref={inputRef}
         value={todoTitle}
         name="title"
-        id="todoTitle"
+        placeholder="Add todo Item"
         onChange={handleTitleChange}
       />
     </>
   );
 };
 
+InputWithLabel.propTypes = {
+  children: PropTypes.any,
+  todoTitle: PropTypes.string,
+  handleTitleChange: PropTypes.func,
+};
 export default InputWithLabel;
