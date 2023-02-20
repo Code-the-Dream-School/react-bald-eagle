@@ -5,7 +5,7 @@ import './TodoList.css';
 var checkmark = '\u2714';
 var remove = '\u2718';
 
-const TodoList = ({ todoList, onRemoveTodo }) => {  
+const TodoList = ({ todoList, setTodoList, onRemoveTodo }) => {  
   return (
     <>
       <table>
@@ -20,6 +20,8 @@ const TodoList = ({ todoList, onRemoveTodo }) => {
             return (
               <tr key={todo.id}>
                 <TodoListItem 
+                  todoList={todoList}
+                  setTodoList={setTodoList}
                   todo={todo} 
                   onRemoveTodo={onRemoveTodo}
                 />

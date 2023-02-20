@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import InputWithLabel from "./InputWithLabel";
 import style from './AddTodoForm.module.css';
 
-function AddTodoForm({onAddTodo}) {
+function AddTodoForm({ onAddTodo, todoList, setTodoList }) {
     const [todoTitle, setTodoTitle] = useState('');
     const [todoNote, setTodoNote] = useState(''); 
     
@@ -18,7 +18,8 @@ function AddTodoForm({onAddTodo}) {
   
     const handleFormSubmit = async (event) => {
       event.preventDefault();
-      await onAddTodo({ title: todoTitle, note: todoNote, id: Date.now() });
+      const newTodo = await onAddTodo({ Title: todoTitle, Note: todoNote });
+      setTodoList([...newTodo.records, ...todoList]);
       setTodoTitle('');
       setTodoNote('');
     }

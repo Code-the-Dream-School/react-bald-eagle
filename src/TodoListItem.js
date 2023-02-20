@@ -4,14 +4,14 @@ import style from './TodoListItem.module.css';
 
 var remove = '\u2718';
 
-const TodoListItem = ({ todo, onRemoveTodo }) => {
+const TodoListItem = ({ todo, todoList, setTodoList, onRemoveTodo }) => {
     console.log('this is todo:', todo)
    
     return (
         <>
             <td><Checkbox className={style.checkbox__styled}/></td>
-            <td className={style.todoListItem}>{todo.Title || todo.fields.title}</td>
-            <td className={style.todoListItem}>{todo.Note || todo.fields.note}</td>
+            <td className={style.todoListItem}>{todo.fields.Title}</td>
+            <td className={style.todoListItem}>{todo.fields.Note}</td>
             <td>
                 <button 
                     className={style.buttons} 

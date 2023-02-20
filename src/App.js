@@ -13,7 +13,7 @@ function App() {
 
   useEffect(() => {
     
-    fetch(`https://api.airtable.com/v0/${process.env.REACT_APP_AIRTABLE_BASE_ID}/Default`, {
+    fetch(`${url}`, {
       method: 'GET',
       headers: {
         'Authorization': `Bearer ${process.env.REACT_APP_AIRTABLE_API_KEY}`,
@@ -32,34 +32,29 @@ function App() {
     }
   }, [todoList, isLoading]);
   
-
-  const addTableData = (newRow) => {
-    const body = {
-    fields: {
-        Title: newRow.title,
-        Note: newRow.note,
-        Completed: newRow.completed
-    },
-    };
-    const options = {
-    method: 'POST',
-    headers: {
-        Authorization: `Bearer ${process.env.REACT_APP_AIRTABLE_API_KEY}`,
-        "Content-Type": "application/json",
-    },
-    body: JSON.stringify(body),
-    };
-    const todo = {};
-    fetch(url, options)
-    .then((response) => response.json())
-    .then((data) => {
-        todo.id = data.id;
-        todo.title = data.fields.title;
-        todo.note = data.fields.note;
-        todo.completed = data.fields.completed
-        setTodoList([...todoList, todo]);
-    });
-}
+  const addTableData = async (newFields) => {
+    const res = await fetch(
+        `https://api.airtable.com/v0/${process.env.REACT_APP_AIRTABLE_BASE_ID}/Default`,
+        {
+            method: "POST",
+            headers: {
+                Authorization: `Bearer ${process.env.REACT_APP_AIRTABLE_API_KEY}`,
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                records: [
+                    {
+                        fields: {
+                            ...newFields,
+                        },
+                    },
+                ],
+            }),
+        }
+    );
+    const data = await res.json();
+    return data;
+};
 
   const deleteTableData = async (id) => {
     const res = await fetch(
@@ -90,7 +85,7 @@ function App() {
           <div className='app__wrapper'>
             <img src="https://cdn.pixabay.com/photo/2020/01/21/18/39/todo-4783676_960_720.png" alt='list'/>
             <div className='add__form__container'>
-              <AddTodoForm onAddTodo={addTableData} />
+              <AddTodoForm onAddTodo={addTableData} todoList={todoList} setTodoList={setTodoList} />
             </div>
             {isLoading ? (
               <p>Loading...</p>
