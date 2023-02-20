@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { useState, useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import AddTodoForm from "./components/AddTodoForm";
 import style from "./TodoListItem.module.css";
@@ -6,10 +6,13 @@ import style from "./TodoListItem.module.css";
 import TodoList from "./components/TodoList";
 
 export default function App() {
-  const [todoList, setTodoList] = React.useState([]);
-  const [isLoading, setIsLoading] = React.useState(true);
+  const [todoList, setTodoList] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   function addTodo(newTodo) {
+    if (!newTodo.fields.Title || /^\s*$/.test(newTodo.fields.Title)) {
+      return;
+    }
     fetch(
       `https://api.airtable.com/v0/${process.env.REACT_APP_AIRTABLE_BASE_ID}/Default`,
       {
@@ -26,7 +29,7 @@ export default function App() {
         setTodoList([...todoList, { ...newTodo, id: res.id }]);
       });
   }
-  React.useEffect(() => {
+  useEffect(() => {
     fetch(
       `https://api.airtable.com/v0/${process.env.REACT_APP_AIRTABLE_BASE_ID}/Default`,
       {
@@ -44,13 +47,50 @@ export default function App() {
       });
   }, []);
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (isLoading === false) {
       localStorage.setItem("todoList", JSON.stringify(todoList));
       return;
     }
   }, [todoList, isLoading]);
 
+  function editTodo(updatedTodo) {
+    if (!updatedTodo.fields.Title || /^\s*$/.test(updatedTodo.fields.Title)) {
+      return;
+    }
+    const updatedTodoList = todoList.map((todo) => {
+      if (todo.id === updatedTodo.id) {
+        return { ...updatedTodo };
+      }
+      return todo;
+    });
+
+    fetch(
+      `https://api.airtable.com/v0/${process.env.REACT_APP_AIRTABLE_BASE_ID}/Default/${updatedTodo.id}`,
+      {
+        method: "PATCH",
+        headers: {
+          Authorization: `Bearer ${process.env.REACT_APP_AIRTABLE_API_KEY}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ fields: updatedTodo.fields }),
+      }
+    )
+      .then((response) => response.json())
+      .then(() => {
+        setTodoList(updatedTodoList);
+      });
+  }
+    const completeTodo = (id) => {
+      let updatedTodos = todoList.map((todo) => {
+        if (todo.id === id) {
+          todo.isComplete = !todo.isComplete;
+        }
+        return todo;
+      });
+      setTodoList(updatedTodos);
+    };
+ 
   const removeTodo = (id) => {
     fetch(
       `https://api.airtable.com/v0/${process.env.REACT_APP_AIRTABLE_BASE_ID}/Default/${id}`,
@@ -84,7 +124,12 @@ export default function App() {
               {isLoading ? (
                 <p>Loading...</p>
               ) : (
-                <TodoList todoList={todoList} onRemoveTodo={removeTodo} />
+                <TodoList
+                  todoList={todoList}
+                  onRemoveTodo={removeTodo}
+                  onEditTodo={editTodo}
+                  completeTodo={completeTodo}
+                />
               )}
             </div>
           }

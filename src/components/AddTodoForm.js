@@ -7,7 +7,6 @@ const AddTodoForm = ({ onAddTodo }) => {
 
   const handleTitleChange = (e) => {
     const newTodoTitle = e.target.value;
-    console.log(newTodoTitle);
     setTodoTitle(newTodoTitle);
   };
 
@@ -47,19 +46,14 @@ const AddTodoForm = ({ onAddTodo }) => {
         todoTitle={todoTitle}
         handleTitleChange={handleTitleChange}
       >
-        <b>Title:</b>
+        {/* <b>Title:</b> */}
       </InputWithLabel>
-      <button type="submit">
-        <img
-          src="https://img.icons8.com/cute-clipart/20/plus-math.png"
-          alt=""
-        />
-      </button>
+      <button type="submit">Add</button>
     </form>
   );
 };
 
-AddTodoForm.prototypes = {
+AddTodoForm.propTypes = {
   onAddTodo: PropTypes.func,
 };
 
