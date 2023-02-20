@@ -95,6 +95,7 @@ body {
     justify-content: space-between;
     margin-bottom: 1rem;
     font-size: larger;
+    cursor: grab;
   }
 
   .Complete {
@@ -130,6 +131,7 @@ body {
     padding: 0.5em;
     border: 2px solid #149fff;
     margin-right: 4rem;
+    cursor: pointer;
   }
   .CancelBtn {
     border: none !important;
@@ -140,12 +142,17 @@ body {
       rgba(17, 122, 255, 1) 100%
     );
     padding: 0.5em;
+   cursor: pointer;
+;
   }
   .DeleteIcon {
     color: red;
+    cursor: pointer;
+
   }
   .EditIcon {
     color: yellowgreen;
+    cursor: pointer;
   }
 }
 
@@ -262,6 +269,7 @@ body {
     padding: 0.5em;
     border: 2px solid #149fff;
     margin-right: 3rem;
+    cursor: pointer;
   }
   .CancelBtn {
     border: none !important;
@@ -272,11 +280,14 @@ body {
       rgba(17, 122, 255, 1) 100%
     );
     padding: 0.5em;
+    cursor: pointer;
   }
   .DeleteIcon {
     color: red;
+    cursor: pointer;
   }
   .EditIcon {
     color: yellowgreen;
+    cursor: pointer;
   }
 }
