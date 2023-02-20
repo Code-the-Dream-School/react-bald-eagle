@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+
 import AddTodoForm from "./components/AddTodoForm";
 import style from "./components/TodoListItem.module.css";
 
@@ -81,16 +82,16 @@ export default function App() {
         setTodoList(updatedTodoList);
       });
   }
-    const completeTodo = (id) => {
-      let updatedTodos = todoList.map((todo) => {
-        if (todo.id === id) {
-          todo.isComplete = !todo.isComplete;
-        }
-        return todo;
-      });
-      setTodoList(updatedTodos);
-    };
- 
+  const completeTodo = (id) => {
+    let updatedTodos = todoList.map((todo) => {
+      if (todo.id === id) {
+        todo.isComplete = !todo.isComplete;
+      }
+      return todo;
+    });
+    setTodoList(updatedTodos);
+  };
+
   const removeTodo = (id) => {
     fetch(
       `https://api.airtable.com/v0/${process.env.REACT_APP_AIRTABLE_BASE_ID}/Default/${id}`,
