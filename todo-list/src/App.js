@@ -13,17 +13,17 @@ const App = () => {
   const [user, setUser] = useState('')
   const [show, setShow] = useState(false)
 
-  const getUser = () => { 
+  const getUser = () => {
     setUser(prompt('Please enter your name'))
   }
 
-	const handleShow = () => setShow(true)
-	const handleClose = () => setShow(false)
+  const handleShow = () => setShow(true)
+  const handleClose = () => setShow(false)
 
   useEffect(() => {
     if (localStorage.getItem('user')) {
       setUser(JSON.parse(localStorage.getItem('user')))
-    }else {
+    } else {
       getUser()
     }
   }, [])
@@ -127,10 +127,10 @@ const App = () => {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-            "fields": {
-              "Name": `${todo.fields.Name}`,
-              "Done": boolean
-            }
+        "fields": {
+          "Name": `${todo.fields.Name}`,
+          "Done": boolean
+        }
       })
     }
 
