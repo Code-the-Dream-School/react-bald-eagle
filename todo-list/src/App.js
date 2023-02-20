@@ -133,7 +133,7 @@ const App = () => {
   };
 
   useEffect(() => {
-    setEndpoint(`https://api.airtable.com/v0/${process.env.REACT_APP_AIRTABLE_BASE_ID}/Tasks`)
+    setEndpoint(`https://api.airtable.com/v0/${process.env.REACT_APP_AIRTABLE_BASE_ID}/Tasks?view=Grid%20view`)
     setTimeout(() => {
       fetchTodos()
     }, 2000)
