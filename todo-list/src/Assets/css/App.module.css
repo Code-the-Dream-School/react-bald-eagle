@@ -18,7 +18,7 @@ label {
 
 .openButton {
 	margin: 0 auto;
-	margin-top: 5%;
+	margin-top: 10%;
 }
 
 .listDiv {
@@ -53,11 +53,25 @@ label {
 	text-align: center;
 }
 
+.infoDiv {
+	display: flex;
+	grid-template-rows: column;
+	align-items: center;
+	justify-content: center;
+	max-width: 100%;
+}
+
 .navigationButton {
 	max-width: 50%;
 	margin: 0 auto;
 	margin-bottom: 5%;
 	margin-top: 5%;
+}
+
+.searchInput {
+	position: absolute;
+	max-height: 3%;
+	padding: 1%;
 }
 
 .todoList {
@@ -77,7 +91,6 @@ label {
 	background-attachment: fixed;
 	min-height: 100vh;
 	text-align: center;
-	/* font-family: 'Cabin Sketch', cursive; */
 }
 
 .itemEdit {
@@ -112,7 +125,18 @@ label {
 
 @media screen and (max-width: 500px) {
 	.addTodoButton {
-		margin-top: 5%;
+		margin-top: 10%;
+	}
+
+	.infoDiv {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+	}
+
+	.searchInput {
+		margin-top: 4%;
+		max-width: 50%;
 	}
 
 	.todoList {
@@ -189,6 +213,12 @@ label {
 		margin-bottom: 5%;
 		width: inherit;
 		padding: 10px;
+	}
+
+	.searchInput {
+		margin-top: 25%;
+		left: 1%;
+		width: 25%;
 	}
 
 	.todoList {
