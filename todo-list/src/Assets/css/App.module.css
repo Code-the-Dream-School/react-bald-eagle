@@ -182,11 +182,37 @@ label {
 	}
 }
 
-@media screen and (min-width: 1000px) {
+@media screen and (min-width: 1000px) {	
+	.currentList{
+		display: flex;
+		flex-direction: row;
+    background-attachment: fixed;
+    justify-content: space-around;
+    height: 100vh;
+	}
+
+	.infoDiv {
+		width: 25%;
+		display: flex;
+		flex-direction: column;
+		justify-self: center;
+		margin-left: 7%;
+	}
+	
 	.openButton {
-		margin-top: 90%;
-		margin-left: 50%;
 		max-height: 50px;
+		min-width: 100%;
+		margin-bottom: 15%;
+	}
+	
+	.searchInput {
+		margin-top: 25%;
+	}
+	
+	.inputForm {
+		display: flex;
+		flex-direction: column;
+		margin: 0 25% 0;
 	}
 
 	.todoItems {
@@ -196,12 +222,6 @@ label {
     right: 0;
     height: 100vh;
     min-width: 80vw;
-	}
-
-	.inputForm {
-		display: flex;
-		flex-direction: column;
-		margin: 0 25% 0;
 	}
 	
 	.todoInput {
@@ -215,12 +235,6 @@ label {
 		padding: 10px;
 	}
 
-	.searchInput {
-		margin-top: 25%;
-		left: 1%;
-		width: 25%;
-	}
-
 	.todoList {
 		padding-top: 10px;
 		padding-bottom: 10px;
@@ -228,14 +242,6 @@ label {
 		box-shadow: 1px 1px 8px 2px rgb(126, 203, 207);
 		background-color: rgb(0, 46, 48);
 		margin-bottom: 40px;
-	}
-
-	.currentList{
-		display: grid;
-    grid-template-columns: 1fr 2fr;
-    background-attachment: fixed;
-    justify-content: center;
-    height: 100vh;
 	}
 
 	.removeTodo {

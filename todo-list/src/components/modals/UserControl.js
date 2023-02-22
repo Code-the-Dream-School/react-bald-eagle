@@ -7,7 +7,7 @@ const UserControl = ({ handler, children }) => {
       <Button variant="dark" onClick={handler} className={styles.openButton}>
         {children}
       </Button>
-      <input className={styles.searchInput} type="text"></input>
+      <input className={`${styles.searchInput}, text-center`} type="text" placeholder="Search List"></input>
     </div>
   )
 }
