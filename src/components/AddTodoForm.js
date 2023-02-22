@@ -12,6 +12,10 @@ const AddTodoForm = ({ onAddTodo }) => {
 
   const handleAddTodo = async (e) => {
     e.preventDefault();
+     if (todoTitle.trim() === "") {
+       console.log("Todo title cannot be empty");
+       return;
+     }
     try {
       const response = await fetch(
         `https://api.airtable.com/v0/${process.env.REACT_APP_AIRTABLE_BASE_ID}/Default`,
