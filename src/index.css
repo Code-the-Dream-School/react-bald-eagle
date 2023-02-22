@@ -26,7 +26,7 @@ body {
 
 .app__wrapper {
     position: relative;
-    background-color: wheat;
+    background-color:gold;
 }
 
 @media (min-width: 50px) {
