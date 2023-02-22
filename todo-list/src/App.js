@@ -175,7 +175,11 @@ const App = () => {
   };
 
   const handleListFilter = (input) => {
-    const filteredList = todoList.data.filter((data) => data.fields.Name.includes(input))
+    const filteredList = todoList?.data?.filter((data) => {
+      return (
+        data.fields.Name.includes(input)
+      )
+    })
     dispatchTodoList({type: 'LIST_FETCH_SUCCESS', payload: [...filteredList]})
   }
 
