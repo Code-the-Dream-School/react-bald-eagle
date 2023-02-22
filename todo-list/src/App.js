@@ -174,54 +174,61 @@ const App = () => {
     }
   };
 
-  return (
-    <BrowserRouter>
-      <Routes>
-        <Route
-          exact
-          path='/'
-          element={
-            <CurrentList
-              todoList={todoList}
-              addTodo={addTodo}
-              removeTodo={removeTodo}
-              onDone={handleDoneChange}
-              currentUser={user}
-              show={show}
-              setShow={setShow}
-              handleClose={handleClose}
-              handleShow={handleShow}
-            ></CurrentList>
-          }
-        >
-        </Route>
-        <Route
-          exact
-          path='/edit'
-          element={
-            <EditList
-              user={user}
-              todoList={todoList}
-              removeTodo={removeTodo}
-              show={show}
-              setShow={setShow}
-              handleClose={handleClose}
-              handleShow={handleShow}
-            ></EditList>
-          }
-        ></Route>
-        <Route
-          exact
-          path='/new'
-          element={
-            <NewList
-              addTodo={addTodo}
-            ></NewList>
-          }
-        ></Route>
-      </Routes>
-    </BrowserRouter>
-  );
+  const handleListFilter = (input) => {
+    const filteredList = todoList.data.filter((data) => data.fields.Name.includes(input))
+    dispatchTodoList({type: 'LIST_FETCH_SUCCESS', payload: [...filteredList]})
+  }
+
+return (
+  <BrowserRouter>
+    <Routes>
+      <Route
+        exact
+        path='/'
+        element={
+          <CurrentList
+            todoList={todoList}
+            addTodo={addTodo}
+            removeTodo={removeTodo}
+            onDone={handleDoneChange}
+            currentUser={user}
+            show={show}
+            setShow={setShow}
+            handleClose={handleClose}
+            handleShow={handleShow}
+            handleSearch={handleListFilter}
+          ></CurrentList>
+        }
+      >
+      </Route>
+      <Route
+        exact
+        path='/edit'
+        element={
+          <EditList
+            user={user}
+            todoList={todoList}
+            removeTodo={removeTodo}
+            show={show}
+            setShow={setShow}
+            handleClose={handleClose}
+            handleShow={handleShow}
+            handleSearch={handleListFilter}
+          ></EditList>
+        }
+      ></Route>
+      <Route
+        exact
+        path='/new'
+        element={
+          <NewList
+            addTodo={addTodo}
+          ></NewList>
+        }
+      ></Route>
+    </Routes>
+  </BrowserRouter>
+);
 };
 
 App.propTypes = {

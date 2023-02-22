@@ -5,7 +5,7 @@ import TodoList from "./lists/TodoList";
 import { FloatingDiv } from "./modals/FloatingDiv";
 import styles from "../Assets/css/App.module.css";
 
-const Edit = ({ user, todoList, removeTodo, show, handleClose, handleShow }) => {
+const Edit = ({ user, todoList, removeTodo, show, handleClose, handleShow, handleSearch }) => {
 	let navigate = useNavigate();
 	let path = '/';
 
@@ -17,6 +17,7 @@ const Edit = ({ user, todoList, removeTodo, show, handleClose, handleShow }) => 
 		<div className={styles.currentList}>
 			<UserControl
 				handler={handleShow}
+				searchHandler={handleSearch}
 			>View Your List</UserControl>
 
 			<FloatingDiv

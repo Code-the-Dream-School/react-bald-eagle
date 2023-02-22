@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 import { FloatingDiv } from "./modals/FloatingDiv";
 import styles from "../Assets/css/App.module.css";
 
-const CurrentList = ({ todoList, addTodo, currentUser, onDone, show, handleShow, handleClose }) => {
+const CurrentList = ({ todoList, addTodo, currentUser, onDone, show, handleShow, handleClose, handleSearch }) => {
 	let navigate = useNavigate();
 	let path = '/edit';
 
@@ -17,6 +17,7 @@ const CurrentList = ({ todoList, addTodo, currentUser, onDone, show, handleShow,
 		<div className={styles.currentList}>
 		<UserControl
 			handler={handleShow}
+			searchHandler={handleSearch}
 		>Add Task</UserControl>
 
 			<FloatingDiv
