@@ -24,12 +24,8 @@ const CurrentList = ({ todoList, addTodo, currentUser, onDone, show, handleShow,
 			<UserControl
 				handler={handleShow}
 				searchHandler={handleSearch}
-			>Add Task</UserControl>
-			<Button
-				variant='dark'
 				onClick={() => routeChange('home')}
-				className={styles.openButton}
-			></Button>
+			>Add Task</UserControl>
 
 			<FloatingDiv
 				currentUser={currentUser}

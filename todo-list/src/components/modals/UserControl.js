@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import Button from 'react-bootstrap/Button';
 import styles from "../../Assets/css/App.module.css";
 
-const UserControl = ({ searchHandler, handler, children }) => {
+const UserControl = ({ searchHandler, handler, children, onClick }) => {
   const [input, setInput] = useState('')
 
   const handleSearch = (event) => {
@@ -17,9 +17,16 @@ const UserControl = ({ searchHandler, handler, children }) => {
 
   return (
     <div className={styles.infoDiv}>
+      <Button
+        variant='dark'
+        onClick={onClick}
+        className={styles.navigationButton}
+      >Home</Button>
+
       <Button variant="dark" onClick={handler} className={styles.openButton}>
         {children}
       </Button>
+
       <input
         className={`${styles.searchInput}, text-center`}
         type="text"
@@ -33,7 +40,8 @@ const UserControl = ({ searchHandler, handler, children }) => {
 UserControl.propTypes = {
   searchHandler: PropTypes.func,
   handler: PropTypes.func,
-  children: PropTypes.string
+  children: PropTypes.string,
+  onClick: PropTypes.func
 }
 
 export default UserControl

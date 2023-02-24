@@ -1,7 +1,6 @@
 import UserControl from './modals/UserControl';
 import { useNavigate } from "react-router-dom";
 import PropTypes from "prop-types";
-import Button from 'react-bootstrap/Button';
 import TodoList from "./lists/TodoList";
 import { FloatingDiv } from "./modals/FloatingDiv";
 import styles from "../Assets/css/App.module.css";
@@ -24,13 +23,8 @@ const Edit = ({ user, todoList, removeTodo, show, handleClose, handleShow, handl
 			<UserControl
 				handler={handleShow}
 				searchHandler={handleSearch}
-			>View Your List</UserControl>
-
-			<Button
-				variant='dark'
 				onClick={() => routeChange('home')}
-				className={styles.openButton}
-			></Button>
+			>View Your List</UserControl>
 
 			<FloatingDiv
 				currentUser={user}

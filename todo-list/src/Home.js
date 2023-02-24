@@ -3,13 +3,13 @@ import PropTypes from "prop-types";
 import NavButton from "./components/inputs-forms/NavButton";
 import styles from "./Assets/css/App.module.css";
 
-const Home = ({user}) => {
-	let navigate = useNavigate();
-	let path = '/view';
+const Home = ({ user }) => {
+  let navigate = useNavigate();
+  let path = '/view';
 
-	const routeChange = () => {
-		navigate(path);
-	}
+  const routeChange = () => {
+    navigate(path);
+  }
 
   return (
     <>
