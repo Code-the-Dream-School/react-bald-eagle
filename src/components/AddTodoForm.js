@@ -50,7 +50,6 @@ const AddTodoForm = ({ onAddTodo }) => {
         todoTitle={todoTitle}
         handleTitleChange={handleTitleChange}
       >
-        {/* <b>Title:</b> */}
       </InputWithLabel>
       <button type="submit">Add</button>
     </form>
