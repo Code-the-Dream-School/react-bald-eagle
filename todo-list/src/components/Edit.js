@@ -7,7 +7,7 @@ import styles from "../Assets/css/App.module.css";
 
 const Edit = ({ user, todoList, removeTodo, show, handleClose, handleShow, handleSearch }) => {
 	let navigate = useNavigate();
-	let path = '/';
+	let path = '/view';
 
 	const routeChange = () => {
 		navigate(path);

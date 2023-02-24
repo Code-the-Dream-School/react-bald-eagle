@@ -23,7 +23,7 @@ const UserControl = ({ searchHandler, handler, children }) => {
       <input
         className={`${styles.searchInput}, text-center`}
         type="text"
-        placeholder="Search"
+        placeholder="Search List"
         onChange={handleSearch}
       ></input>
     </div>
