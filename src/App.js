@@ -42,7 +42,6 @@ export default function App() {
     )
       .then((response) => response.json())
       .then((result) => {
-        console.log(result);
         setTodoList([...result.records]);
         setIsLoading(false);
       });

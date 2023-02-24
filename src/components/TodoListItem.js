@@ -38,7 +38,11 @@ const TodoListItem = ({ todo, onRemoveTodo, onEditTodo, completeTodo }) => {
     <li
       key={todo.id}
       className={todo.isComplete ? style.Complete : style.ListItem}
-      title="Click to mark as Completed!"
+      title={
+        todo.isComplete
+          ? "Click to uncheck as Completed!"
+          : "Click to check as Completed!"
+      }
     >
       {isEditing ? (
         <form onSubmit={handleEditSubmit} className={style.EditForm}>
