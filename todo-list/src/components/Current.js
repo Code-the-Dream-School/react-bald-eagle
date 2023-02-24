@@ -64,7 +64,8 @@ CurrentList.propTypes = {
 	onDone: PropTypes.func.isRequired,
 	show: PropTypes.bool.isRequired,
 	handleShow: PropTypes.func,
-	handleClose: PropTypes.func
+	handleClose: PropTypes.func,
+	handleSearch: PropTypes.func.isRequired
 }
 
 export default CurrentList
