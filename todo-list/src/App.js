@@ -23,7 +23,7 @@ const App = () => {
   const handleListFilter = (input) => {
     const originalTodoList = JSON.parse(localStorage.getItem('todoList'))
 
-    if (!originalTodoList) return
+    if (!originalTodoList || Object.keys(originalTodoList).length === 0) return
 
     const filteredList = originalTodoList.filter((data) => {
       return (
