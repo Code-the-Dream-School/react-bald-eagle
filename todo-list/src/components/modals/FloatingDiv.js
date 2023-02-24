@@ -4,7 +4,7 @@ import Modal from 'react-bootstrap/Modal';
 import AddTodoForm from "../inputs-forms/AddTodoForm";
 import NavButton from "../inputs-forms/NavButton";
 
-export const FloatingDiv = ({ currentUser, addTodo, routeChange, path, buttonText, children, show, handleClose }) => {
+export const FloatingDiv = ({ currentUser, addTodo, routeChange, secondaryRouteChange, path, buttonText, children, show, handleClose }) => {
   return (
     <Modal show={show} onHide={handleClose} centered>
       <Modal.Header closeButton>

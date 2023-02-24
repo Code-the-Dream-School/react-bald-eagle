@@ -1,29 +1,40 @@
 import UserControl from "./modals/UserControl";
 import TodoList from "./lists/TodoList";
 import { useNavigate } from "react-router-dom";
+import Button from 'react-bootstrap/Button';
 import PropTypes from "prop-types";
 import { FloatingDiv } from "./modals/FloatingDiv";
 import styles from "../Assets/css/App.module.css";
 
 const CurrentList = ({ todoList, addTodo, currentUser, onDone, show, handleShow, handleClose, handleSearch }) => {
 	let navigate = useNavigate();
+	let homePath = '/';
 	let path = '/edit';
 
-	const routeChange = () => {
-		navigate(path);
+	const routeChange = (type) => {
+		if (type === 'home') {
+			navigate(homePath)
+		} else {
+			navigate(path);
+		}
 	}
 
 	return (
 		<div className={styles.currentList}>
-		<UserControl
-			handler={handleShow}
-			searchHandler={handleSearch}
-		>Add Task</UserControl>
+			<UserControl
+				handler={handleShow}
+				searchHandler={handleSearch}
+			>Add Task</UserControl>
+			<Button
+				variant='dark'
+				onClick={() => routeChange('home')}
+				className={styles.openButton}
+			></Button>
 
 			<FloatingDiv
 				currentUser={currentUser}
 				addTodo={addTodo}
-				routeChange={routeChange}
+				routeChange={() => routeChange('edit')}
 				path={path}
 				buttonText={"Trim List"}
 				show={show}

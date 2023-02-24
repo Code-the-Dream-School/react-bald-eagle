@@ -7,10 +7,15 @@ import styles from "../Assets/css/App.module.css";
 
 const Edit = ({ user, todoList, removeTodo, show, handleClose, handleShow, handleSearch }) => {
 	let navigate = useNavigate();
+	let homePath = '/';
 	let path = '/view';
 
-	const routeChange = () => {
-		navigate(path);
+	const routeChange = (type) => {
+		if (type === 'home') {
+			navigate(homePath)
+		} else {
+			navigate(path);
+		}
 	}
 
 	return (
@@ -22,7 +27,7 @@ const Edit = ({ user, todoList, removeTodo, show, handleClose, handleShow, handl
 
 			<FloatingDiv
 				currentUser={user}
-				routeChange={routeChange}
+				routeChange={() => routeChange('view')}
 				path={path}
 				buttonText={"View List"}
 				show={show}

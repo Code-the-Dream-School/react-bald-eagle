@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useReducer, useCallback } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import PropTypes from "prop-types";
+import Home from "./Home"
 import ListReducer from "./Reducer";
 import NewList from "./components/New";
 import CurrentList from "./components/Current";
@@ -196,6 +197,16 @@ const App = () => {
         <Route
           exact
           path='/'
+          element={
+            <Home
+              user={user}
+            ></Home>
+          }
+        >
+        </Route>
+        <Route
+          exact
+          path='/view'
           element={
             <CurrentList
               todoList={todoList}
