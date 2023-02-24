@@ -20,7 +20,7 @@ const Home = ({ user }) => {
             type="button"
             action={routeChange}
             path={path}
-          >View Your List</NavButton>
+          >View Your Todo List</NavButton>
         </div>
       </div>
     </>
