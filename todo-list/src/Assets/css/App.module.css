@@ -123,7 +123,7 @@ label {
 	max-width: 50%;
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 999px) {
 	.addTodoButton {
 		margin-top: 10%;
 	}
