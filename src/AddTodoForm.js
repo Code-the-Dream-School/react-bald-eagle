@@ -12,7 +12,10 @@ function AddToDoForm ({ onAddTodo }) {
   }
   const handleAddTodo = (event) => {
     event.preventDefault();
-    // const todoTitle = event.target.title.value    
+    // const todoTitle = event.target.title.value
+    const dueDate = event.target["Due Date"];
+    const todoTitle = event.target.todoTitle;
+    addTasks({todoTitle, dueDate});
     
     console.log(todoTitle);
     // event.target.reset();
