@@ -219,6 +219,7 @@ const App = () => {
               handleClose={handleClose}
               handleShow={handleShow}
               handleSearch={handleListFilter}
+              updateList={fetchTodos}
             ></CurrentList>
           }
         >
@@ -236,6 +237,7 @@ const App = () => {
               handleClose={handleClose}
               handleShow={handleShow}
               handleSearch={handleListFilter}
+              updateList={fetchTodos}
             ></EditList>
           }
         ></Route>

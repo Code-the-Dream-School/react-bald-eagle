@@ -6,7 +6,7 @@ import PropTypes from "prop-types";
 import { FloatingDiv } from "./modals/FloatingDiv";
 import styles from "../Assets/css/App.module.css";
 
-const CurrentList = ({ todoList, addTodo, currentUser, onDone, show, handleShow, handleClose, handleSearch }) => {
+const CurrentList = ({ todoList, addTodo, currentUser, onDone, show, handleShow, handleClose, handleSearch, updateList }) => {
 	let navigate = useNavigate();
 	let homePath = '/';
 	let path = '/edit';
@@ -25,14 +25,15 @@ const CurrentList = ({ todoList, addTodo, currentUser, onDone, show, handleShow,
 				handler={handleShow}
 				searchHandler={handleSearch}
 				onClick={() => routeChange('home')}
+				routeChange={() => routeChange('edit')}
+				path={path}
+				updateList={updateList}
+				buttonText={"Edit List"}
 			>Add Task</UserControl>
 
 			<FloatingDiv
 				currentUser={currentUser}
 				addTodo={addTodo}
-				routeChange={() => routeChange('edit')}
-				path={path}
-				buttonText={"Trim List"}
 				show={show}
 				handleClose={handleClose}
 			>Add tasks to {currentUser}'s list</FloatingDiv>

@@ -2,10 +2,9 @@ import UserControl from './modals/UserControl';
 import { useNavigate } from "react-router-dom";
 import PropTypes from "prop-types";
 import TodoList from "./lists/TodoList";
-import { FloatingDiv } from "./modals/FloatingDiv";
 import styles from "../Assets/css/App.module.css";
 
-const Edit = ({ user, todoList, removeTodo, show, handleClose, handleShow, handleSearch }) => {
+const Edit = ({ user, todoList, removeTodo, handleShow, handleSearch, updateList }) => {
 	let navigate = useNavigate();
 	let homePath = '/';
 	let path = '/view';
@@ -24,16 +23,11 @@ const Edit = ({ user, todoList, removeTodo, show, handleClose, handleShow, handl
 				handler={handleShow}
 				searchHandler={handleSearch}
 				onClick={() => routeChange('home')}
-			>View Your List</UserControl>
-
-			<FloatingDiv
-				currentUser={user}
 				routeChange={() => routeChange('view')}
+				updateList={updateList}
 				path={path}
 				buttonText={"View List"}
-				show={show}
-				handleClose={handleClose}
-			>Edit {user}'s list</FloatingDiv>
+			>View Your List</UserControl>
 
 
 			<div className={styles.listDiv}>

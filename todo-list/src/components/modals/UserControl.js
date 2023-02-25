@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from "prop-types";
 import Button from 'react-bootstrap/Button';
+import NavButton from '../inputs-forms/NavButton';
 import styles from "../../Assets/css/App.module.css";
 
-const UserControl = ({ searchHandler, handler, children, onClick }) => {
+const UserControl = ({ searchHandler, handler, children, onClick, updateList, path, buttonText, routeChange }) => {
   const [input, setInput] = useState('')
 
   const handleSearch = (event) => {
@@ -20,13 +21,25 @@ const UserControl = ({ searchHandler, handler, children, onClick }) => {
       <Button
         variant='dark'
         onClick={onClick}
-        className={styles.navigationButton}
+        className={styles.openButton}
       >Home</Button>
 
-      <Button variant="dark" onClick={handler} className={styles.openButton}>
-        {children}
-      </Button>
+      {
+        buttonText === "Edit List" ?
+          <Button variant="dark" onClick={handler} className={styles.openButton}>
+            {children}
+          </Button> : <></>
+      }
 
+      <NavButton
+        type="button"
+        action={routeChange}
+        path={'/edit'}
+      >{buttonText}</NavButton>
+
+      <Button variant="dark" onClick={updateList} className={styles.openButton}>
+        Refresh List
+      </Button>
       <input
         className={styles.searchInput}
         type="text"

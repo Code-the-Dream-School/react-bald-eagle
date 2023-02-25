@@ -83,14 +83,6 @@ label {
 	max-width: 100%;
 }
 
-.navigationButton {
-	max-width: 50%;
-	height: 10%;
-	margin: 0 auto;
-	margin-bottom: 5%;
-	margin-top: 5%;
-}
-
 .searchInput {
 	position: absolute;
 	max-height: 3%;
@@ -161,10 +153,6 @@ label {
 
 	.addTodoButton {
 		margin-top: 10%;
-		width: 50%;
-	}
-
-	.navigationButton {
 		width: 50%;
 	}
 
@@ -241,12 +229,6 @@ label {
 	}
 	
 	.openButton {
-		max-height: 50px;
-		min-width: 100%;
-		margin-bottom: 5%;
-	}
-
-	.navigationButton {
 		max-height: 50px;
 		min-width: 100%;
 		margin-bottom: 5%;
