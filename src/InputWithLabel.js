@@ -1,4 +1,5 @@
 import React from 'react';
+// import addTasks from './AddTodoForm';
 
 function InputWithLabel({ todoTitle, handleTitleChange, handleAddTodo, children, label, isFocused }) {
   
@@ -25,9 +26,11 @@ function InputWithLabel({ todoTitle, handleTitleChange, handleAddTodo, children,
         onChange={handleTitleChange}
         ref={inputRef}        
       />
-       
+      
+      <label htmlFor="dueDate">Due Date</label>
+      <input id="dueDate" placeholder = "YEAR-MO-DAY"/>
       <span> </span>
-      <button type="submit" onClick={handleAddTodo}>Add</button>
+     
       </form>      
     </>
   )
