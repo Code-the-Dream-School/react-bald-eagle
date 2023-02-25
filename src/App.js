@@ -5,6 +5,7 @@ import ToDoList from './ToDoList';
 import AddToDoForm from './AddTodoForm';
 
 function App() {  
+  // component life cycle
   
   // const [todoList, setTodoList] = useState(JSON.parse(localStorage.getItem('savedTodoList')) || ('defaultValue'));
   const [todoList, setTodoList] = useState([]); 
@@ -16,35 +17,23 @@ function App() {
       localStorage.setItem('savedTodoList', JSON.stringify(todoList));
     }
   }, [todoList, isLoading]);
+   
   
-  //async works
-  // useEffect(() => {
-  //   const getTasks = async () => {
-  //     const res = await fetch(`https://api.airtable.com/v0/${process.env.REACT_APP_AIRTABLE_BASE_ID}/Default`, {
-  //       headers: {
-  //         Authorization: `Bearer ${process.env.REACT_APP_AIRTABLE_API_KEY}`, 
-  //       }         
-  //     });
-  //   const result = await res.json();
-  //   setTodoList(result.records);
-  //   setIsLoading(false);
-  //   console.log(result);
-  //   };
-  //   getTasks();  
-  // },[]);
-
-  // fetch version works
   useEffect(() => {
-    fetch(`https://api.airtable.com/v0/${process.env.REACT_APP_AIRTABLE_BASE_ID}/Default`, {
-      headers: {
-        Authorization: `Bearer ${process.env.REACT_APP_AIRTABLE_API_KEY}`, 
-      }, 
-    }).then((response) => response.json())
-      .then((result) => {
-      setTodoList(result.records);
-      setIsLoading(false)
-    });
-  }, []);
+    const getTasks = async () => {
+      const res = await fetch(`https://api.airtable.com/v0/${process.env.REACT_APP_AIRTABLE_BASE_ID}/Default`, {
+        headers: {
+          Authorization: `Bearer ${process.env.REACT_APP_AIRTABLE_API_KEY}`, 
+        }         
+      });
+    const result = await res.json();
+    setTodoList(result.records);
+    setIsLoading(false);
+    console.log(result);
+    };
+    getTasks();  
+  },[]);
+
 
   console.log("todoList", todoList); 
 
@@ -60,19 +49,20 @@ function App() {
   }
 
   return (
-    <BrowserRouter>
-        <>
-          <div style={{ textAlign: 'center' }}>
-            <h1>Todo List</h1>
-            <AddToDoForm onAddTodo={addTodo}/>      
-            { isLoading?  
-              <p>"Loading..."</p>: 
-              <ToDoList todoList={todoList} onRemoveTodo={removeTodo}/>
-            }        
-          </div>
-        </>  
+    <BrowserRouter>       
         <Routes>
-            <Route exact path="/" element={<> </>} />                    
+            <Route exact path="/" element={
+                <>
+                    <div style={{ textAlign: 'center' }}>
+                      <h1>Todo List</h1>
+                      <AddToDoForm onAddTodo={addTodo}/>      
+                      { isLoading?  
+                        <p>"Loading..."</p>: 
+                        <ToDoList todoList={todoList} onRemoveTodo={removeTodo}/>
+                      }        
+                    </div>
+                </>  
+            } />                    
             <Route path="/new" element={<h1>New Todo List</h1>} />            
         </Routes>
     </BrowserRouter>    

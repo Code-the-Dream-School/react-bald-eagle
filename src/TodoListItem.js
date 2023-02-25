@@ -6,13 +6,13 @@ function ToDoListItem ({ item, onRemoveTodo }) {
     onRemoveTodo(item);
   };
 
-  let tableDate = item.fields["Due Date"]
+  let tableDate = item.fields["Due Date"];
   let newTableDate = new Date (tableDate);
 
   return (    
     <>
       <li>
-        {item.fields.Title}
+        {item.fields.title}
         <span></span>
         <span> dueDate: </span>
         {newTableDate.toDateString()}

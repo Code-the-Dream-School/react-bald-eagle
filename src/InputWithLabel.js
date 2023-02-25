@@ -21,11 +21,13 @@ function InputWithLabel({ todoTitle, handleTitleChange, handleAddTodo, children,
         type="text" 
         name="title" 
         value={todoTitle}
+        placeholder = "title"
         onChange={handleTitleChange}
         ref={inputRef}        
       />
+       
       <span> </span>
-      <button type="submit">Add</button>
+      <button type="submit" onClick={handleAddTodo}>Add</button>
       </form>      
     </>
   )
