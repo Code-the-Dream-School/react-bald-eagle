@@ -151,9 +151,15 @@ label {
 }
 
 @media screen and (max-width: 999px) {
+	.buttonDiv {
+		display: flex;
+		justify-content: center;
+	}
+
 	.openButton {
 		margin-bottom: 5%;
-		width: 50%;
+		min-width: 50vw;
+		min-height: 2.5vh;
 	}
 
 	.addTodoButton {
@@ -164,13 +170,15 @@ label {
 	.infoDiv {
 		display: flex;
 		flex-direction: column-reverse;
+		justify-content: space-evenly;
 	}
 
 	.searchInput {
 		top: 1%;
 		max-width: 50%;
-		max-height: 5%;
+		max-height: 5vh;
 		font-size: 30px;
+		margin-bottom: 50%;
 	}
 
 	.todoList {
