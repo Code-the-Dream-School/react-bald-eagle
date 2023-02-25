@@ -3,14 +3,12 @@ import TodoList from './components/TodoList';
 import AddTodoForm from './components/AddTodoForm';
 import { useState, useEffect } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import style from './components/TodoListItem.module.css';
-import SortTodoList from './components/SortTodoList';
 
 function App() {
 
-  const [todoList, setTodoList] = useState([]
+  const [todoList, setTodoList] = useState([]);
     // JSON.parse(localStorage.getItem("savedTodoList")) || []
-  );
+  
   const [isLoading, setIsLoading] = useState(true);
 
   // useEffect(() => {
@@ -31,7 +29,7 @@ function App() {
 
     useEffect(() => {
   
-    fetch(`https://api.airtable.com/v0/${process.env.REACT_APP_AIRTABLE_BASE_ID}/Default?sort[0][field]=Title&sort[0][direction]=asc`, {
+    fetch(`https://api.airtable.com/v0/${process.env.REACT_APP_AIRTABLE_BASE_ID}/Default`, {
       method: 'GET',
       headers: {
         'Authorization': `Bearer ${process.env.REACT_APP_AIRTABLE_API_KEY}`,
@@ -49,6 +47,7 @@ function App() {
       }
       })
       // end of exercise 5.1
+      console.log(result)
       setTodoList(result.records || []);
       setIsLoading(false)
     })
@@ -72,6 +71,22 @@ function App() {
     setTodoList(todoList.filter((todo) => item.id !== todo.id));
   }
 
+  const handleToggleDone = (id) => {
+    const updatedTodos = todoList.map((todo) =>
+      todo.id === id ? { ...todo, done: !todo.done } : todo
+    );
+    setTodoList(updatedTodos);
+  };
+
+  const countDone = todoList.filter((todo) => todo.done).length;
+  const countPending = todoList.filter((todo) => !todo.done).length; 
+
+  // const markTodo = index => {
+  //   const newTodos = [...todoList];
+  //   newTodos[index].isDone = true;
+  //   setTodoList(newTodos);
+  // };
+
   return (
     <BrowserRouter>
       <Routes>
@@ -81,21 +96,29 @@ function App() {
             <nav>
               <a href="">Home</a> |
               <a href="">Todo List</a> |
-              <a href="">About Us</a> |
+              <a href="http://localhost:3000/about%20us">About Us</a> |
             </nav>
             <img src="https://cdn-icons-png.flaticon.com/128/4394/4394562.png" alt="List" width="60" height="60"></img>
             
             <h1>Todo List</h1>
             <AddTodoForm onAddTodo={addTodo}/>
+            <p>{countDone} Completed : {countPending} Pending</p>
             {isLoading ? (<p>Loading...</p>) : 
-            <TodoList todoList={todoList} onRemoveTodo={removeTodo}/>
+            <TodoList todoList={todoList} onRemoveTodo={removeTodo} onhandleToggleDone={handleToggleDone}/>
             }
-            <SortTodoList todoList={todoList}/>
+            
           </div>
         }/>
       <Route path="/new" exact element=
       {
         <h1>New Todo List</h1>
+      }/>
+      <Route path="/about us" exact element=
+      {
+        <>
+          <h1>About Us</h1>
+          <p>This sixteen-week project guides students through building a Todo List application with React.</p>
+        </>
       }/>
     </Routes>
   </BrowserRouter>

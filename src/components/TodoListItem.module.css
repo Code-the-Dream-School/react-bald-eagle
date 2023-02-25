@@ -4,7 +4,7 @@
   font-family: "Libre Baskerville", serif; 
   line-height: 3px;  
   text-shadow: 0 1px 1px #fff; 
-  padding-top: 8px;  
+  padding-top: 1px;  
 }
 
 .ButtonClass {
@@ -13,11 +13,21 @@
   border-style: inherit;
   margin: 5px;
   font-size: 17px; 
-  font-family: "Libre Baskerville", serif;
+  font-family: "Great Vibes", cursive;;
 }
 
 button:hover {
   background-color: rgb(111, 114, 111);
+  cursor: pointer;
+}
+
+.SortButton {
+  margin: 10px;
+  font-family: "Libre Baskerville", serif;
+  font-weight: bold;
+  font-size: 17px;
+  color: #4CAF50;
+  margin-left: 35px;
 }
 
 .wrapper {
@@ -40,27 +50,8 @@ h1 {
   font-size: 70px; 
   line-height: 70px; 
   font-weight: normal; 
-  margin-bottom: 15px; 
+  margin-bottom: 20px; 
   margin-top: 15px; 
-  text-shadow: 0 1px 1px #fff; 
-}
-
-p { 
-  color: #7a7c7f; 
-  font-size: 29px; 
-  font-family: "Libre Baskerville", serif; 
-  line-height: 20px; 
-  text-align: center; 
-  text-shadow: 0 1px 1px #fff; 
-  padding-top: 20px; 
-}
-
-p.byline { 
-  font-style: italic; 
-  color: #B6B6B6; 
-  font-size: 24px; 
-  margin-top: 20px; 
-  text-align: center; 
   text-shadow: 0 1px 1px #fff; 
 }
 
@@ -73,6 +64,16 @@ nav {
   margin-bottom: 15px; 
   margin-top: 15px; 
   text-shadow: 0 1px 1px #fff; 
+}
+
+p {
+  color: #515255; 
+  font-size: 20px; 
+  font-family: "Libre Baskerville", serif;
+  font-weight: bold; 
+  line-height: 5px;
+  margin-top: 20px;
+  margin-left: 35px;   
 }
 
 
