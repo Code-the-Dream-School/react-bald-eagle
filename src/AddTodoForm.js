@@ -2,7 +2,7 @@ import React from 'react';
 import InputWithLabel from './InputWithLabel';
 
 
-export const addTasks = async ({ todoTitle,formData }) => {
+export const addTasks = async ({todoTitle,formData }) => {
   const res = await fetch(`https://api.airtable.com/v0/${process.env.REACT_APP_AIRTABLE_BASE_ID}/Default`, {
     method: 'POST',
     headers: {
@@ -40,7 +40,7 @@ function AddToDoForm ({ onAddTodo }) {
     console.log(`todoTitle:`, todoTitle)
     addTasks({todoTitle});
     
-    console.log(todoTitle);
+    // console.log(todoTitle);
     // event.target.reset();
     // onAddTodo({title: todoTitle, id: Date.now()});
     // onAddTodo({ title: todoTitle });
