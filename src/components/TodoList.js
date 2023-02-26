@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import { useState } from 'react';
 
 
-const TodoList = ({ todoList, onRemoveTodo, onhandleToggleDone }) => {
+const TodoList = ({ todoList, onRemoveTodo, onHandleToggleDone }) => {
   const [sortAscending, setSortAscending] = useState(true);
 
   const toggleSortOrder = () => {
@@ -31,7 +31,7 @@ const TodoList = ({ todoList, onRemoveTodo, onhandleToggleDone }) => {
       </button>
       <ul className= {style.Ul}>
         {sortedRecords.map((todoListItem) => (
-          <TodoListItem key={todoListItem.id} todo={todoListItem} onRemoveTodo={onRemoveTodo} onhandleToggleDone={onhandleToggleDone} />
+          <TodoListItem key={todoListItem.id} todo={todoListItem} onRemoveTodo={onRemoveTodo} onHandleToggleDone={onHandleToggleDone}/>
         ))}
       </ul>
     </>

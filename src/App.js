@@ -73,13 +73,15 @@ function App() {
 
   const handleToggleDone = (id) => {
     const updatedTodos = todoList.map((todo) =>
-      todo.id === id ? { ...todo, done: !todo.done } : todo
+      todo.id === id ? { ...todo, Completed: !todo.Completed } : todo
     );
     setTodoList(updatedTodos);
   };
 
-  const countDone = todoList.filter((todo) => todo.done).length;
-  const countPending = todoList.filter((todo) => !todo.done).length; 
+  const countDone = todoList.filter((todo) => todo.Completed).length;
+  const countPending = todoList.filter((todo) => !todo.Completed).length;
+  
+  console.log(todoList);
 
   // const markTodo = index => {
   //   const newTodos = [...todoList];
@@ -104,9 +106,9 @@ function App() {
             <AddTodoForm onAddTodo={addTodo}/>
             <p>{countDone} Completed : {countPending} Pending</p>
             {isLoading ? (<p>Loading...</p>) : 
-            <TodoList todoList={todoList} onRemoveTodo={removeTodo} onhandleToggleDone={handleToggleDone}/>
+            <TodoList todoList={todoList} onRemoveTodo={removeTodo} onHandleToggleDone={handleToggleDone}/>
             }
-            
+        
           </div>
         }/>
       <Route path="/new" exact element=

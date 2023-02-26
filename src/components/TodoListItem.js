@@ -2,13 +2,14 @@ import React from 'react';
 import style from './TodoListItem.module.css';
 import PropTypes from 'prop-types';
 
-const TodoListItem = ({ todo, onRemoveTodo, onhandleToggleDone }) => {
+const TodoListItem = ({ todo, onRemoveTodo, onHandleToggleDone }) => {
   return (
     <>
       <li key={todo.id} className = {style.ListItem}>
         <span
-          style={{ textDecoration: todo.done ? "line-through" : "none" }}
-          onClick={() => onhandleToggleDone(todo.id)}
+          style={{ textDecoration: todo.fields.Completed || todo.Completed
+            ? "line-through" : "none" }}
+          onClick={() => onHandleToggleDone(todo.id)}
         > 
         {todo.fields.Title}
         </span> 
