@@ -2,7 +2,7 @@ import React from 'react';
 import InputWithLabel from './InputWithLabel';
 
 
-export const addTasks = async ({ dueDate, todoTitle }) => {
+export const addTasks = async ({ todoTitle,formData }) => {
   const res = await fetch(`https://api.airtable.com/v0/${process.env.REACT_APP_AIRTABLE_BASE_ID}/Default`, {
     method: 'POST',
     headers: {
@@ -13,8 +13,7 @@ export const addTasks = async ({ dueDate, todoTitle }) => {
       records: [
         {
           fields: {
-            "Due Date": dueDate,
-            title: todoTitle,
+            ...formData,
           },  
         },
       ],
@@ -36,14 +35,15 @@ function AddToDoForm ({ onAddTodo }) {
   const handleAddTodo = (event) => {
     event.preventDefault();
     // const todoTitle = event.target.title.value
-    const dueDate = event.target["Due Date"];
-    const todoTitle = event.target.title;
-    console.log(`dueDate: `, dueDate,  `todotitle:`, todoTitle)
-    addTasks({todoTitle, dueDate});
+    // const taskDueDate = event.target["Due Date"].value;
+    const todoTitle = event.target.title.value;
+    console.log(`todoTitle:`, todoTitle)
+    addTasks({todoTitle});
     
     console.log(todoTitle);
     // event.target.reset();
     // onAddTodo({title: todoTitle, id: Date.now()});
+    // onAddTodo({ title: todoTitle });
     // setTodoTitle('');
   }
   
@@ -57,8 +57,7 @@ function AddToDoForm ({ onAddTodo }) {
         isFocused
       >
         TodoTitle:  
-      </InputWithLabel>
-      <button type="submit" onClick={handleAddTodo}>Add</button>     
+      </InputWithLabel>      
     </>  
   )
 };

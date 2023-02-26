@@ -27,8 +27,9 @@ function InputWithLabel({ todoTitle, handleTitleChange, handleAddTodo, children,
         ref={inputRef}        
       />
       
-      <label htmlFor="dueDate">Due Date</label>
-      <input id="dueDate" placeholder = "YEAR-MO-DAY"/>
+      <label htmlFor="taskDueDate">Due Date</label>
+      <input id="taskDueDate" placeholder = "YYYY-MM-DD"/>
+      <button type="submit" onClick={handleAddTodo}>Add</button>   
       <span> </span>
      
       </form>      

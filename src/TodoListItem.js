@@ -6,8 +6,8 @@ function ToDoListItem ({ item, onRemoveTodo }) {
     onRemoveTodo(item);
   };
 
-  let tableDate = item.fields["Due Date"];
-  let newTableDate = new Date (tableDate);
+  // let tableDate = item.fields["Due Date"];
+  // let newTableDate = new Date (tableDate);
 
   return (    
     <>
@@ -15,7 +15,7 @@ function ToDoListItem ({ item, onRemoveTodo }) {
         {item.fields.title}
         <span></span>
         <span> dueDate: </span>
-        {newTableDate.toDateString()}
+        {/* {newTableDate.toDateString()} */}
         <span> </span>
         <button type="button" onClick={handleRemoveTodo}>Remove</button>
       </li>
