@@ -1,11 +1,11 @@
-import Button from 'react-bootstrap/Button';
+import UserControl from "./modals/UserControl";
 import TodoList from "./lists/TodoList";
 import { useNavigate } from "react-router-dom";
 import PropTypes from "prop-types";
 import { FloatingDiv } from "./modals/FloatingDiv";
 import styles from "../Assets/css/App.module.css";
 
-const CurrentList = ({ todoList, addTodo, currentUser, onDone, show, handleShow, handleClose }) => {
+const CurrentList = ({ todoList, addTodo, currentUser, onDone, show, handleShow, handleClose, handleSearch }) => {
 	let navigate = useNavigate();
 	let path = '/edit';
 
@@ -15,9 +15,10 @@ const CurrentList = ({ todoList, addTodo, currentUser, onDone, show, handleShow,
 
 	return (
 		<div className={styles.currentList}>
-			<Button variant="dark" onClick={handleShow} className={styles.openButton}>
-				Add Task
-			</Button>
+		<UserControl
+			handler={handleShow}
+			searchHandler={handleSearch}
+		>Add Task</UserControl>
 
 			<FloatingDiv
 				currentUser={currentUser}

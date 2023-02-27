@@ -13,17 +13,30 @@ const App = () => {
   const [user, setUser] = useState('')
   const [show, setShow] = useState(false)
 
-  const getUser = () => { 
+  const getUser = () => {
     setUser(prompt('Please enter your name'))
   }
 
-	const handleShow = () => setShow(true)
-	const handleClose = () => setShow(false)
+  const handleShow = () => setShow(true)
+  const handleClose = () => setShow(false)
+
+  const handleListFilter = (input) => {
+    const originalTodoList = JSON.parse(localStorage.getItem('todoList'))
+
+    if (!originalTodoList || Object.keys(originalTodoList).length === 0) return
+
+    const filteredList = originalTodoList.filter((data) => {
+      return (
+        data.fields.Name.includes(input)
+      )
+    })
+    dispatchTodoList({ type: 'LIST_FETCH_SUCCESS', payload: [...filteredList] })
+  }
 
   useEffect(() => {
     if (localStorage.getItem('user')) {
       setUser(JSON.parse(localStorage.getItem('user')))
-    }else {
+    } else {
       getUser()
     }
   }, [])
@@ -47,7 +60,20 @@ const App = () => {
 
       if (response.ok) {
         const data = await response.json()
-        dispatchTodoList({ type: 'LIST_FETCH_SUCCESS', payload: [...data.records] })
+        const sortedRecords = data.records.sort((recordA, recordB) => {
+          if (recordA.fields.Name > recordB.fields.Name) {
+            return 1
+          }
+          if (recordA.fields.Name < recordB.fields.Name) {
+            return -1
+          } else {
+            return 0
+          }
+        })
+
+        localStorage.setItem('todoList', JSON.stringify([...sortedRecords])) // store copy of todoList for filtering
+
+        dispatchTodoList({ type: 'LIST_FETCH_SUCCESS', payload: [...sortedRecords] })
       } else {
         dispatchTodoList({ type: 'LIST_FETCH_FAILURE' })
       }
@@ -117,10 +143,10 @@ const App = () => {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-            "fields": {
-              "Name": `${todo.fields.Name}`,
-              "Done": boolean
-            }
+        "fields": {
+          "Name": `${todo.fields.Name}`,
+          "Done": boolean
+        }
       })
     }
 
@@ -181,6 +207,7 @@ const App = () => {
               setShow={setShow}
               handleClose={handleClose}
               handleShow={handleShow}
+              handleSearch={handleListFilter}
             ></CurrentList>
           }
         >
@@ -197,6 +224,7 @@ const App = () => {
               setShow={setShow}
               handleClose={handleClose}
               handleShow={handleShow}
+              handleSearch={handleListFilter}
             ></EditList>
           }
         ></Route>
