@@ -37,13 +37,19 @@ const AddTodoForm = ({ onAddTodo }) => {
           `Error! Todo was not created, status code: ${response.status}`
         );
       }
+      // console.log(response.json());
       const newTodo = await response.json();
-      onAddTodo(newTodo);
+      onAddTodo({
+        id: newTodo.id,
+        createdTime: newTodo.createdTime,
+        fields: newTodo.fields,
+      });
       setTodoTitle("");
     } catch (error) {
       console.error(error);
     }
   };
+
   return (
     <form onSubmit={handleAddTodo}>
       <InputWithLabel

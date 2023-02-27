@@ -11,9 +11,12 @@ export default function App() {
   const [isLoading, setIsLoading] = useState(true);
 
   function addTodo(newTodo) {
+    console.log("New todo:", newTodo);
+
     if (!newTodo.fields.Title || /^\s*$/.test(newTodo.fields.Title)) {
       return;
     }
+
     fetch(
       `https://api.airtable.com/v0/${process.env.REACT_APP_AIRTABLE_BASE_ID}/Default`,
       {
@@ -22,14 +25,18 @@ export default function App() {
           Authorization: `Bearer ${process.env.REACT_APP_AIRTABLE_API_KEY}`,
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ fields: newTodo }),
+        body: JSON.stringify(newTodo),
       }
     )
       .then((response) => response.json())
+      
+
       .then((res) => {
-        setTodoList([...todoList, { ...newTodo, id: res.id }]);
+        console.log(res);
+        setTodoList([...todoList, newTodo]);
       });
   }
+
   useEffect(() => {
     fetch(
       `https://api.airtable.com/v0/${process.env.REACT_APP_AIRTABLE_BASE_ID}/Default`,
