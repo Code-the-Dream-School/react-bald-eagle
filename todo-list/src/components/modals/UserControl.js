@@ -4,7 +4,7 @@ import Button from 'react-bootstrap/Button';
 import NavButton from '../inputs-forms/NavButton';
 import styles from "../../Assets/css/App.module.css";
 
-const UserControl = ({ searchHandler, handler, children, onClick, updateList, path, buttonText, routeChange }) => {
+const UserControl = ({ searchHandler, handler, children, onClick, updateList, currentUser, buttonText, routeChange }) => {
   const [input, setInput] = useState('')
 
   const handleSearch = (event) => {
@@ -18,6 +18,8 @@ const UserControl = ({ searchHandler, handler, children, onClick, updateList, pa
 
   return (
     <div className={styles.infoDiv}>
+      <h1 className={styles.mainTitle}>{currentUser}'s Todo List</h1>
+
       <Button
         variant='dark'
         onClick={onClick}

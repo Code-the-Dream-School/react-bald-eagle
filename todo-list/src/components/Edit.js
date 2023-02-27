@@ -27,11 +27,11 @@ const Edit = ({ user, todoList, removeTodo, handleShow, handleSearch, updateList
 				updateList={updateList}
 				path={path}
 				buttonText={"View List"}
+				currentUser={user}
 			>View Your List</UserControl>
 
 
 			<div className={styles.listDiv}>
-				<h1 className={styles.mainTitle}>{user}'s Todo List</h1>
 				<div className={styles.todoItems}>
 					{todoList.isError && <p>Something went wrong...</p>}
 

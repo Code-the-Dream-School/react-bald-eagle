@@ -1,7 +1,6 @@
 import UserControl from "./modals/UserControl";
 import TodoList from "./lists/TodoList";
 import { useNavigate } from "react-router-dom";
-import Button from 'react-bootstrap/Button';
 import PropTypes from "prop-types";
 import { FloatingDiv } from "./modals/FloatingDiv";
 import styles from "../Assets/css/App.module.css";
@@ -29,6 +28,7 @@ const CurrentList = ({ todoList, addTodo, currentUser, onDone, show, handleShow,
 				path={path}
 				updateList={updateList}
 				buttonText={"Edit List"}
+				currentUser={currentUser}
 			>Add Task</UserControl>
 
 			<FloatingDiv
@@ -39,7 +39,6 @@ const CurrentList = ({ todoList, addTodo, currentUser, onDone, show, handleShow,
 			>Add tasks to {currentUser}'s list</FloatingDiv>
 
 			<div className={styles.listDiv}>
-				<h1 className={styles.mainTitle}>{currentUser}'s Todo List</h1>
 				<div className={styles.todoItems}>
 					{todoList.isError && <p style={{ color: 'white' }}>Something went wrong...</p>}
 

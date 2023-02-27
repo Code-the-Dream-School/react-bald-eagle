@@ -28,7 +28,7 @@ const App = () => {
 
     const filteredList = originalTodoList.filter((data) => {
       return (
-        data.fields.Name.includes(input)
+        data.fields.Name.toLowerCase().includes(input.toLowerCase())
       )
     })
     dispatchTodoList({ type: 'LIST_FETCH_SUCCESS', payload: [...filteredList] })
@@ -61,6 +61,7 @@ const App = () => {
 
       if (response.ok) {
         const data = await response.json()
+
         const sortedRecords = data.records.sort((recordA, recordB) => {
           if (recordA.fields.Name > recordB.fields.Name) {
             return 1
@@ -125,6 +126,8 @@ const App = () => {
 
         const newTodos = [...todoList.data, newFormat]
 
+        localStorage.setItem('todoList', JSON.stringify([...newTodos])) // store copy of todoList for filtering
+
         dispatchTodoList({
           type: 'LIST_FETCH_SUCCESS',
           payload: [...newTodos]
@@ -179,6 +182,8 @@ const App = () => {
 
       if (response.ok) {
         const newTodos = todoList.data.filter(todo => todo.id !== id)
+
+        localStorage.setItem('todoList', JSON.stringify([...newTodos])) // store copy of todoList for filtering
 
         dispatchTodoList({
           type: 'LIST_FETCH_SUCCESS',
