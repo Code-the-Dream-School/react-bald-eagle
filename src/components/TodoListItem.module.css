@@ -160,13 +160,13 @@ body {
   }
 }
 
-@media screen and (min-width: 500px) and (max-width: 614px) {
+@media screen and (min-width: 400px) and (max-width: 614px) {
   .Container {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 475px;
+    width: 399px;
     margin: auto;
     margin-top: 5em;
     padding: 1rem;

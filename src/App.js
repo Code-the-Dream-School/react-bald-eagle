@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-
+import Home from "./components/Home";
 import AddTodoForm from "./components/AddTodoForm";
 import style from "./components/TodoListItem.module.css";
 
 import TodoList from "./components/TodoList";
-
+import Navbar from "./components/Navbar";
 export default function App() {
   const [todoList, setTodoList] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -29,7 +29,6 @@ export default function App() {
       }
     )
       .then((response) => response.json())
-      
 
       .then((res) => {
         console.log(res);
@@ -120,10 +119,11 @@ export default function App() {
 
   return (
     <BrowserRouter>
+      <Navbar />
       <Routes>
+        <Route exact path="/" element={<Home />}></Route>
         <Route
-          exact
-          path="/"
+          path="/todoapp"
           element={
             <div className={style.Container}>
               <h1>Todo List</h1>
@@ -141,7 +141,6 @@ export default function App() {
             </div>
           }
         ></Route>
-        <Route path="/new" element={<h1>New Page Content</h1>}></Route>
       </Routes>
     </BrowserRouter>
   );

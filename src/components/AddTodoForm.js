@@ -29,6 +29,7 @@ const AddTodoForm = ({ onAddTodo }) => {
             fields: {
               Title: todoTitle,
             },
+            typecast: true,
           }),
         }
       );
