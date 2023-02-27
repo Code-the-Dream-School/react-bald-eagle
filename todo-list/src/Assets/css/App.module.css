@@ -21,7 +21,7 @@ label {
 	margin-top: 0;
 	display: flex;
 	flex-direction: column;
-	background-image: url('https://www.freepnglogos.com/uploads/mountain-png/mountain-png-online-marketing-all-solutions-0.png'),linear-gradient(180deg, rgb(1, 90, 94), rgb(0, 22, 23));
+	background-image: linear-gradient(180deg, rgb(1, 90, 94), rgb(0, 22, 23));
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-blend-mode: multiply;
@@ -46,7 +46,7 @@ label {
 
 .openButton {
 	margin: 0 auto;
-	margin-top: 10%;
+	margin-top: 5%;
 }
 
 .mainTitle {
@@ -101,11 +101,7 @@ label {
 	padding: 20px;
 	flex-direction: column;
 	margin: 0 auto;
-	background-image: url('https://www.pngall.com/wp-content/uploads/5/Flying-Flock-of-Birds-PNG-File.png');
-	background-repeat: no-repeat;
-	background-size: cover;
-	background-blend-mode: multiply;
-	background-attachment: fixed;
+	top: 0;
 }
 
 .currentList {
@@ -150,7 +146,7 @@ label {
 	max-width: 50%;
 }
 
-@media screen and (max-width: 999px) {
+@media screen and (max-width: 901px) {
 	.buttonDiv {
 		display: flex;
 		justify-content: center;
@@ -159,7 +155,12 @@ label {
 	.openButton {
 		margin-bottom: 5%;
 		min-width: 50vw;
-		min-height: 2.5vh;
+		min-height: 6.5vh;
+		font-size: 40px;
+	}
+
+	.mainTitle {
+		font-size: 45px;
 	}
 
 	.addTodoButton {
@@ -171,14 +172,14 @@ label {
 		display: flex;
 		flex-direction: column-reverse;
 		justify-content: space-evenly;
+		margin-top: 5%;
 	}
 
 	.searchInput {
 		top: 1%;
 		max-width: 50%;
-		max-height: 5vh;
+		min-height: 10vh;
 		font-size: 30px;
-		margin-bottom: 50%;
 	}
 
 	.todoList {
@@ -224,7 +225,32 @@ label {
 	}
 }
 
-@media screen and (min-width: 1000px) {	
+@media screen and (max-width: 1301px) and (min-width: 901px) {	
+	.infoDiv {
+		display: flex;
+		position: fixed;
+		flex-direction: row;
+		justify-content: space-around;
+		background-image: linear-gradient(180deg, rgb(1, 90, 94), rgb(0, 22, 23));
+		padding: 2%;
+		max-height: 5%;
+		width: 100vw;
+	}
+
+	.listDiv {
+		margin-top: 7%;
+	}
+
+	.openButton {
+		margin: 0 auto;
+	}
+}
+
+@media screen and (min-width: 1301px) {	
+	.welcomeDiv {
+		background-image: url('https://www.freepnglogos.com/uploads/mountain-png/mountain-png-online-marketing-all-solutions-0.png'),linear-gradient(180deg, rgb(1, 90, 94), rgb(0, 22, 23));
+	}
+
 	.currentList{
 		display: flex;
 		flex-direction: row;
@@ -239,6 +265,7 @@ label {
 		flex-direction: column;
 		justify-self: center;
 		margin-left: 7%;
+		padding: 15px;
 	}
 	
 	.openButton {
@@ -259,7 +286,7 @@ label {
 	}
 
 	.todoItems {
-		padding-top: 15vh;
+		padding-top: 5vh;
     overflow-y: scroll;
     position: fixed;
     right: 0;
@@ -284,6 +311,11 @@ label {
 		width: 80%;
 		box-shadow: 1px 1px 8px 2px rgb(126, 203, 207);
 		background-color: rgb(0, 46, 48);
+		background-image: url('https://www.pngall.com/wp-content/uploads/5/Flying-Flock-of-Birds-PNG-File.png');
+		background-repeat: no-repeat;
+		background-size: cover;
+		background-blend-mode: multiply;
+		background-attachment: fixed;
 		margin-bottom: 40px;
 	}
 
