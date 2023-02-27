@@ -1,8 +1,8 @@
-import UserControl from './modals/UserControl';
+import UserControl from '../modals/UserControl';
 import { useNavigate } from "react-router-dom";
 import PropTypes from "prop-types";
-import TodoList from "./lists/TodoList";
-import styles from "../Assets/css/App.module.css";
+import TodoList from "../lists/TodoList";
+import styles from "../../Assets/css/App.module.css";
 
 const Edit = ({ user, todoList, removeTodo, handleShow, handleSearch, updateList }) => {
 	let navigate = useNavigate();

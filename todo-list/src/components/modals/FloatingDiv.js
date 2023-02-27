@@ -4,7 +4,7 @@ import AddTodoForm from "../inputs-forms/AddTodoForm";
 
 export const FloatingDiv = ({ currentUser, addTodo, children, show, handleClose }) => {
   return (
-    <Modal show={show} onHide={handleClose} centered>
+    <Modal show={show} onHide={handleClose} onSubmit={handleClose} centered>
       <Modal.Header closeButton>
         {
           currentUser.length > 0 ? <Modal.Title>{children}</Modal.Title> : <h1>Todo List</h1>

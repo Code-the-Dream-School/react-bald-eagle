@@ -3,9 +3,9 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import PropTypes from "prop-types";
 import Home from "./Home"
 import ListReducer from "./Reducer";
-import NewList from "./components/New";
-import CurrentList from "./components/Current";
-import EditList from "./components/Edit";
+import NewList from "./components/pages/New";
+import CurrentList from "./components/pages/Current";
+import EditList from "./components/pages/Edit";
 
 const App = () => {
   const [todoList, dispatchTodoList] = useReducer(ListReducer,
@@ -21,6 +21,8 @@ const App = () => {
   const handleShow = () => setShow(true)
   const handleClose = () => setShow(false)
 
+  // filter list for search
+
   const handleListFilter = (input) => {
     const originalTodoList = JSON.parse(localStorage.getItem('todoList'))
 
@@ -34,6 +36,8 @@ const App = () => {
     dispatchTodoList({ type: 'LIST_FETCH_SUCCESS', payload: [...filteredList] })
   }
 
+  // store user name in local storage
+
   useEffect(() => {
     if (localStorage.getItem('user')) {
       setUser(JSON.parse(localStorage.getItem('user')))
@@ -45,6 +49,9 @@ const App = () => {
   useEffect(() => {
     localStorage.setItem('user', JSON.stringify(user))
   }, [user])
+
+  // perform api calls 
+  // TODO: move these into utils.js file
 
   const fetchTodos = useCallback(async () => {
     if (!endpoint) return
