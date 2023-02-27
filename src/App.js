@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+
 import AddTodoForm from "./components/AddTodoForm";
 import style from "./components/TodoListItem.module.css";
 
@@ -10,9 +11,12 @@ export default function App() {
   const [isLoading, setIsLoading] = useState(true);
 
   function addTodo(newTodo) {
+    console.log("New todo:", newTodo);
+
     if (!newTodo.fields.Title || /^\s*$/.test(newTodo.fields.Title)) {
       return;
     }
+
     fetch(
       `https://api.airtable.com/v0/${process.env.REACT_APP_AIRTABLE_BASE_ID}/Default`,
       {
@@ -21,14 +25,18 @@ export default function App() {
           Authorization: `Bearer ${process.env.REACT_APP_AIRTABLE_API_KEY}`,
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ fields: newTodo }),
+        body: JSON.stringify(newTodo),
       }
     )
       .then((response) => response.json())
+      
+
       .then((res) => {
-        setTodoList([...todoList, { ...newTodo, id: res.id }]);
+        console.log(res);
+        setTodoList([...todoList, newTodo]);
       });
   }
+
   useEffect(() => {
     fetch(
       `https://api.airtable.com/v0/${process.env.REACT_APP_AIRTABLE_BASE_ID}/Default`,
@@ -41,7 +49,6 @@ export default function App() {
     )
       .then((response) => response.json())
       .then((result) => {
-        console.log(result);
         setTodoList([...result.records]);
         setIsLoading(false);
       });
@@ -81,16 +88,16 @@ export default function App() {
         setTodoList(updatedTodoList);
       });
   }
-    const completeTodo = (id) => {
-      let updatedTodos = todoList.map((todo) => {
-        if (todo.id === id) {
-          todo.isComplete = !todo.isComplete;
-        }
-        return todo;
-      });
-      setTodoList(updatedTodos);
-    };
- 
+  const completeTodo = (id) => {
+    let updatedTodos = todoList.map((todo) => {
+      if (todo.id === id) {
+        todo.isComplete = !todo.isComplete;
+      }
+      return todo;
+    });
+    setTodoList(updatedTodos);
+  };
+
   const removeTodo = (id) => {
     fetch(
       `https://api.airtable.com/v0/${process.env.REACT_APP_AIRTABLE_BASE_ID}/Default/${id}`,

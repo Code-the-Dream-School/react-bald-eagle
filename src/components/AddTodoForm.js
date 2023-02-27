@@ -12,6 +12,10 @@ const AddTodoForm = ({ onAddTodo }) => {
 
   const handleAddTodo = async (e) => {
     e.preventDefault();
+    if (todoTitle.trim() === "") {
+      alert("Cannot submit an empty todo item!");
+      return;
+    }
     try {
       const response = await fetch(
         `https://api.airtable.com/v0/${process.env.REACT_APP_AIRTABLE_BASE_ID}/Default`,
@@ -33,21 +37,25 @@ const AddTodoForm = ({ onAddTodo }) => {
           `Error! Todo was not created, status code: ${response.status}`
         );
       }
+      // console.log(response.json());
       const newTodo = await response.json();
-      onAddTodo(newTodo);
+      onAddTodo({
+        id: newTodo.id,
+        createdTime: newTodo.createdTime,
+        fields: newTodo.fields,
+      });
       setTodoTitle("");
     } catch (error) {
       console.error(error);
     }
   };
+
   return (
     <form onSubmit={handleAddTodo}>
       <InputWithLabel
         todoTitle={todoTitle}
         handleTitleChange={handleTitleChange}
-      >
-        {/* <b>Title:</b> */}
-      </InputWithLabel>
+      ></InputWithLabel>
       <button type="submit">Add</button>
     </form>
   );
