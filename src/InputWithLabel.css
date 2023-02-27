@@ -6,7 +6,7 @@
 .label__for__input, input {
     font-family: 'Lucida Console', Helvetica, sans-serif;
     font-size: 20px;
-    color: #495159;
+    color: darkred;
     font-weight: 500;
     border: none;
     padding: 7px;

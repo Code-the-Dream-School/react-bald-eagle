@@ -16,27 +16,17 @@ html {
 
 body {
     font-family: "Poppins", sans-serif;
-    /* width: 70%; */
-    background-color: #dad9c41d;
 }
 
 :root {
     /* COLORS */
     --color-dark: #3E505B;
     --color-white: white;
-    /* CONTAINERS */
-
-    /* SCREEN SIZES - common screen resolutions in px*/
-    /* --screen-1: 1920px;
-    --screen-2: 1536px;
-    --screen-3: 1366px;
-    --screen-4: 414px;
-    --screen-5: 375px;
-    --screen-6: 360px; */
 }
 
 .app__wrapper {
     position: relative;
+    background-color:gold;
 }
 
 @media (min-width: 50px) {
