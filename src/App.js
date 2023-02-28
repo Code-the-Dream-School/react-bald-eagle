@@ -156,7 +156,7 @@ export default function App() {
           path="/todoapp"
           element={
             <div className={style.Container}>
-              <h1>Todo List</h1>
+              <h1 className={style.Title}>Todo List</h1>
               <AddTodoForm onAddTodo={addTodo} />
               {isLoading ? (
                 <p>Loading...</p>
