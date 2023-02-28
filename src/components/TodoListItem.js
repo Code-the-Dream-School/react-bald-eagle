@@ -37,9 +37,9 @@ const TodoListItem = ({ todo, onRemoveTodo, onEditTodo, completeTodo }) => {
   return (
     <li
       key={todo.id}
-      className={todo.isComplete ? style.Complete : style.ListItem}
+      className={todo.fields.IsComplete ? style.Complete : style.ListItem}
       title={
-        todo.isComplete
+        todo.fields.IsComplete
           ? "Click to uncheck as Completed!"
           : "Click to check as Completed!"
       }

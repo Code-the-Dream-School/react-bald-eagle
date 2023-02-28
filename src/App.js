@@ -11,7 +11,7 @@ export default function App() {
   const [isLoading, setIsLoading] = useState(true);
 
   function addTodo(newTodo) {
-    console.log("New todo:", newTodo);
+    console.log("New todo:", newTodo.fields.Title);
 
     if (!newTodo.fields.Title || /^\s*$/.test(newTodo.fields.Title)) {
       return;
@@ -25,13 +25,12 @@ export default function App() {
           Authorization: `Bearer ${process.env.REACT_APP_AIRTABLE_API_KEY}`,
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(newTodo),
+        body: JSON.stringify({ newTodo }),
       }
     )
       .then((response) => response.json())
 
       .then((res) => {
-        console.log(res);
         setTodoList([...todoList, newTodo]);
       });
   }
@@ -83,18 +82,39 @@ export default function App() {
       }
     )
       .then((response) => response.json())
-      .then(() => {
+      .then((res) => {
+        console.log("Todo Item Updated:", updatedTodo.fields.Title);
         setTodoList(updatedTodoList);
       });
   }
   const completeTodo = (id) => {
     let updatedTodos = todoList.map((todo) => {
       if (todo.id === id) {
-        todo.isComplete = !todo.isComplete;
+        fetch(
+          `https://api.airtable.com/v0/${process.env.REACT_APP_AIRTABLE_BASE_ID}/Default/${todo.id}`,
+          {
+            method: "PATCH",
+            headers: {
+              Authorization: `Bearer ${process.env.REACT_APP_AIRTABLE_API_KEY}`,
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              fields: {
+                ...todo.fields,
+                IsComplete: !todo.fields.IsComplete,
+              },
+            }),
+          }
+        )
+          .then((response) => response.json())
+          .then(() => {
+            setTodoList(updatedTodos);
+          });
+        todo.fields.IsComplete = !todo.fields.IsComplete;
+        console.log('Todo Status updated to:', todo.fields.IsComplete);
       }
       return todo;
     });
-    setTodoList(updatedTodos);
   };
 
   const removeTodo = (id) => {
@@ -121,7 +141,17 @@ export default function App() {
     <BrowserRouter>
       <Navbar />
       <Routes>
-        <Route exact path="/" element={<Home />}></Route>
+        <Route
+          exact
+          path="/"
+          element={
+            <Home
+              todoList={todoList}
+              isLoading={isLoading}
+              completeTodo={completeTodo}
+            />
+          }
+        ></Route>
         <Route
           path="/todoapp"
           element={
@@ -133,6 +163,7 @@ export default function App() {
               ) : (
                 <TodoList
                   todoList={todoList}
+                  onAddTodo={addTodo}
                   onRemoveTodo={removeTodo}
                   onEditTodo={editTodo}
                   completeTodo={completeTodo}

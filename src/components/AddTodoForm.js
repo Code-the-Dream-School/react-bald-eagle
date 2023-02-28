@@ -1,9 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 import InputWithLabel from "./InputWithLabel";
 
 const AddTodoForm = ({ onAddTodo }) => {
-  const [todoTitle, setTodoTitle] = React.useState("");
+  const [todoTitle, setTodoTitle] = useState("");
 
   const handleTitleChange = (e) => {
     const newTodoTitle = e.target.value;
@@ -28,6 +28,7 @@ const AddTodoForm = ({ onAddTodo }) => {
           body: JSON.stringify({
             fields: {
               Title: todoTitle,
+              IsComplete: false,
             },
             typecast: true,
           }),
@@ -38,7 +39,6 @@ const AddTodoForm = ({ onAddTodo }) => {
           `Error! Todo was not created, status code: ${response.status}`
         );
       }
-      // console.log(response.json());
       const newTodo = await response.json();
       onAddTodo({
         id: newTodo.id,
