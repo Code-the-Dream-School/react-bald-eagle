@@ -1,0 +1,35 @@
+.navBar {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  ul {
+    list-style-type: none;
+    margin-top: 20px;
+  }
+  
+  a {
+    padding: 0.5rem 2rem;
+    text-decoration: none;
+    color: #3E505B;
+    font-size: 1.2rem;
+    background-color: rgba(233, 241, 241, 0.868);
+    margin: 2px;
+    font-weight: 800;
+  } 
+  
+  img {
+    max-width: 150px;
+    margin-left: 15px;
+    margin-top: 15px;
+  }
+  
+  a:hover {
+    color:rgba(30, 30, 175, 0.814);
+    background-color: rgba(138, 198, 200, 0.511);
+  }
+  

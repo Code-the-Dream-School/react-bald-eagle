@@ -1,0 +1,19 @@
+.labels {
+    font-family: Papyrus, sans-serif;
+    font-size: 20px;
+    padding: 10px;
+    width: 50%;
+}
+
+.inputs {
+    position: relative;
+    font-family: Papyrus, sans-serif;
+    padding: 2px;
+    padding-left: 10px;
+    color: #100f1ea9;
+    font-size: 20px;
+    font-weight: 800;
+    min-width: 70%;
+    border: none;
+    margin-left: 10%;
+}

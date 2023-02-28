@@ -1,0 +1,124 @@
+body {
+    font-size: 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.item1 {
+    text-align: center;
+}
+
+.todoList__wrapper {
+    margin: 15px;
+}
+
+button {
+    border: none;
+    margin-left: 10px;
+    font-family: "Poppins", sans-serif;
+    padding: 0.15rem 0.5rem;
+    border-radius: 1.5rem;
+    background-color: red;
+    color: var(--color-white);
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    font-size: 1.0rem;
+}
+
+button:hover {
+    background-color: #8AB0AB;
+    color: var(--color-dark);
+}
+
+tr td:nth-child(4) {
+    width: 6.5rem;
+}
+
+.column_headers th {
+    font-family: Papyrus, sans-serif;
+    letter-spacing: 0.25rem;
+    color: #192129e8;
+}
+
+td, th, h1 {
+    color: var(--color-dark);
+}
+
+.add__form__container {
+    background-color: #c5decd36;
+    margin: 10px;
+    padding: 5px;
+}
+
+table td:nth-child(1), td:nth-child(4), td:nth-child(5) {
+    border: none;
+}
+
+tbody th:nth-child(1), th:nth-child(2), th:nth-child(3), th:nth-child(4), th:nth-child(5) {
+    background-color: #3E505B;
+    color: white;
+}
+
+tbody tr:nth-child(odd) {
+    background-color: #b7cece2d;
+}
+
+@media (max-width: 250px) {
+
+    body {
+        position: absolute;
+        right: auto;
+        left: 30px;
+        background-color:white;
+    }
+
+    .label__for__input, input {
+        max-width: 100px;
+        position: absolute;
+        left: 0;
+        right: 0;
+    }
+}
+
+@media (max-width: 375px) {
+    
+    body {
+        position: absolute;
+        right: auto;
+        left: 30px;
+        background-color:yellow;
+    }
+
+    .add__form__container {
+        min-width: 450px;
+    }
+    .label__for__input, input {
+        max-width: 100px;
+        position: absolute;
+        left: 0;
+        right: 0;
+    }
+}
+
+@media (max-width: 480px) {
+
+    body {
+        font-size: 0.8rem;
+        position: absolute;
+        right: auto;
+        left: 28px;
+        background-color:white;
+    }
+
+    .add__form__container {
+        min-width: 450px;
+    }
+}
+
+@media (max-width: 768px) {
+    body {
+        background-color: var(--color-white);
+    }
+}
+

@@ -24,3 +24,31 @@ td input {
     position: relative;
 }
 
+td {
+    width: 100px;
+}
+
+.checkBox td {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+}
+
+.checkBox td > input {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -o-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    box-shadow: 0 0 0 2px black;
+    border: 3px solid white;
+}
+
+.checkBox td > input:checked {
+    background-color: #f07f5a;
+}
+
+
+

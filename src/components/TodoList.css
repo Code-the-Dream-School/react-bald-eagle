@@ -3,8 +3,9 @@ td {
     padding-right: 1.5rem;
 }
 
-tbody td:nth-child(3) {
+tbody td:nth-child(3), td:nth-child(5) {
     border-left: 1px solid rgba(173, 216, 230, 0.83);
+    /* background-color: red; */
 }
 
 tbody td:nth-child(2) {
