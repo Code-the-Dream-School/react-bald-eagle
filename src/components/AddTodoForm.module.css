@@ -8,5 +8,6 @@
 .form_button {
     width: 50px;
     margin-top: 20px;
-    margin-left: 70%;
+    margin-left: 90%;
+    background-color: transparent;
 }
