@@ -5,7 +5,7 @@ body {
     align-items: center;
 }
 
-.item1 {
+.h1__todoContainer {
     text-align: center;
 }
 
@@ -19,7 +19,7 @@ button {
     font-family: "Poppins", sans-serif;
     padding: 0.15rem 0.5rem;
     border-radius: 1.5rem;
-    background-color: red;
+    background-color: #3E505B;
     color: var(--color-white);
     cursor: pointer;
     transition: all 0.3s ease-in-out;
@@ -65,7 +65,7 @@ tbody tr:nth-child(odd) {
 }
 
 @media (max-width: 250px) {
-
+    
     body {
         position: absolute;
         right: auto;
@@ -76,43 +76,23 @@ tbody tr:nth-child(odd) {
     .label__for__input, input {
         max-width: 100px;
         position: absolute;
-        left: 0;
-        right: 0;
     }
 }
 
 @media (max-width: 375px) {
-    
-    body {
-        position: absolute;
-        right: auto;
-        left: 30px;
-        background-color:yellow;
-    }
-
-    .add__form__container {
-        min-width: 450px;
-    }
     .label__for__input, input {
         max-width: 100px;
         position: absolute;
-        left: 0;
-        right: 0;
     }
 }
 
 @media (max-width: 480px) {
-
     body {
         font-size: 0.8rem;
         position: absolute;
         right: auto;
         left: 28px;
         background-color:white;
-    }
-
-    .add__form__container {
-        min-width: 450px;
     }
 }
 
@@ -121,4 +101,3 @@ tbody tr:nth-child(odd) {
         background-color: var(--color-white);
     }
 }
-
