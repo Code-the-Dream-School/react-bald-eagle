@@ -1,9 +1,9 @@
 * {
   box-sizing: border-box;
-  margin: 0;
+  /* margin: 0; */
   padding: 0;
-  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
-    "Lucida Sans", Arial, sans-serif;
+  /* font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif; */
 }
 
 body {
@@ -21,7 +21,7 @@ body {
     justify-content: center;
     width: 500px;
     margin: auto;
-    margin-top: 5em;
+    margin-top: 7.5em;
     padding: 1rem;
     background: rgb(0, 7, 16);
     border-radius: 20px;
@@ -32,6 +32,9 @@ body {
     font-size: larger;
   }
   .Container > form {
+    position: relative;
+    margin-top: 7rem;
+
     padding-top: 2em;
     display: flex;
     align-items: center;
@@ -39,6 +42,8 @@ body {
   }
   /* Style input */
   .Container > form > input[type="text"] {
+    position: relative;
+
     padding: 1em;
     border-radius: 4px 0 0 4px;
     border: 2px solid #5d0cff;
@@ -49,6 +54,7 @@ body {
     color: #fff;
   }
   .EditInput {
+    position: relative;
     border: 2px solid #149fff;
     background: transparent;
 
@@ -62,6 +68,8 @@ body {
     color: #e2e2e2;
   }
   .Container > form > button {
+    position: relative;
+
     padding: 1em;
     border-radius: 0 40px 0 0;
     border: 2px solid #5d0cff;
@@ -84,12 +92,21 @@ body {
   }
 
   .ListItem {
+    font-family: "Walter Turncoat", cursive;
     display: flex;
     width: 100%;
     justify-content: space-between;
     margin-bottom: 1rem;
     font-size: larger;
     cursor: grab;
+    padding: 0.2em;
+    background: linear-gradient(
+      90deg,
+      rgb(128, 127, 129) 0%,
+      rgb(142, 177, 210) 100%
+    );
+    border: none;
+    border-radius: 5px;
   }
 
   .Complete {
@@ -100,6 +117,15 @@ body {
     justify-content: space-between;
     margin-bottom: 1rem;
     font-size: larger;
+    padding: 0.2em;
+
+    background: linear-gradient(
+      90deg,
+      rgb(128, 127, 129) 0%,
+      rgb(142, 177, 210) 100%
+    );
+    border: none;
+    border-radius: 5px;
   }
   .ListItemIcons {
     display: flex;
@@ -108,10 +134,15 @@ body {
     padding: 0;
   }
 
-  .EditForm > {
+  .EditForm {
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: space-between;
+  }
+  EditForm > input {
+    border-right: none;
+    margin-right: 0;
   }
 
   .SaveBtn {
@@ -124,12 +155,14 @@ body {
     );
     padding: 0.5em;
     border: 2px solid #149fff;
-    margin-right: 4rem;
+    margin-right: 5em;
     cursor: pointer;
+    border-radius: 5px;
+    border-left: none;
   }
   .CancelBtn {
     border: none !important;
-
+    border: 2px solid #149fff;
     background: linear-gradient(
       90deg,
       rgba(20, 159, 255, 1) 0%,
@@ -137,6 +170,8 @@ body {
     );
     padding: 0.5em;
     cursor: pointer;
+    margin-right: 0px;
+    border-radius: 5px;
   }
   .DeleteIcon {
     color: red;
@@ -160,15 +195,16 @@ body {
   }
 }
 
-@media screen and (min-width: 500px) and (max-width: 614px) {
+@media screen and (max-width: 614px) {
   .Container {
+    position: relative;
+    margin: auto;
+    margin-top: 10rem;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 475px;
-    margin: auto;
-    margin-top: 5em;
+    width: 399px;
     padding: 1rem;
     background: rgb(0, 7, 16);
     border-radius: 5%;
@@ -307,3 +343,4 @@ body {
     height: 20px;
   }
 }
+
