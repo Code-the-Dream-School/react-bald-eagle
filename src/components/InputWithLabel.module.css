@@ -1,6 +1,5 @@
 .labels {
     font-family: Papyrus, sans-serif;
-    font-size: 20px;
     padding: 10px;
     width: 50%;
 }
@@ -15,5 +14,4 @@
     font-weight: 800;
     min-width: 70%;
     border: none;
-    margin-left: 10%;
 }
