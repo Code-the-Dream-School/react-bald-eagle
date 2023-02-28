@@ -4,11 +4,11 @@ import PropTypes from 'prop-types';
 
 const InputWithLabel = ({ 
     givenValue,
-    givenId,
     givenName,
     handleChange,
     refTitleBox,
-    ifRequiredOrNot,
+    isThisrequired,
+    forPlaceholder,
     children 
 }) => {
     
@@ -17,13 +17,13 @@ const InputWithLabel = ({
             <label htmlFor={givenName} className={style.labels}>{children}</label>
             <input 
                 ref={refTitleBox}
-                id={givenId} 
-                type="text" 
+                id='todoTitle' 
+                type='text'
                 name={givenName} 
                 value={givenValue} 
                 onChange={handleChange} 
-                required={ifRequiredOrNot}
-                placeholder="type here..."
+                required={isThisrequired}
+                placeholder={forPlaceholder}
                 className={style.inputs}
             /> 
         </>
@@ -32,10 +32,11 @@ const InputWithLabel = ({
 
 InputWithLabel.propTypes = {
     givenValue: PropTypes.string,
-    givenId: PropTypes.string,
     givenName: PropTypes.string,
     handleChange: PropTypes.func,
     refTitleBox: PropTypes.object,
+    isThisrequired: PropTypes.bool,
+    forPlaceholder: PropTypes.string,
     children: PropTypes.string
   }
 
