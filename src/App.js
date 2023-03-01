@@ -111,7 +111,7 @@ export default function App() {
             setTodoList(updatedTodos);
           });
         todo.fields.IsComplete = !todo.fields.IsComplete;
-        console.log('Todo Status updated to:', todo.fields.IsComplete);
+        console.log("Todo Status updated to:", todo.fields.IsComplete);
       }
       return todo;
     });

@@ -43,7 +43,7 @@ const TodoList = ({ todoList, onRemoveTodo, onEditTodo, completeTodo }) => {
       {!isSort ? (
         <>
           <span>
-            Sort:{" "}
+            <h6 className={style.SortText}>Sort:</h6>
             <FaSortAlphaDown onClick={handleSortAZ} className={style.Sort} />
           </span>
 
@@ -62,7 +62,7 @@ const TodoList = ({ todoList, onRemoveTodo, onEditTodo, completeTodo }) => {
       ) : (
         <>
           <span>
-            Sort:{" "}
+            <h6 className={style.SortText}>Sort: </h6>
             <FaSortAlphaDownAlt onClick={handleSortZA} className={style.Sort} />
           </span>
           <ul>

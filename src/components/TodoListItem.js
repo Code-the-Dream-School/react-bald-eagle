@@ -67,7 +67,9 @@ const TodoListItem = ({ todo, onRemoveTodo, onEditTodo, completeTodo }) => {
         </form>
       ) : (
         <>
-          <span onClick={() => completeTodo(todo.id)}>{todo.fields.Title}</span>
+          <span onClick={() => completeTodo(todo.id)} className={style.ItemTite}>
+            {todo.fields.Title}
+          </span>
           <span className={style.ListItemIcons}>
             <FaEdit
               onClick={() => setIsEditing(true)}
