@@ -1,0 +1,121 @@
+.Box {
+  margin: auto auto;
+  margin-top: 7rem;
+  width: fit-content;
+  height: 60vh;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  padding: 0.2rem;
+  border-radius: 10px;
+  background-image: url("https://wallpaperboat.com/wp-content/uploads/2019/10/best-background-for-website-02-920x518.jpg");
+  background-size: cover;
+}
+.Container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  border: none;
+  padding: 1rem;
+  border-radius: 10px;
+}
+.TodoBgImg {
+  /* display: flex; */
+  justify-content: center;
+  width: 80%;
+  height: fit-content;
+  background-image: url("../images/todoimg.jpeg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  border: 1px solid #000;
+  border-radius: 10px;
+  padding: 0.5em;
+  padding-top: 15%;
+}
+.WelcomeTitle {
+  text-align: center;
+  color: white;
+  margin-bottom: 1rem;
+}
+.WelcomeTitle > h1 {
+  font-family: "Walter Turncoat", cursive;
+}
+.TitleLine {
+  width: 80%;
+  height: 1vh;
+  border-radius: 1px solid;
+  background: linear-gradient(
+    90deg,
+    rgb(196, 207, 35) 0%,
+    rgb(77, 23, 127) 100%
+  );
+  margin-bottom: 1rem;
+}
+.TodoCircleContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 200px;
+  height: 200px;
+  padding: 0.5rem;
+  background-size: cover;
+  border: 10px solid rgb(148, 148, 150);
+  border-radius: 80px;
+  margin-bottom: 1rem;
+  color: white;
+}
+.TodoCircleContainer:hover {
+  background: 
+    linear-gradient(90deg, rgb(222, 230, 116) 0%, rgb(179, 138, 217) 100%);
+}
+.TodoCircleContainer > a {
+  text-decoration: none;
+}
+.TodoCircleContainer > a > h1 {
+  font-family: "Walter Turncoat", cursive;
+}
+.Todos {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border: 1px solid red;
+  position: relative;
+  background-color: #b8b9bd;
+  border: none;
+  border-radius: 5px;
+  width: 95%;
+  /* height: fit-content; */
+  margin: auto;
+  color: #0b0b0b;
+  padding: 0.5em;
+}
+.Todos > li {
+  list-style: none;
+  font-family: "Walter Turncoat", cursive;
+  font-size: 19px;
+  text-shadow: 4px 4px 4px #aaa;
+  background: none;
+  margin-bottom: 0.3em;
+  padding: 0.2em;
+}
+.Todos > li:nth-child(odd) {
+  background: linear-gradient(
+    90deg,
+    rgb(222, 230, 116) 0%,
+    rgb(179, 138, 217) 100%
+  );
+}
+
+.Todos > li:nth-child(even) {
+  background: linear-gradient(
+    90deg,
+    rgb(242, 242, 242) 0%,
+    rgb(109, 107, 107) 100%
+  );
+}
+.Complete {
+  text-decoration: line-through;
+  opacity: 0.4;
+}
