@@ -10,26 +10,32 @@ const TodoList = ({ todoList, onRemoveTodo, onEditTodo, completeTodo }) => {
 
   const handleSortZA = () => {
     todoList.sort((objA, objB) => {
-      if (objA.fields.Title < objB.fields.Title) {
+      const titleA = objA.fields.Title;
+      const titleB = objB.fields.Title;
+      if (titleA > titleB) {
         return 1;
-      } else if (objA.fields.Title > objB.fields.Title) {
+      } else if (titleA < titleB) {
         return -1;
       } else {
         return 0;
       }
     });
+    console.log("todos sorted A-Z");
     setIsSort(!isSort);
   };
   const handleSortAZ = () => {
     todoList.sort((objA, objB) => {
-      if (objA.fields.Title < objB.fields.Title) {
+      const titleA = objA.fields.Title;
+      const titleB = objB.fields.Title;
+      if (titleA > titleB) {
         return -1;
-      } else if (objA.fields.Title > objB.fields.Title) {
+      } else if (titleA < titleB) {
         return 1;
       } else {
         return 0;
       }
     });
+    console.log("todos sorted Z-A");
     setIsSort(!isSort);
   };
   return (

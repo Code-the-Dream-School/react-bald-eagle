@@ -1,17 +1,17 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-
+import Home from "./components/Home";
 import AddTodoForm from "./components/AddTodoForm";
 import style from "./components/TodoListItem.module.css";
 
 import TodoList from "./components/TodoList";
-
+import Navbar from "./components/Navbar";
 export default function App() {
   const [todoList, setTodoList] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
   function addTodo(newTodo) {
-    console.log("New todo:", newTodo);
+    console.log("New todo:", newTodo.fields.Title);
 
     if (!newTodo.fields.Title || /^\s*$/.test(newTodo.fields.Title)) {
       return;
@@ -25,14 +25,12 @@ export default function App() {
           Authorization: `Bearer ${process.env.REACT_APP_AIRTABLE_API_KEY}`,
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(newTodo),
+        body: JSON.stringify({ newTodo }),
       }
     )
       .then((response) => response.json())
-      
 
       .then((res) => {
-        console.log(res);
         setTodoList([...todoList, newTodo]);
       });
   }
@@ -84,14 +82,14 @@ export default function App() {
       }
     )
       .then((response) => response.json())
-      .then(() => {
+      .then((res) => {
+        console.log("Todo Item Updated:", updatedTodo.fields.Title);
         setTodoList(updatedTodoList);
       });
   }
   const completeTodo = (id) => {
     let updatedTodos = todoList.map((todo) => {
       if (todo.id === id) {
-<<<<<<< HEAD
         fetch(
           `https://api.airtable.com/v0/${process.env.REACT_APP_AIRTABLE_BASE_ID}/Default/${todo.id}`,
           {
@@ -114,13 +112,9 @@ export default function App() {
           });
         todo.fields.IsComplete = !todo.fields.IsComplete;
         console.log("Todo Status updated to:", todo.fields.IsComplete);
-=======
-        todo.isComplete = !todo.isComplete;
->>>>>>> main
       }
       return todo;
     });
-    setTodoList(updatedTodos);
   };
 
   const removeTodo = (id) => {
@@ -145,19 +139,31 @@ export default function App() {
 
   return (
     <BrowserRouter>
+      <Navbar />
       <Routes>
         <Route
           exact
           path="/"
           element={
+            <Home
+              todoList={todoList}
+              isLoading={isLoading}
+              completeTodo={completeTodo}
+            />
+          }
+        ></Route>
+        <Route
+          path="/todoapp"
+          element={
             <div className={style.Container}>
-              <h1>Todo List</h1>
+              <h1 className={style.Title}>Todo List</h1>
               <AddTodoForm onAddTodo={addTodo} />
               {isLoading ? (
                 <p>Loading...</p>
               ) : (
                 <TodoList
                   todoList={todoList}
+                  onAddTodo={addTodo}
                   onRemoveTodo={removeTodo}
                   onEditTodo={editTodo}
                   completeTodo={completeTodo}
@@ -166,7 +172,6 @@ export default function App() {
             </div>
           }
         ></Route>
-        <Route path="/new" element={<h1>New Page Content</h1>}></Route>
       </Routes>
     </BrowserRouter>
   );

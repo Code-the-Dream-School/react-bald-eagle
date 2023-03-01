@@ -11,8 +11,8 @@ const Home = ({ todoList, isLoading }) => {
 
         <div className={style.TodoCircleContainer}>
           <a href="/todoapp">
-            <h1>add</h1>
-            <h1>todo</h1>
+            <h1>Add</h1>
+            <h1>Todo</h1>
           </a>
         </div>
 

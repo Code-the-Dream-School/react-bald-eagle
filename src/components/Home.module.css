@@ -90,6 +90,8 @@
   margin: auto;
   color: #0b0b0b;
   padding: 0.5em;
+  text-transform: capitalize;
+
 }
 .Todos > li {
   list-style: none;
