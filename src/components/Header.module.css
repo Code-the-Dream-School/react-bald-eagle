@@ -49,7 +49,7 @@ img {
   margin-top: 10px;
 }
 
-@media (max-width: 610px) {   
+@media (max-width: 630px) {   
   .link {
     font-size: 0.8rem;
   }
@@ -59,7 +59,7 @@ img {
   }
 }
 
-@media (max-width: 470px) {
+@media (max-width: 495px) {
   .link {
     font-size: 0.6rem;
     padding: 3px;

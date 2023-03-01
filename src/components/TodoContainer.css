@@ -75,23 +75,19 @@ tbody tr:nth-child(odd) {
 
     .label__for__input, input {
         max-width: 100px;
-        position: absolute;
     }
 }
 
 @media (max-width: 375px) {
     .label__for__input, input {
         max-width: 100px;
-        position: absolute;
     }
 }
 
 @media (max-width: 480px) {
     body {
         font-size: 0.8rem;
-        position: absolute;
         right: auto;
-        left: 28px;
         background-color:white;
     }
 }

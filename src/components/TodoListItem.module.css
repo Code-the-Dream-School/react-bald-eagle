@@ -2,6 +2,7 @@
     color: #495159;
     width: 300px;
     height: 50px;
+    padding-left: 3px;
 }
 
 .todoListItem input {
@@ -60,11 +61,16 @@ input.checkBox1 {
 
 .checkBoxReady {
     text-align: center;
+    padding-left: 4px;
     max-width: 2rem;
 }
 
 .doneEditToggle, .removeButton {
    text-align: center;
+}
+
+.strikethrough {
+    text-decoration: line-through;
 }
 
 @media (max-width: 610px) {   

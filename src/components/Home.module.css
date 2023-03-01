@@ -59,12 +59,6 @@ h1 {
     h1{
         font-size: 1.8rem;
     }
-
-    .buttonHome {
-        font-size: 1rem;
-        padding: 5px;
-        margin: 10px;
-    }
 }
 
 @media (max-width: 455px) {
@@ -77,35 +71,17 @@ h1 {
         padding: 5px;
         margin: 10px;
     }
-
-    .inputsHome {
-        min-width: 90%;
-    } 
-
-    .buttonsAlign {
-        flex-direction: column; 
-        align-items: center;
-        margin-top: 10px;
-        width: 140%
-    }
 }
 
 @media (max-width: 375px) {
-    .buttonsAlign {
-        margin-top: 80px;
-    }
-
     h1{
         font-size: 1rem;
-        margin-top: 10px;
+        margin-top: 50px;
+        margin-bottom: 30px;
     }
 }
 
 @media (max-width: 375px) {
-    .buttonHome {
-        font-size: 0.5rem;
-    }
-
     .inputsHome {
         font-size: 0.7rem;
     }

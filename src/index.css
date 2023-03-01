@@ -30,3 +30,21 @@ code {
     --color-dark: #3E505B;
     --color-white: white;
 }
+
+@media (min-width: 250px) {
+    body {
+        font-size: 0.6rem;
+    }
+}
+
+@media (min-width: 375px) {
+    body {
+        font-size: 0.8rem; 
+    }
+}
+
+@media (min-width: 768px) {
+    body {
+        font-size: 1rem;
+    }
+}
