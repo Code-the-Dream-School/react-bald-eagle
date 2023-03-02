@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "airtable": "^0.11.6",
     "axios": "^1.2.1",
     "dotenv": "^16.0.3",
     "prop-types": "^15.8.1",
