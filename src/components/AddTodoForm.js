@@ -16,38 +16,8 @@ const AddTodoForm = ({ onAddTodo }) => {
       alert("Cannot submit an empty todo item!");
       return;
     }
-    try {
-      const response = await fetch(
-        `https://api.airtable.com/v0/${process.env.REACT_APP_AIRTABLE_BASE_ID}/Default`,
-        {
-          method: "POST",
-          headers: {
-            Authorization: `Bearer ${process.env.REACT_APP_AIRTABLE_API_KEY}`,
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            fields: {
-              Title: todoTitle,
-            },
-          }),
-        }
-      );
-      if (!response.ok) {
-        throw new Error(
-          `Error! Todo was not created, status code: ${response.status}`
-        );
-      }
-      // console.log(response.json());
-      const newTodo = await response.json();
-      onAddTodo({
-        id: newTodo.id,
-        createdTime: newTodo.createdTime,
-        fields: newTodo.fields,
-      });
-      setTodoTitle("");
-    } catch (error) {
-      console.error(error);
-    }
+    onAddTodo({ fields: { Title: todoTitle, IsComplete: false } });
+    setTodoTitle("");
   };
 
   return (

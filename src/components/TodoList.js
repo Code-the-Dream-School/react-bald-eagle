@@ -23,6 +23,7 @@ const TodoList = ({ todoList, onRemoveTodo, onEditTodo, completeTodo }) => {
     console.log("todos sorted A-Z");
     setIsSort(!isSort);
   };
+
   const handleSortAZ = () => {
     todoList.sort((objA, objB) => {
       const titleA = objA.fields.Title;
@@ -50,12 +51,12 @@ const TodoList = ({ todoList, onRemoveTodo, onEditTodo, completeTodo }) => {
           <ul>
             {todoList.map((todo) => (
               <TodoListItem
-                key={todo.id}
+                key={todo.fields.Title}
                 onRemoveTodo={onRemoveTodo}
                 onEditTodo={onEditTodo}
                 todo={todo}
                 completeTodo={completeTodo}
-              />
+              ></TodoListItem>
             ))}
           </ul>
         </>
@@ -68,7 +69,7 @@ const TodoList = ({ todoList, onRemoveTodo, onEditTodo, completeTodo }) => {
           <ul>
             {todoList.map((todo) => (
               <TodoListItem
-                key={todo.id}
+                key={todo.fields.Title}
                 onRemoveTodo={onRemoveTodo}
                 onEditTodo={onEditTodo}
                 todo={todo}
