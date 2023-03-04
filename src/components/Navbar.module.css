@@ -1,0 +1,111 @@
+.Navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  display: flex;
+  justify-content: right;
+  align-items: center;
+  height: 5px;
+  padding: 2rem 0;
+  background: rgb(0, 7, 16);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  margin-bottom: 1rem;
+}
+
+.NavbarList {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 250px;
+  height: 100%;
+}
+
+.NavbarListItem {
+  list-style: none;
+}
+
+.NavbarListItem h5 {
+  color: #716d6d;
+  text-decoration: none;
+  font-size: 1.2rem;
+  letter-spacing: 1px;
+  font-family: "Walter Turncoat", cursive;
+  font-size: 24px;
+}
+
+.NavbarListItem h5:hover {
+  border-bottom: 2px solid #b40505;
+  transition: border-bottom 0.2s ease-in-out;
+}
+
+@media screen and (max-width: 765px) {
+  .Navbar {
+    height: 15vh;
+    background: rgb(0, 7, 16);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    margin-bottom: 1rem;
+  }
+  .NavbarList {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+  }
+  .NavbarListItem {
+    margin-bottom: 0.5em;
+  }
+
+  .NavbarListItem h5 {
+    color: #716d6d;
+    font-size: 1rem;
+    font-weight: 400;
+    font-family: "Walter Turncoat", cursive;
+    font-size: 19px;
+  }
+  .NavbarListItem h5:hover {
+    border-bottom: 2px solid #ac0505;
+    transition: border-bottom 0.2s ease-in-out;
+  }
+}
+
+.NavbarLinkActive {
+  transform: translateX(0%);
+}
+@media script and (min-width: 1440px) {
+  .NavbarList {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+  }
+  .NavbarListItem {
+    margin-bottom: 0.5em;
+  }
+
+  .NavbarListItem h5 {
+    color: #716d6d;
+    font-size: 1rem;
+    font-weight: 400;
+    font-family: "Walter Turncoat", cursive;
+    font-size: 19px;
+  }
+  .NavbarListItem h5:hover {
+    border-bottom: 2px solid #ac0505;
+    transition: border-bottom 0.2s ease-in-out;
+  }
+}
+@media screen and (min-width: 820px) {
+  .NavbarList {
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 30%;
+  }
+  .NavbarListItem h5:hover {
+    border-bottom: 2px solid #ac0505;
+    transition: border-bottom 0.2s ease-in-out;
+  }
+}
