@@ -8,6 +8,7 @@ const AddTodoForm = ({ onAddTodo }) => {
  
   const [todoTitle, setTodoTitle] = useState('');
 
+
   const handleTitleChange = (event) => {
     const newTodoTitle = event.target.value
     setTodoTitle(newTodoTitle)
@@ -15,7 +16,7 @@ const AddTodoForm = ({ onAddTodo }) => {
 
   const handleAddTodo = (event) => {
     event.preventDefault();
-    onAddTodo({ fields: { Title: todoTitle, Completed: false}, id: Date.now() });
+    onAddTodo({ fields: { Title: todoTitle} });
     setTodoTitle('');
   }
 

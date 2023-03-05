@@ -7,6 +7,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 function App() {
 
   const [todoList, setTodoList] = useState([]);
+  console.log('todoList', todoList);
     // JSON.parse(localStorage.getItem("savedTodoList")) || []
   
   const [isLoading, setIsLoading] = useState(true);
@@ -54,22 +55,52 @@ function App() {
   }, []);
 
 
-  useEffect(() => {
-    if(!isLoading) {
-      localStorage.setItem('savedTodoList', JSON.stringify(todoList));
-    }
-  }, [todoList,isLoading])
+  // useEffect(() => {
+  //   if(!isLoading) {
+  //     localStorage.setItem('savedTodoList', JSON.stringify(todoList));
+  //   }
+  // }, [todoList,isLoading])
 
   // const [newTodo, setNewTodo] = useState(''); 
 
-  const addTodo = (newTodo) => {
-    setTodoList([...todoList, newTodo]);
-  }
+  const addTodo = async (newTodo) => {
+    // follow project rubic
+    const response = await fetch(
+      `https://api.airtable.com/v0/${process.env.REACT_APP_AIRTABLE_BASE_ID}/Default`, {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${process.env.REACT_APP_AIRTABLE_API_KEY}`,
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({records: [newTodo] })
+      });
+    const newTodo2 = await response.json();
+    // End of project rubic
 
-  const removeTodo = (item) => {
+    setTodoList([...todoList, newTodo2.records[0]]);
+
+  };
+
+  const removeTodo = async (item) => {
+
+    // follow project rubic
+    const response = await fetch(
+      `https://api.airtable.com/v0/${process.env.REACT_APP_AIRTABLE_BASE_ID}/Default/${item.id}`, 
+      {
+        method: 'DELETE',
+        headers: {
+        'Authorization': `Bearer ${process.env.REACT_APP_AIRTABLE_API_KEY}`,
+        'Content-Type': 'application/json'
+        },
+        // body: JSON.stringify({records: [item]})
+      });
+    // End of project rubic
     console.log(item);
     setTodoList(todoList.filter((todo) => item.id !== todo.id));
-  }
+
+    const data = await response.json();
+    return data;
+  };
 
   const handleToggleDone = (id) => {
     const updatedTodos = todoList.map((todo) =>
@@ -96,8 +127,8 @@ function App() {
         {
           <div>
             <nav>
-              <a href="">Home</a> |
-              <a href="">Todo List</a> |
+              <a href="http://localhost:3000">Home</a> |
+              <a href="http://localhost:3000">Todo List</a> |
               <a href="http://localhost:3000/about%20us">About Us</a> |
             </nav>
             <img src="https://cdn-icons-png.flaticon.com/128/4394/4394562.png" alt="List" width="60" height="60"></img>
