@@ -1,0 +1,81 @@
+.ListItem {
+  color: #515255; 
+  font-size: 18px; 
+  font-family: "Libre Baskerville", serif; 
+  line-height: 3px;  
+  text-shadow: 0 1px 1px #fff; 
+  padding-top: 1px;  
+}
+
+.ButtonClass {
+  border-radius: 30%;
+  border-color: aqua;
+  border-style: inherit;
+  margin: 5px;
+  font-size: 17px; 
+  font-family: "Great Vibes", cursive;;
+}
+
+button:hover {
+  background-color: rgb(111, 114, 111);
+  cursor: pointer;
+}
+
+.SortButton {
+  margin: 10px;
+  font-family: "Libre Baskerville", serif;
+  font-weight: bold;
+  font-size: 17px;
+  color: #4CAF50;
+  margin-left: 35px;
+}
+
+.wrapper {
+    background: gold;
+}
+  
+@media screen and (min-width: 480px) {
+  .wrapper {
+    background-color: light green;
+  }
+}
+
+body {
+  background: rgb(255, 173, 65);
+}
+
+h1 { 
+  color: #d54d7b; 
+  font-family: "Great Vibes", cursive; 
+  font-size: 70px; 
+  line-height: 70px; 
+  font-weight: normal; 
+  margin-bottom: 20px; 
+  margin-top: 15px; 
+  text-shadow: 0 1px 1px #fff; 
+}
+
+nav { 
+  color: #d54d7b; 
+  font-family: "Great Vibes", cursive; 
+  font-size: 15px; 
+  line-height: 15px; 
+  font-weight: normal; 
+  margin-bottom: 15px; 
+  margin-top: 15px; 
+  text-shadow: 0 1px 1px #fff; 
+}
+
+p {
+  color: #515255; 
+  font-size: 20px; 
+  font-family: "Libre Baskerville", serif;
+  font-weight: bold; 
+  line-height: 5px;
+  margin-top: 20px;
+  margin-left: 35px;   
+}
+
+
+
+
