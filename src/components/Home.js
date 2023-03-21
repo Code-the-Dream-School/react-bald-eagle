@@ -1,12 +1,17 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { addTableData } from './utils';
 import style from './Home.module.css';
+import ReactJsAlert from "reactjs-alert";
 import PropTypes from 'prop-types';
 
 const plusSign = '➕';
 
 const Home = ({ todoList, setTodoList }) => {
     const [todoTitle2, setTodoTitle2] = useState('');
+    const [status, setStatus] = useState(false);
+    
+    const [type, setType] = useState("success");
+    const [title, setTitle] = useState("");
     
     const inputRefTitle = useRef(null);
     useEffect(() => {
@@ -17,27 +22,35 @@ const Home = ({ todoList, setTodoList }) => {
 
     const handleSubmitShortTerm = async (e) => {
         e.preventDefault();
-        if (todoTitle2.length > 0) {
+        if (todoTitle2.trim().length > 0) {
             const newTodo = await addTableData("Short Term Goals", {Title: todoTitle2});
             const newTodoList = ([...newTodo.records, ...todoList]);
             setTodoList(newTodoList);
             setTodoTitle2('');
-            alert("Successfully added to the Short Term List");
+            setTitle('Successfully added!')
+            setType('success')
+            setStatus(true);
         } else {
-            alert("Insert your next ToDo in the input box");
-        }
+            setStatus(true);
+            setType('warning')
+            setTitle('Insert a ToDo please...');
+        }          
     }
 
     const handleSubmitLongTerm = async (e) => {
         e.preventDefault();
-        if (todoTitle2.length > 0) {
+        if (todoTitle2.trim().length > 0) {
             const newTodo = await addTableData("Long Term Goals", {Title: todoTitle2});
             const newTodoList = ([...newTodo.records, ...todoList]);
             setTodoList(newTodoList)
             setTodoTitle2('');
-            alert("Successfully added to the Long Term List");
+            setTitle('Successfully added!')
+            setType('success')
+            setStatus(true);
         } else {
-            alert("Insert your next ToDo in the input box");
+            setStatus(true);
+            setType('warning')
+            setTitle('Insert a ToDo please...');
         }
     }
 
@@ -61,6 +74,12 @@ const Home = ({ todoList, setTodoList }) => {
                     <div className={style.buttonsAlign}>
                         <button onClick={handleSubmitShortTerm} className={style.buttonHome}>{plusSign} Short Term</button>
                         <button onClick={handleSubmitLongTerm} className={style.buttonHome}>{plusSign} Long Term</button> 
+                        <ReactJsAlert
+                            status={status}
+                            type={type} 
+                            title={title}
+                            Close={() => setStatus(false)}
+                        />
                     </div>  
                 </form>
             </div>
