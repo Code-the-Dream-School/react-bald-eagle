@@ -4,6 +4,7 @@ import Header from './Header';
 import TodoList from './TodoList';
 import './styles/App.css';
 import fetchApiData from './apiUtils';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 function App() {
   const [todoList, setTodoList] = useState([]);
@@ -50,12 +51,20 @@ function App() {
   };
 
   return (
-    <div>
-      <Header />
-      <AddTodoForm onAddTodo={addTodo} />
-      {isLoading ? <p>Loading...</p> : <TodoList todoList={todoList} onRemoveTodo={removeTodo} />}
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" exact element={
+          <>
+            <Header isInNewPage={false} />
+            <AddTodoForm onAddTodo={addTodo} />
+            {isLoading ? <p>Loading...</p> : <TodoList todoList={todoList} onRemoveTodo={removeTodo} />}
+          </>
+        } />
+        <Route path="/new" element={<Header isInNewPage={true} />} />
+      </Routes>
+    </BrowserRouter>
   );
+
 }
 
 export default App;
