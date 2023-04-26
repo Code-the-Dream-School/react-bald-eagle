@@ -1,0 +1,41 @@
+.listItem {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 300px;
+    margin-top: 0.75em;
+    color: black;
+    list-style-type: disc;
+    font-size: 1.2em;
+}
+
+.listItemTitle {
+    width: 80%;
+    word-break: break-all;
+}
+
+.listItem:before {
+    content: "•";
+    margin-right: 0.5em;
+}
+
+.button {
+    margin-left: 1em;
+    background-color: #86adbb;
+    color: #FFFFFF;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    position: relative;
+    left: 0;
+    top: 0;
+    transition: 1s;
+}
+
+.button:hover {
+    left: 1px;
+    top: 1px;
+    box-shadow: 0 0 0 #0d0d0d;
+}
