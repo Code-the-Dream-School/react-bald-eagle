@@ -3,7 +3,7 @@ import AddTodoForm from './AddTodoForm';
 import Header from './Header';
 import TodoList from './TodoList';
 import './styles/App.css';
-import fetchApiData from './apiUtils';
+import fetchApiData from './Utils/apiUtils';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 function App() {

@@ -1,0 +1,31 @@
+.todoLabel {
+    margin-right: 1em;
+    color: #19222d;
+    flex-grow: 1;
+    font-size: 1.2em;
+    font-weight: bold;
+    padding: 0.2em 0;
+}
+
+.todoInput {
+    transition: border-color 0.3s ease-in-out;
+    font-size: 1.1em;
+    font-family: "Arial", sans-serif;
+    width: 100%;
+    box-sizing: border-box;
+    border: 1px solid #19222d;
+    padding: 0.5em;
+    margin-bottom: 0.5em;
+}
+
+.todoInput:hover {
+    border-color: #a80505;
+    background-color: #eaf09a;
+}
+
+.todoInput:focus {
+    border-color: #111fe7;
+    outline: none;
+    box-shadow: 0 0 5px rgba(65, 90, 119, 0.5);
+    background-color: #e0f0ff;
+}
