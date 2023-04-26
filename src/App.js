@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
-import AddTodoForm from './AddTodoForm';
-import Header from './Header';
-import TodoList from './TodoList';
+import AddTodoForm from './components/AddTodoForm';
+import Header from './components/Header';
+import TodoList from './components/TodoList';
 import './styles/App.css';
-import fetchApiData from './Utils/apiUtils';
+import fetchApiData from './utils/apiUtils';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 function App() {
