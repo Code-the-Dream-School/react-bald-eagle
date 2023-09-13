@@ -78,6 +78,7 @@ const Home = ({ todoList, setTodoList }) => {
                             status={status}
                             type={type} 
                             title={title}
+                            quote="This is a dummy design that shows an example of reactjs-alert"
                             Close={() => setStatus(false)}
                         />
                     </div>  
