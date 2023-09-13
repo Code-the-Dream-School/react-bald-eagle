@@ -100,7 +100,7 @@ const TodoContainer = ({ tableName, todoList, setTodoList, toggleAscDescSorting,
                     /> 
                 </div>
                 {isLoading ? (
-                    <p>Loading...</p>
+                    <p>Loading...Please wait</p>
                 ) : (
                     <TodoList 
                         todoList={todoList} 
