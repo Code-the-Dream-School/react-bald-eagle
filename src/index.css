@@ -1,0 +1,50 @@
+@import url('https://fonts.googleapis.com/css?family=Share+Tech+Mono&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Shadows+Into+Light&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Poppins&display=swap');
+
+*,
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "Poppins", sans-serif;
+    background-color: #dad9c41d;
+    margin: 0;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+  
+code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
+
+:root {
+    --color-dark: #3E505B;
+    --color-white: white;
+}
+
+@media (min-width: 250px) {
+    body {
+        font-size: 0.6rem;
+    }
+}
+
+@media (min-width: 375px) {
+    body {
+        font-size: 0.8rem; 
+    }
+}
+
+@media (min-width: 768px) {
+    body {
+        font-size: 1rem;
+    }
+}

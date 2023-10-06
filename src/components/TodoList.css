@@ -1,0 +1,15 @@
+td {
+    padding-right: 1.5rem;
+}
+
+tbody td:nth-child(3), td:nth-child(5) {
+    border-left: 1px solid rgba(173, 216, 230, 0.83);
+}
+
+tbody td:nth-child(2) {
+    background-color: #16a24217;
+}
+
+tr {
+    margin: 4rem;
+}

@@ -1,0 +1,79 @@
+.todoListItem {
+    color: #495159;
+    width: 300px;
+    height: 50px;
+    padding-left: 3px;
+}
+
+.todoListItem input {
+    font-size: 1.4rem;
+    border: none;
+    height: 2rem;
+    width: 100%;
+    padding-left: 5px;
+    color:darkblue;
+}
+
+.buttons {
+    color: white;
+    border-radius: 0.4rem;
+    border: 1px solid transparent;
+    transition: all 0.7s ease-in-out;
+    letter-spacing: 0.05rem;
+}
+
+.buttons:hover {
+    background-color: #f07f5a;
+    color: white;
+    border: 1px solid brown;
+}
+
+td input {
+    position: relative;
+}
+
+td {
+    width: 100px;
+}
+
+input.checkBox1 {
+    width: 1.2rem;
+    height: 1.2rem;
+}
+
+.checkBox1 td {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+}
+
+.checkBox1 td > input {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -o-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    box-shadow: 0 0 0 2px black;
+    border: 3px solid white;
+}
+
+.checkBoxReady {
+    padding-left: 6px;
+    max-width: 2rem;
+}
+
+.doneEditToggle, .removeButton {
+   text-align: center;
+}
+
+.strikethrough {
+    text-decoration: line-through;
+}
+
+@media (max-width: 610px) {   
+    .todoListItem input {
+        font-size: 0.8rem;
+    }
+}
